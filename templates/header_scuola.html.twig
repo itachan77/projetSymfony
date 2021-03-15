@@ -41,6 +41,34 @@
 
 <body>
 
+        <!-- Définition de deux variables pour que les dates soient de toutes les pages enfants soient en francais -->
+        {% set trans_day_hash = { 
+            "Monday": "Lundi", 
+            "Tuesday": "Mardi", 
+            "Wednesday": "Mercredi", 
+            "Thursday": "Jeudi", 
+            "Friday": "Vendredi", 
+            "Saturday": "Samedi", 
+            "Sunday": "Dimanche",
+        } %}
+
+        {% set trans_month_hash = {
+            "January": "Janvier",
+            "February": "Février",
+            "March": "Mars",
+            "April": "Avril",
+            "May": "Mai",
+            "June": "Juin",
+            "July": "Juillet",
+            "August": "Août",
+            "September": "Septembre",
+            "October": "Octobre",
+            "November": "Novembre",
+            "December": "Décembre",
+        } %}
+
+        <!--Menu-->
+
         <nav id="menu" class="navbar navbar-expand-lg navbar-dark bg-black txperso">
             
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">

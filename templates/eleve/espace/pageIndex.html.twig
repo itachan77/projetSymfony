@@ -23,6 +23,7 @@
                 </div>
 
                 <!-- Le contenu de l'espace ici -->
+ 
                 <div class="row">
 
                     <div class="mt-5 col-sm-12 ">
@@ -35,8 +36,42 @@
 
                     </div>
 
-                </div>
 
+                    <div class="mt-5 col-sm-12">
+                        <div class="text-center col-7 h1 border border-dark bg-dark text-white">Mes messages</div>
+
+                        <div class="col-sm-12 row">
+
+                            <div class="h4 col-2">Date : </div>
+                            <div class="h4 col-3">Objet : </div>
+                            <div class="h4 col-7">Message : </div>
+
+                        </div>
+                        
+                        {% for row in sonMail %}
+                        <div class="col-sm-12 row">
+                            <div class="col-2">
+                                {{ trans_day_hash[row.dateMail|date("l")] }}
+                                {{ row.dateMail|date("d") }}
+                                {{ trans_month_hash[row.dateMail|date("F")] }}
+                                {{ row.dateMail|date("Y") }}
+                                {{ row.dateMail|date("- H:i") }}
+                            </div>
+
+                            <div class="col-3">
+                            {{row.objetMail}}
+                            </div>
+
+
+                            <div class="col-7">
+                            {{row.messageMail}}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    
+                    </div>
+
+                </div>
 
             </div>
 

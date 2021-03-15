@@ -51,7 +51,13 @@ class EleveController extends AbstractController
         //Connexion à l'espace élève à partir de la table User (très recommandée)
         //avec utilisation comme seule variable de $unUser qu'on utilisera pour 
         //accéder à toutes les données de l'User, y compris à sa table associée Eleve
+        
+
         $unUser=$userRepository->find($id);
+
+        $sonMail=$unUser->getMails();
+
+        $leleve=$unUser->getEleve();
 
         //Connexion à l'espace élève à partir de la table User (très recommandée)
         // $login=$unUser->getUserName();
@@ -70,8 +76,12 @@ class EleveController extends AbstractController
         
         return $this->render('eleve/espace/pageIndex.html.twig', [
             'user' => $unUser,
+            'sonMail' => $sonMail,
+            'leleve' => $leleve,
+
         ]);
     }
+
     /**
      * @Route("/espace/PageCompte/{id}", name="PageCompteEleve")
      */

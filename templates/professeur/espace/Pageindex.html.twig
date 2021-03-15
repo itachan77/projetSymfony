@@ -23,6 +23,7 @@
             </div>
 
             <div id="ContenuProf" class="col-sm-10">
+
                 <div>
                     <h1 id="titre" class="text-center">Accueil</h1>
                     <!-- {% include "professeur/espace/baseBanniere.html.twig" %} -->
@@ -31,7 +32,42 @@
                 <!-- Le contenu de l'espace ici -->
                 <div class="row">
 
-                    <div class="mt-5 col-sm-12 ">
+                    <div class="mt-5 col-sm-12">
+                        <div class="text-center col-7 h1 border border-dark bg-dark text-white">Mes messages</div>
+
+                        <div class="col-sm-12 row">
+
+                            <div class="h4 col-2">Date : </div>
+                            <div class="h4 col-3">Objet : </div>
+                            <div class="h4 col-7">Message : </div>
+
+                        </div>
+                        
+                        {% for row in sonMail %}
+                        <div class="col-sm-12 row">
+                            <div class="col-2">
+                                {{ trans_day_hash[row.dateMail|date("l")] }}
+                                {{ row.dateMail|date("d") }}
+                                {{ trans_month_hash[row.dateMail|date("F")] }}
+                                {{ row.dateMail|date("Y") }}
+                                {{ row.dateMail|date("- H:i") }}
+                            </div>
+
+
+                            <div class="col-3">
+                            {{row.objetMail}}
+                            </div>
+
+
+                            <div class="col-7">
+                            {{row.messageMail}}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    
+                    </div>
+
+                    <div class="mt-5 col-sm-2">
                         <div class="card text-black bg-warning h-75 overflow-auto" style="max-width: 18rem;">
                             <h4 class="card-header"><i class="fas fa-map-pin text-danger mr-3"></i>Liste de vos élèves</h4>
                             <div class="card-body">
@@ -42,43 +78,7 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-4">
-                        <div class="h4">Date : </div>
-                        {% for row in sonMail %}
-                        <div>
-                            date : {{row.dateMail|date}}
-
-
-                        </div>
-                            
-                        <hr>
-                        {% endfor %}
-                    </div>
-
-                    <div class="col-sm-4">
-                        <div class="h4">Objet : </div>
-                        
-                        {% for row in sonMail %}
-                        <div>{{row.objetMail}}</div>
-                        <hr>
-                        {% endfor %}
-                        
-                    </div>
-
-
-                    <div class="col-sm-4">
-                        <div class="h4">Messages : </div>
-                        {% for row in sonMail %}
-                        <div>{{row.messageMail}}</div>
-                        <hr>
-                        {% endfor %}
-                    </div>
-
-
-                    
-
                 </div>
-
 
             </div>
 
