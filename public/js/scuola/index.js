@@ -27,12 +27,9 @@ bienvenue1.innerHTML=mess;
 
 
 
-
-
-
 ecole.style.cssText+="font-size:25px;font-weight:bold;color:yellow;color:burlywood;;text-align:left;text-align:center;";
 ecole.style.cssText+="transition-delay:3s;transition:4s";
-ecole.innerHTML+='<span>Ecole de musique </span><i class="fas fa-guitar"></i><i class="fas fa-drum"></i><i class="fas fa-music"></i>';
+ecole.innerHTML+='<span>Ecole de musique</span><i class="fas fa-guitar"></i><i class="fas fa-drum"></i><i class="fas fa-music"></i>';
 
 
 function adres1()
@@ -53,7 +50,7 @@ setTimeout(adres2,5500);
 function bienv2()
 {
 
-bienvenue2.style.cssText+="margin-top:-150px!important;font-size:60px;font-weight:bold;color:black;text-align:center;padding:7px;";
+bienvenue2.style.cssText+="margin-top:-200px!important;font-size:60px;font-weight:bold;color:black;text-align:center;padding:7px;";
 bienvenue2.innerHTML+='<span style="transition:1s;opacity:1">'+mess2+'</span>';
 }
 setTimeout(bienv2,3500);
@@ -100,50 +97,6 @@ document.getElementById('blocImage1').addEventListener('mouseleave', function ()
     animationCarousel = setInterval(activeCarousel, 3000); // permet de relancer un setInterval
 });
 */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

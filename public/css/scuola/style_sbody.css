@@ -86,6 +86,10 @@ box-shadow:5px 5px 5px black;
 border-radius:20px;
 }
 
+.dessusTitreMobile {
+    margin-top:-500px;
+}
+
 /***********************************************ACTUALITE***************************************************/
 
 #actualite .boite_perso {

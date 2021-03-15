@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
@@ -43,6 +44,7 @@ class ContactType extends AbstractType
             
             ->add('emailContact',EmailType::class)
             ->add('messageContact')
+            ->add('telephone', TelType::class)
         ;
     }
 

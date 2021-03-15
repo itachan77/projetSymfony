@@ -55,14 +55,20 @@ La Scuola - Nous contacter
 				<fieldset class="col-sm-12 row">
 					<legend class="pt-2">Informations</legend>
 
-					<div class="col-sm-12 col-md-6">
-						{{form_label(form_insert.emailContact,'Votre adresse mail :', {'label_attr': {'class': 'col-sm-5 col-form-label'}}) }}
+					<div class="col-sm-12 col-md-4">
+						{{form_label(form_insert.emailContact,'Votre adresse mail :', {'label_attr': {'class': 'col-sm-12 col-form-label'}}) }}
 						{{form_widget(form_insert.emailContact,{'attr':{'class':'form-control'}})}}
 						{{form_errors(form_insert.emailContact)}}
 					</div>
 
-					<div class="col-sm-12 col-md-6">
-						{{form_label(form_insert.ageContact,'Votre âge :', {'label_attr': {'class': 'col-sm-5 col-form-label'}}) }}
+					<div class="col-sm-12 col-md-4">
+						{{form_label(form_insert.telephone,'Votre téléphone :', {'label_attr': {'class': 'col-sm-12 col-form-label'}}) }}
+						{{form_widget(form_insert.telephone,{'attr':{'class':'form-control'}})}}
+						{{form_errors(form_insert.telephone)}}
+					</div>
+
+					<div class="col-sm-12 col-md-4">
+						{{form_label(form_insert.ageContact,'Votre âge :', {'label_attr': {'class': 'col-sm-12 col-form-label'}}) }}
 						{{form_widget(form_insert.ageContact,{'attr':{'class':'form-control'}})}}
 						{{form_errors(form_insert.ageContact)}}
 					</div>
