@@ -1,0 +1,23 @@
+{{form_start(form_insert)}}
+{{form_errors(form_insert)}}
+
+<div id="formGroupe" class="p-5 mx-auto">
+<div class="h6">{{form_label(form_insert.nomGroupe,"Nom du Groupe")}}</div>
+<div class="mb-4">
+{{form_widget(form_insert.nomGroupe)}}
+{{form_errors(form_insert.nomGroupe)}}
+</div>
+
+<div class="h6">{{form_label(form_insert.descriptionGroupe,"Description du fichier:")}}</div>
+<div class="mb-4">
+{{form_widget(form_insert.descriptionGroupe)}}
+{{form_errors(form_insert.descriptionGroupe)}}
+</div>
+
+<div class="mx-auto">{{form_row(form_insert.Valider,{'attr':{'class':'btn btn-dark'}})}}</div>
+
+</div>
+                        
+                        
+    
+{{ form_end(form_insert) }}

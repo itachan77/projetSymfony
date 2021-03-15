@@ -1,0 +1,19 @@
+
+#connect .btn-perso {
+background-color:rgb(2, 89, 130);
+color:burlywood;
+}
+
+#connect.boite_perso {
+    background-color:rgb(232,232,232);
+    box-shadow:5px 5px 5px black;
+    border:1px solid black;
+    
+}
+
+
+.btn-perso:hover {
+    
+    color:white;
+    }
+

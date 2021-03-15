@@ -1,0 +1,208 @@
+{{form(form_update)}}
+
+documentation symfony en francais : 
+https://symfony.com/legacy/doc/forms/1_4/fr/01-form-creation
+
+https://www.codegrepper.com/code-examples/whatever/symfony+new+choicetype
+
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $havemusic;
+    whathavemusic
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $doinstrument
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $haveinstrument
+
+
+
+
+
+
+
+
+
+
+
+    <?php
+
+namespace App\Form;
+
+use DateTime;
+use App\Entity\Eleve;
+use App\Form\TuteurType;
+
+use App\Entity\Categorie;
+use App\Form\CategorieType;
+use App\Repository\CategorieRepository;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+
+
+class EleveType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+
+
+        
+        $builder
+            ->add('dinscriptionEleve',DateType::class, ['label'=>'Date inscription'])
+            ->add('nomEleve',TextType::class,['label'=>'Nom:'])
+            ->add('prenomEleve',TextType::class,['label'=>'Prenom:'])
+            ->add('naissanceEleve',TextType::class,['label'=>'Date de naissance:', 'required'=>false])
+            ->add('adresseEleve',TextType::class,['label'=>'Adresse:'])
+            //->add('cpville',TextType::class,['label'=>'Code Postal:'])
+            ->add('tel1Eleve',TextType::class,['label'=>'Téléphone 1:', 'required'=>false])
+            ->add('tel2Eleve',TextType::class,['label'=>'Téléphone 2:', 'required'=>false])
+            ->add('tel3Eleve',TextType::class,['label'=>'Téléphone 3:', 'required'=>false])
+            ->add('tel4Eleve',TextType::class,['label'=>'Téléphone 4:', 'required'=>false])
+            ->add('emailEleve',TextType::class,['label'=>'Email:'])
+            ->add('informationEleve')
+            
+            ->add('photoEleve',FileType::class,['label'=>'Nom de l\'image:', 'required'=>false, 'data_class'=>null,
+            'empty_data'=>'aucune image'])
+
+            ->add('InfoI',InfoInstrumentType::class, array(
+                'label'=>'Infos sur l\'instruement de l\'élève',
+                'required'=>false
+
+            ))
+
+            ->add('Tuteur',TuteurType::class, array(
+                'label'=>'Tuteur de l\'élève',
+                'required'=>false
+
+            ))
+
+            
+
+            // ->add('categorie',CategorieType::class,);
+
+            // ->add('categorie',EntityType::class, array(
+            //     'class'=>Categorie::class,
+
+            
+
+            
+
+
+
+
+
+
+
+
+
+
+
+            // ->add('categories',EntityType::class, array(
+            //     'class'=>Categorie::class,
+            //     'choice_label'=>'Nom de la Catégorie',
+            //     'label'=>'Sélectionnez la catégorie',
+            //     'multiple'=>false,
+            //     'required'=>false
+            // ))
+
+
+            // ->add('categorie',ChoiceType::class, [
+            //     'choices' => [
+            //         'Piano'=>'1',
+            //         'Violon'=>'2',
+            //         'Chant'=>'3',
+            //         'Eveil musical'=>'4',
+            //         'Saxophone'=>'5',
+            //         'Guitare'=>'6',
+                    
+            //         ]
+
+            // ])
+
+
+
+
+        //     ->add('maxMoisFiscal', ChoiceType::class,
+        //     [
+        //        'choices'  =>
+        //        [
+        //            '1' => true,
+        //            '2' => true,
+        //            '3' => true,
+        //        ],
+        //        'multiple'=>true,
+        //        'expanded'=>true,
+               
+        //    ]);
+            
+
+            // ->add('categorie',CategorieRepository::class, array(
+            //         'multiple'=>true,
+            //    ))
+
+            // ->add('datecreationEleve',DateTime::class,['label'=>'Date de création:'])
+            //->add('categorie')
+            // ->add('nomConnuPar',TextType::class,['label'=>'Connu par:'])
+            
+            //->add('tuteur')
+            
+        ;
+    }
+
+
+
+
+
+
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            'data_class' => Eleve::class,
+        ]);
+    }
+}
+
+
+
+
+
+
+
+
+cmeneux@graphikchannel.com
+De Madrid SALLES VINCENNES à tout le monde:  03:25 PM
+https://packagist.org/packages/vich/uploader-bundle
+https://packagist.org/packages/liip/imagine-bundle
+https://packagist.org/packages/friendsofsymfony/ckeditor-bundle
+https://packagist.org/packages/easycorp/easyadmin-bundle
+https://packagist.org/packages/knplabs/knp-paginator-bundle
+https://packagist.org/packages/sylius/payment-bundle
+https://packagist.org/packages/payum/payum-bundle
+
+https://www.youtube.com/channel/UCS71mal_TkTW_PpZR9YLpIA
+https://packagist.org/packages/karser/karser-recaptcha3-bundle
+
+
+1) Arboresence du site/appli
+2) Déceler les écrans clés
+3) Faire le MCD
+https://www.lucidchart.com/pages/fr/landing?utm_source=google&utm_medium=cpc&utm_campaign=fr_bucket_desktop_branded_x_exact_lucidchart&km_CPC_CampaignId=1535987490&km_CPC_AdGroupID=60295220322&km_CPC_Keyword=lucidchart&km_CPC_MatchType=e&km_CPC_ExtensionID=&km_CPC_Network=g&km_CPC_AdPosition=&km_CPC_Creative=309039280270&km_CPC_TargetID=kwd-33511936169&km_CPC_Country=9056144&km_CPC_Device=c&km_CPC_placement=&km_CPC_target=&mkwid=sIUirU9TX_pcrid_309039280270_pkw_lucidchart_pmt_e_pdv_c_slid__pgrid_60295220322_ptaid_kwd-33511936169_&gclid=CjwKCAiA_9r_BRBZEiwAHZ_v16JWodqEBtE-vcNQK8Q9G0j99xj1BwCewtJWCZnjZU1KRdv1NZU0VhoCBXgQAvD_BwE
+https://www.mysql.com/fr/products/workbench/
+
+4) Mise en place du projet (Symfony/Laravel)
+5) Installation des bundles
+6) Mise en place des entités.

@@ -1,0 +1,116 @@
+
+{% extends 'accueilAdmin.html.twig' %}
+
+{% block title %}ESPACE ADMINISTRATEUR{% endblock %}
+
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/admin/style_accueil.css') }}"/>
+
+{% endblock %}
+
+
+{% block body %}
+
+
+<div id="administration" class="container-fluid">
+
+            <h1 id="titre" class="shadow-lg text-center p-3 mb-5 bg-white rounded mt-3 w-75 mx-auto border border-black">Bienvenue sur votre espace d'administration</h1>
+
+            <div id="bienvenue" class="text-center">
+
+                <div class="row justify-content-center mb-4">
+                    <div id="scuola" class="h4 col-sm-12 col-md-2 p-3 shadow-lg bg-white rounded"><a href="{{ path('scuola_index')}}">
+                        Visiter le site web www.la-scuola.fr</a>
+                    </div>
+                    
+                    <div id="message" class="offset-md-1 h4 col-sm-12 col-md-2 p-3 shadow-lg bg-white rounded"><a href="{{ path('scuola_contact_liste')}}">
+                        Messages provenant du site web www.la-scuola.fr</a>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center mb-4">
+
+                        <div class="col-md-3">
+
+                            <div id="professeur" data-target="#lprofesseur" class="h4 p-3 shadow-lg bg-white rounded">
+                                Professeurs
+                                <div class="h5"><i class="fas fa-arrow-down"></i></div>
+                            </div>
+
+                            <div id="lprofesseur" class="row">
+                                <div class="h5 col-4 offset-4 mb-3 p-2 shadow-lg bg-white rounded"><a href="{{ path('liste_prof')}}">Liste des <div>professeurs</div></a></div>
+                                <div class="h5 col-4 offset-4 mb-3 p-2 shadow-lg bg-white rounded"><a href="{{ path('espaceProfAdmin')}}"><div>Espace</div>professeur</div></a>
+                                <div class="h5 col-4 offset-4 mb-3 p-2 shadow-lg bg-white rounded"><a href=""><div>Fiche</div>professeur</div></a>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-md-3 offset-md-1">
+                            <div  id="utilisateur" data-target="#lutilisateur" class="h4 p-3 shadow-lg bg-white rounded">
+                                Utilisateurs
+                                <div class="h5"><i class="fas fa-arrow-down"></i></div>
+                            </div>
+                            
+                            <div id="lutilisateur" class="row">
+                                <div class="h5 col-4 offset-4 mb-3 p-2 shadow-lg bg-white rounded"><a href="{{ path('route_liste_user')}}">Fiche <div class="mb-2">Utilisateurs</div></a></div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 offset-md-1">
+                            <div  id="eleve" data-target="#leleve" class="h4 p-3 shadow-lg bg-white rounded">
+                                Eleves
+                                <div class="h5"><i class="fas fa-arrow-down"></i></div>
+                            </div>
+
+                            <div id="leleve" class="row">
+                                <div class="h5 col-4 offset-4 mb-3 p-2 shadow-lg bg-white rounded"><a href="{{ path('route_liste')}}">Liste des <div>élèves</div></a></div>
+                                <div class="h5 col-4 offset-4 mb-3 p-2 shadow-lg bg-white rounded"><a href="{{ path('espaceEleveAdmin')}}">Espace <div>élèves</div></a></div>
+                                <div class="h5 col-4 offset-4 mb-3 p-2 shadow-lg bg-white rounded">Fiche <div>des élèves</div></div>
+                            </div>
+                        </div>
+
+                </div>
+
+
+                <!-- <div class="row justify-content-center">
+
+                    <div class="col-md-3">
+                        <div id="lprofesseur" class="row">
+                            <div class="h5 col-4 offset-4 mb-3 p-2 shadow-lg bg-white rounded"><a href="{{ path('liste_prof')}}">Liste des <div>professeurs</div></a></div>
+                            <div class="h5 col-4 offset-4 mb-3 p-2 shadow-lg bg-white rounded"><div>Espace</div>professeur</div>
+                            <div class="h5 col-4 offset-4 mb-3 p-2 shadow-lg bg-white rounded"><div>Fiche</div>professeur</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 offset-1">
+                        <div id="lutilisateur" class="row">
+                            <div class="h5 col-4 offset-4 mb-3 p-2 shadow-lg bg-white rounded"><a href="{{ path('route_liste_user')}}">Fiche <div class="mb-2">Utilisateurs</div></a></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 offset-1">
+                        <div id="leleve" class="row">
+                            <div class="h5 col-4 offset-4 mb-3 p-2 shadow-lg bg-white rounded"><a href="{{ path('route_liste')}}">Liste des <div>élèves</div></a></div>
+                            <div class="h5 col-4 offset-4 mb-3 p-2 shadow-lg bg-white rounded"><a href="{{ path('route_liste')}}">Espace <div>élèves</div></a></div>
+                            <div class="h5 col-4 offset-4 mb-3 p-2 shadow-lg bg-white rounded">Fiche <div>des élèves</div></div>
+                        </div>
+                    </div>
+                </div> -->
+
+                
+            </div>
+        </div>
+        
+
+
+        <div id="menu_boule" class="row mx-auto">
+        
+
+<script src="{{ asset('js/app_scuola/accueil.js') }}"></script>
+</div>
+
+
+
+{% endblock %}

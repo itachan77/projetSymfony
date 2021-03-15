@@ -1,0 +1,52 @@
+#admin_body {
+    margin-top:150px
+}
+
+#admin_login{
+    position:fixed;
+    left:50%;
+    top:0px;
+    transform:translate(-50%,0);
+    background-color:black; 
+    z-index:2;   
+}
+
+#menu_admin
+{
+    /*
+    position:fixed;
+    left:50%;
+    top:30px;
+    transform:translate(-50%,0);
+    z-index:3;
+    */
+    margin-top:40px;
+}
+#menu_admin li.nav-item {
+    margin:0 40px 0 40px;
+    
+}
+
+#menu_admin .navbar-perso {
+    
+    background-color:peachpuff;
+}
+
+#menu_admin .nav-link {
+    color:black!important;
+    font-weight:bold!important;
+}
+
+#menu_admin .taille_perso {
+    font-size:16px;
+}
+
+#menu_admin .form-control {
+    background-color:rgb(240,240,240);
+}
+
+#menu_admin input[type="search"] {
+    border:2px solid green;
+    width:240px;
+}
+

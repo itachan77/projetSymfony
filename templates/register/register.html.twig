@@ -1,0 +1,83 @@
+
+{% extends 'menuAdminProf.html.twig' %}
+{% block title %}Créer un utilisateur{% endblock %}
+
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/style_adform.css') }}">
+{% endblock %}
+
+
+{% block body %}
+
+<div class="container">
+    {{form_start(form_register)}}
+    {{form_errors(form_register)}}
+    
+    <div class="mx-auto">
+        {% for message in app.session.flashbag.get('message') %}
+        <span class="alert alert-{{ app.session.get('statut')}}">
+            {{message}}
+        </span>
+        {% endfor %}
+    </div>
+
+    <div class="row no-gutters">
+
+        <div class="row col-sm-12 bg-warning border border-primary rounded mx-auto">
+        
+            <div class="col-sm-3 offset-md-2 text-center">
+                <h1 class="">CREER UN UTILISATEUR</h1>
+            </div>
+
+            <div class="col-sm-3 offset-4 mb-2">
+                {{form_row(form_register.valider,{'attr':{'class':'modifier_perso'}})}}
+            </div>
+        
+        </div> 
+
+
+        </div>
+        <div class="row col-sm-12 cadrep mx-auto">
+
+                <div class="form-group mx-auto w-50">
+
+
+
+                    <div class="col-sm-12 mt-4">
+                    {{form_label(form_register.username,'Identifiant :')}}
+                    {{form_widget(form_register.username,{'attr':{'class':'form-control'}})}}
+                    </div>
+        
+                    <div class="col-sm-12">
+                    {{form_row(form_register.password.first,{'attr':{'class':'form-control'}})}}
+                    </div>
+
+                    <div class="col-sm-12">
+                    {{form_row(form_register.password.second,{'attr':{'class':'form-control'}})}}
+                    </div>
+
+                    <div class="col-sm-12">
+                    {{form_label(form_register.roles,'Rôles :')}}
+                    {{form_widget(form_register.roles,{'attr':{'class':'form-control'}})}}
+                    </div>
+
+                {{form_end(form_register)}} 
+                    
+
+                </div>
+            
+
+
+        </div>
+
+    </div>
+    
+{% endblock body %}
+
+
+
+
+
+
+

@@ -1,0 +1,102 @@
+
+
+{% block title %}VISUALISER UNE FICHE{% endblock %}
+{% block style %} 
+
+
+
+{% endblock style %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/style_perso.css') }}">
+
+{% endblock %}
+
+
+{% extends 'haut_admin.html.twig' %}
+
+{% block body %}
+
+<!-- RECHERCHE MULTICRITERES-->
+
+{% if nbrst_nom > 0 or nbrst_prenom > 0 or nbrst_prenom > 0 or nbrst_adresse > 0 or nbrst_email > 0 or nbrst_cpville > 0 or nbrst_categorie > 0 %} 
+
+
+    <h2>Résultat de votre recherche :</h2>
+
+    {% for row in tab_Search %} 
+    
+    <h2><p>- {{row.nomEleve}} {{row.prenomEleve}}</p></h2>    
+    
+    {% endfor %}
+
+
+
+{% else %}
+    <h1>AUCUN RESULTAT N'A ETE TROUVE</h1>
+{% endif %}
+
+
+<!-- FIN RECHERCHE MULTICRITERES-->
+
+
+
+<div class="container">
+
+    <div class="table-responsive-lg">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr class="text-center">
+                    <th scope="col">ID</th>
+                    <th scope="col">PHOTO</th>
+                    <th scope="col">NOM</th>
+                    <th scope="col">PRENOM</th>
+                    <th scope="col">DISCIPLINE</th>
+                    <th scope="col">PARAMETRES</th>
+                </tr>
+            </thead>
+        
+        <tbody>
+
+
+
+    {% for row in tab_Search %}
+    
+    <tr>
+        <th class="text-center" scope="row">{{ row.Id }}</th>
+        <td class="text-center"><img width="50" class="img-thumbnail" src="{{ asset('img_eleve/'~ row.photoEleve) }}"></img></td>
+        <td class="text-center">{{ row.nomEleve }}</td>
+        <td class="text-center">{{ row.prenomEleve }}</td>
+        <td class="text-center">{{ row.categorie }}</td>
+        
+        <td class="row">
+            {% if is_granted('ROLE_ADMIN') %}
+            <div class="mx-auto row">
+                    <div class="col-sm-12 col-md-4"><a title="VOIR" class="btn btn-success none" href="{{ path('show', {'id':row.Id} )}}">V</a></div>
+                    <div class="col-sm-12 col-md-4"><a title="MODIFIER" class="btn btn-warning none" href="{{ path('update', {'id':row.Id} )}}">M</a></div>
+                    <div class="col-sm-12 col-md-4"><a title="SUPPRIMER" class="btn btn-danger none" href="{{ path('delete', {'id':row.Id} )}}">S</a></div>
+            </div>
+            {% endif %}
+        </td>
+    </tr>
+    
+    {% endfor %}
+</table>
+</div>
+
+</div>   
+
+                        {#
+                            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                            See https://symfony.com/doc/current/security/remember_me.html
+                    
+                            <div class="checkbox mb-3">
+                                <label>
+                                    <input type="checkbox" name="_remember_me"> Remember me
+                                </label>
+                            </div>
+                        #}
+
+
+
+{% endblock body %}

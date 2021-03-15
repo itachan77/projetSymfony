@@ -1,0 +1,117 @@
+﻿{% extends 'header_scuola.html.twig' %}
+
+{% block title %}
+La Scuola - Actualité
+{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/scuola/style_sbody.css') }}">
+{% endblock %}
+
+
+{% block body %}
+<div>
+    <img src="{{ asset('images/scuola/actualite.jpg') }}" class="img-fluid" alt="professeur">
+</div>
+
+<div id="letitre" class="text-center mt-2 mb-5">Actualité</div>
+
+<div id="actualite" class="container-fluid bg-white radius-perso pt-5">
+
+
+    {% if is_granted('ROLE_ADMIN') %} 
+
+
+        <!--Le formulaire de création des articles-->
+        <div class="row">
+            <a id="ajouter" class="btn btn-primary mx-auto mb-5">Ajouter une actualité</a>
+        </div>
+        <div class="row">
+            <a id="masquer" class="btn btn-primary mx-auto mb-5">Masquer ajouter</a>
+        </div>
+
+        <div id="boite_ajout" class="col-sm-12 w-100 mx-auto mb-5 col-md-6 w-50 boite_perso">
+
+            {{form_start(form_insert)}}
+            {{form_errors(form_insert)}}
+            <div class="row mx-auto">
+                <div class="col-sm-12 w-100 mx-auto col-md-3 w-50">
+                    {{form_label(form_insert.mois, "Mois:", {'label_attr': {'class': 'col-sm-6 col-form-label'}}) }}
+                    {{form_widget(form_insert.mois,{'attr':{'class':'form-control'}})}}
+                    {{form_errors(form_insert.mois)}}
+                </div>
+
+                <div class="col-sm-12 w-100 mx-auto col-md-3 w-50">
+                    {{form_label(form_insert.annee,'Annee:', {'label_attr': {'class': 'col-sm-6 col-form-label'}}) }}
+                    {{form_widget(form_insert.annee,{'attr':{'class':'form-control'}})}}
+                    {{form_errors(form_insert.annee)}}
+                </div>
+
+                <div class="col-sm-12 w-100 mx-auto col-md-3 w-50">
+                    {{form_label(form_insert.couleur,'Couleur:', {'label_attr': {'class': 'col-sm-6 col-form-label'}}) }}
+                    {{form_widget(form_insert.couleur,{'attr':{'class':'form-control'}})}}
+                    {{form_errors(form_insert.couleur)}}
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="mx-auto col-md-10">
+
+                    
+                    {{form_label(form_insert.contenuActu,'Contenu:', {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
+                    {{form_widget(form_insert.contenuActu,{'attr':{'class':'areaperso'}})}}
+                    {{form_errors(form_insert.contenuActu)}}
+
+                    {{form_row(form_insert.ajouter,{'attr':{'class':'btn btn-dark w-100 mx-auto'}})}}
+                    
+                    {{form_end(form_insert)}}
+
+                </div>
+            </div>
+        
+        </div>
+
+    {% endif %}
+
+
+
+
+    <!--L'actualité venant de la base de données-->
+        <!--Une boucle du tableau actualiteall permet d'afficher toutes les actualités de la base de données-->
+    <article>
+
+        {% for row in actualiteall %}
+
+        <div class="row">
+                <div class="col-sm-12 col-md-4">
+
+                </div>
+
+                <div class="col-sm-12 text-center w-75 px-2 pt-2 mx-auto box-perso mb-5 col-md-4" style="background-color:{{row.couleur}};">
+                    <h1>Actualité {{row.mois}} {{row.annee}}</h1>
+                    <hr>
+                    <p>{{row.contenuActu|raw|nl2br}}</p>
+                </div>
+
+                <div class="col-sm-12 mx-auto mb-5 col-md-4">
+                    {% if is_granted('ROLE_ADMIN') %} 
+                    <a class="btn btn-warning" href="{{ path('actualite_update', {'id':row.id} )}}">Modifier</a>
+                    <a class="btn btn-danger" href="{{ path('actualite_delete', {'id':row.id} )}}">Supprimer</a>
+                    {% endif %}
+                </div>
+        </div>
+
+        {% endfor %}
+
+    </article>
+
+
+
+
+
+
+<script src="{{ asset('/js/scuola/actualite.js') }}"></script>
+
+</div>
+{% endblock body %}

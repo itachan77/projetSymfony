@@ -1,0 +1,146 @@
+{% extends 'header_scuola.html.twig' %}
+
+{% block title %}ESPACE SCUOLA PROFESSEUR{% endblock title %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/espaceProf/style_espace.css') }}">
+{% endblock stylesheets %}
+
+{% block body %}
+
+
+
+
+<div class="container-fluid mt-2">
+
+    <!--BaseEspaceProf contient le menu vertical. Include en position fixed donc tout l'écran est à nous-->
+    <div id="MenuProf">
+        {% include "professeur/espace/baseEspaceProf.html.twig" %}
+    </div>
+
+
+    <div class="row">
+        <div id="espaceVertical" class="col-sm-2"></div>
+
+        <div id="ContenuProf" class="col-sm-10">
+            <div>
+                <h1 id="titre" class="text-center">Mon compte</h1>
+            </div>
+
+            <!-- Le contenu de l'espace ici -->
+            <div class="mx-auto text-center col-sm-12 col-md-6">
+
+                <div class="mt-5">
+
+                    <!--Message session de confirmation de prise en compte des modifications-->
+                    <div class="text-center mt-5">
+                        {% for message in app.session.flashbag.get('message') %}
+                        <span class="mt-5 alert alert-{{ app.session.get('statut')}}">
+                            {{message}}
+                        </span>
+                        {% endfor %}
+                    </div>
+
+                    <div class="col-sm-12 w-100 col-md-12 w-100">
+                        {{form_start(form_update)}}
+                        {{form_errors(form_update)}}
+
+                        <div>
+                            <div>
+                                <h5>Votre photo :</h5>
+                                {{professeur.photoProf}}
+                            </div>
+
+                            <div id="widgetPh">
+                                {{form_widget(form_update.photoProf,{'attr':{'class':''}})}}
+                                {{form_errors(form_update.photoProf)}}
+                            </div>
+
+                            <button id="widgetPhBtn" type="button" class="btn btn-warning">Modifier</button>
+                        </div>
+                        
+                        <hr>
+
+                        <div>
+                            <div>
+                                {{form_label(form_update.user.username, "Votre adresse mail :", {'label_attr': {'class': 'h5'}}) }}
+                            </div>
+                            
+                            <div>
+                                {{professeur.User.Username}}
+                            </div>
+
+                            <div id="widgetUn" class="w-50 mx-auto">
+                                {{form_widget(form_update.user.username,{'attr':{'class':'form-control'}})}}
+                                {{form_errors(form_update.user.username)}}
+                            </div>
+                            
+                            <button id="widgetUnBtn" type="button" class="btn btn-warning">Modifier</button>
+                        </div>
+
+                        <hr>
+
+                        <div>
+                            <div>
+                            {{form_label(form_update.user.password, "Votre mot de passe :", {'label_attr': {'class': 'h5'}}) }}
+                            </div>
+
+                            <div class="text-bold">
+                                ********
+                            </div>
+                            
+                            <div>
+                                <span id="widgetPwd" class="w-50 mx-auto">
+                                {{form_widget(form_update.user.password,{'attr':{'class':'form-control'}})}}
+                                {{form_errors(form_update.user.password)}}
+                                </span>
+                            </div>
+                            
+                            <button id="widgetPwdBtn" type="button" class="btn btn-warning">Modifier</button>
+                        </div>
+                            
+                        <hr>
+
+                        <div>
+                            <div>
+                            {{form_label(form_update.user.password, "Votre description visible sur la-scuola.fr :", {'label_attr': {'class': 'h5'}}) }}
+                            </div>
+
+                            <div>
+                                {{professeur.DescriptionProf|raw}}
+                            </div>
+
+                            <div id="widgetDs">
+                                {{form_widget(form_update.descriptionProf,{'attr':{'class':'areaperso'}})}}
+                                {{form_errors(form_update.descriptionProf)}}
+                            </div>
+
+                            <button id="widgetDsBtn" type="button" class="btn btn-warning">Modifier</button>
+                        </div>
+
+                        <hr>
+                        
+                        <div class="text-center">{{form_row(form_update.modifier,{'attr':{'class':'btn btn-danger'}})}}
+                        {{form_end(form_update)}}
+                        </div>
+
+                    </div>
+                    
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+<script src="{{ asset('js/espaceProf/pageCompte.js') }}"></script>
+{% endblock body %}

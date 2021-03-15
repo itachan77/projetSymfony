@@ -1,0 +1,128 @@
+{% extends 'header_scuola.html.twig' %}
+
+{% block title %}ESPACE SCUOLA PROFESSEUR - CREEZ VOS GROUPES{% endblock title %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/espaceProf/style_espace.css') }}">
+{% endblock stylesheets %}
+
+{% block body %}
+
+
+
+
+<div class="container-fluid mt-2">
+
+    <!--BaseEspaceProf contient le menu vertical. Include en position fixed donc tout l'écran est à nous-->
+    <div id="MenuProf">
+        {% include "professeur/espace/baseEspaceProf.html.twig" %}
+    </div>
+
+
+    <div class="row">
+        <div id="espaceVertical" class="col-sm-2">
+            
+        </div>
+
+        <div id="ContenuProf" class="col-sm-10">
+            <div>
+                <h1 id="titre" class="text-center">Mon emploi du temps</h1>
+            </div>
+
+            <!-- Le contenu de l'espace ici -->
+            <div class="row">
+
+                <div class="mt-5 col-sm-12 ">
+
+                    <div id="cadreCalend" class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                
+                                {% include "professeur/espace/calendar/ajoutCalendrier.html.twig" %}
+                                {% include "professeur/espace/calendar/supCalendrier.html.twig" %}
+
+                            </div>
+
+                            <div id="calendrier" class="mt-2 col-sm-8"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+    {% block javascript %}
+
+
+        <script>
+
+        window.onload = () => {
+            let calendarElt = document.querySelector("#calendrier");
+            let recupEvents = document.querySelector("#events");
+
+        
+            let calendar = new FullCalendar.Calendar(calendarElt, {
+                droppable: true,
+                dropAccept: '.cool-event',
+                drop: function() {
+                alert('dropped!');
+                },
+                
+                initialView : 'dayGridMonth',
+                locale:'fr',
+                timeZone: 'Europe/Paris',
+                headerToolbar: {
+                    start: 'prev,next today',
+                    center: 'title',
+                    end: 'dayGridMonth, timeGridWeek,listMonth'
+                },
+                buttonText: {
+                    today:    'Aujourd\'hui',
+                    month:    'Mois',
+                    week:     'Semaine',
+                    day:      'Jour',
+                    list:     'Liste'
+                },
+                events:{{data|raw}},
+                editable: true, 
+                eventResizableFromStart:true
+            })
+
+            calendar.on('eventChange', (e) => {
+                let url = `/professeur/espace/{{professeur.Id}}/calend/${e.event.id}/edit`;
+                let donnees={
+                    "title":e.event.title,
+                    "description":e.event.extendedProps.description,
+                    "start":e.event.start,
+                    "end":e.event.end,
+                    "backgroundColor":e.event.backgroundColor,
+                    "borderColor":e.event.borderColor,
+                    "textColor":e.event.textColor,
+                    "allDay":e.event.allDay
+                }
+
+                console.log(e.event._def);
+                
+                let xhr = new XMLHttpRequest;
+                xhr.open("PUT", url);
+                xhr.send(JSON.stringify(donnees));
+            })
+
+            calendar.render();
+            
+            }
+
+
+        </script>
+
+    {% endblock javascript %}
+    
+
+    
+{% endblock body %}

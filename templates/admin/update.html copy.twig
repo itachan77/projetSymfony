@@ -1,0 +1,447 @@
+
+{% extends 'haut_admin.html.twig' %}
+{% block title %}Modifier une fiche{% endblock %}
+
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/style_adform.css') }}">
+{% endblock %}
+
+
+{% block body %}
+<div id="document" class="container-fluid">
+    <div class="container">
+
+        <div id="myForm" class="ml-5 mb-5">
+        {{form_start(form_update)}}
+        {{form_errors(form_update)}}            
+            <div class="titre mt-5 bg-success mr-3 row">
+
+                <div class="col-md-4">
+                    <div class="text-center">
+                        {% for message in app.session.flashbag.get('message') %}
+                        <span class="alert alert-{{ app.session.get('statut')}}">
+                            {{message}}
+                        </span>
+                        {% endfor %}
+                    </div>
+                </div>
+
+
+
+                <div class="col-sm-12 text-center col-md-4">
+                    <h1>MODIFIER LA FICHE DE {{uneleve.nomEleve}} {{uneleve.prenomEleve}}</h1>
+                </div>
+                
+                <div class="col-sm-12 text-center col-md-4 ">
+                    {{form_row(form_update.modifier,{'attr':{'class':'modifier_perso'}})}}
+
+                </div>
+
+            </div>
+
+            <div class="row w-100">
+        
+                <div class="col-sm-12 col-md-3 cadrep mx-auto pb-2">
+                    <fieldset>        
+                        <legend class="legendeleve">Catégorie:</legend>
+
+                        {{form_widget(form_update.Category,{'attr':{'class':'form_categorie'}})}}
+                        {{form_errors(form_update.Category)}}
+                        
+                    </fieldset>        
+                </div>
+
+                <div class="col-sm-12 col-md-3 cadrep mx-auto pb-2">
+                    <fieldset>        
+                        <legend class="legendeleve">Professeur:</legend>
+
+                        {{form_widget(form_update.professeur,{'attr':{'class':'form_categorie'}})}}
+                        {{form_errors(form_update.professeur)}}
+                        
+                    </fieldset>        
+                </div>
+
+
+                <div class="col-sm-12 col-md-3 cadrep text-center">
+                    <fieldset>        
+                        <legend class="legendeleve">Photo:</legend>
+                    
+                    <img width="200" src="{{ asset('img_eleve/'~ image) }}"></img>
+                    
+                    </fieldset> 
+                </div>
+
+
+                <div class="col-sm-12 col-md-3 cadrep mx-auto pb-2">
+                    <fieldset>
+                        <legend class="legendeleve">Date d'inscription</legend>
+                        
+                        {{form_widget(form_update.dinscriptionEleve,{'attr':{'class':'form_inscr'}})}}
+                        {{form_errors(form_update.nomEleve)}}
+                    </fieldset>
+                </div>
+
+
+            </div>
+
+                    <!-- LIGNE 2 -->
+                    <div class="row w-100">
+                        <div class="col-sm-2 cadrep mx-auto pb-2 text-center">
+                            <a id="creerCompte" class="text-center" href="{{ path('pw_upd', {'id':uneleve.Id} )}}">Créer un compte</a>
+                        </div>
+
+                        <div class="col-sm-2 cadrep mx-auto pb-2 text-center">
+                            <a id="envoyerMail" data-mail="cache" href="#">Envoyer un mail</a>
+                        </div>
+
+                        <div class="col-sm-2 cadrep mx-auto pb-2">
+
+                        </div>
+
+                        <div class="col-sm-2 cadrep mx-auto pb-2">
+
+                        </div>
+
+                        <div class="col-sm-2 cadrep mx-auto pb-2">
+
+                        </div>
+
+                        <div class="col-sm-2 cadrep mx-auto pb-2">
+
+                        </div>
+                    </div>
+
+                    <!-- LIGNE 3 (EMAIL) -->
+                    
+                    <div id="affichemail" class="row w-100">
+                        <div class="col-sm-12 cadrep mx-auto pb-2 text-center">
+                                <p>Envoyer un e.mail à {{uneleve.nomEleve}} {{uneleve.prenomEleve}}:</p>
+
+                                <!-- <form action="{{ path('mail', {id: uneleve.id}) }}" method="post"> -->
+
+                                    <div  class="row" id="boite_mail">
+                    
+                                        <div class="col-sm-12 col-md-2 mx-auto">
+
+                                            <div class="de">
+                                                <label for="from">De : </label>
+                                                <input type="text" name="from" id="from" placeholder="email de l'expéditeur" value="itachan2701@gmail.com">
+                                            </div>
+                            
+                                            <div class="a">
+                                                <label for="a">A : </label>
+                                                <input type="text" name="a" id="a" placeholder="email du destinataire" value="{{uneleve.emailEleve}}">
+                                            </div>
+                            
+                                            <div class="objet">
+                                                <label for="objet">Objet : </label>
+                                                <input type="text" name="objet" id="objet" placeholder="objet du message">
+                                            </div>
+
+                                        </div>
+                        
+                                        <div class="col-sm-12 col-md-10">
+                                            <div class="message">
+                                                <p class="p_message">Message :</p>
+                                                <textarea name="message" id="message" cols="57" rows="8" placeholder="Ecrivez votre message"></textarea>
+                                            </div>
+                                        
+                                            <!-- <input type="submit" name="envoiMail" value="ENVOYER LE MESSAGE"> -->
+                                        
+                                        </div>
+
+                                    </div>
+
+                                <!-- </form> -->
+
+                        </div>
+
+                    </div>
+
+                    <!-- LIGNE 4 créer compte -->
+                    <div id="afficheCompte" class="row w-100">
+                        <div class="col-sm-12 cadrep mx-auto pb-2 text-center">
+
+                            En javascript, il faudra essayer de mettre la page pw.html.twig ici (pour éviter d'alourdir le controller)
+                        </div>
+
+                    </div>
+
+                    <!-- LIGNE 5  -->
+                    <div class="row mt-2 w-100">
+
+                        <div class="col-sm-12 col-md-6 cadrep mx-auto pb-2">
+                            <fieldset>
+                                <legend class="legendeleve">Elève</legend>
+                                    
+                                    <div class="a1">
+                                        
+                                        {{form_label(form_update.nomEleve, "Nom:", {'label_attr': {'class': 'lb_perso'}}) }}
+                                        {{form_widget(form_update.nomEleve,{'attr':{'class':'form_nom'}})}}
+                                        {{form_errors(form_update.nomEleve)}}
+                                        
+
+                                        <select name="titre" id="titre">
+                                            <option value="Monsieur">Mr</option>
+                                            <option value="Madame">Mme</option>
+                                            <option value="Mademoiselle">Mlle</option>
+                                            <option value="Enfant">Enfant</option>
+                                        </select>  
+                                        
+                                    </div>
+                                    
+
+
+                                    <div class="a">
+                                        {{form_label(form_update.prenomEleve,"Prénom:", {'label_attr': {'class': 'lb_perso'}}) }}
+                                        {{form_widget(form_update.prenomEleve,{'attr':{'class':'form_prenom'}})}}
+                                        {{form_errors(form_update.prenomEleve)}}
+                                    </div>
+                                    
+                                    <div class="b">
+                                        {{form_label(form_update.naissanceEleve,"DDN:", {'label_attr': {'class': 'lb_perso'}}) }}
+                                        {{form_widget(form_update.naissanceEleve,{'attr':{'class':'form_naiss'}})}}
+                                        {{form_errors(form_update.naissanceEleve)}}
+                                    </div>
+
+                                    <div class="c">
+                                        {{form_label(form_update.adresseEleve,"Adresse:", {'label_attr': {'class': 'lb_perso'}}) }}
+                                        {{form_widget(form_update.adresseEleve,{'attr':{'class':'form_adresse'}})}}
+                                        {{form_errors(form_update.adresseEleve)}}
+                                    </div>
+
+                                    <div>  
+                                        <label class="lb_perso" for="cp">Cp:</label>
+                                        <input type="text" id="cp" class="form_adresse cp" placeholder="Suggérez un code postal" autocomplete="none">
+                                    </div>
+
+                                    <div class="d">
+                                        {{form_label(form_update.cpville,"CP/Ville:", {'label_attr': {'class': 'lb_perso'}}) }}
+                                        {{form_widget(form_update.cpville,{'attr':{'class':'form_adresse ville'}})}}
+                                        {{form_errors(form_update.cpville)}}
+                                    </div>
+
+
+                                    <div class="e">
+                                    {{form_label(form_update.naissanceEleve,"Tél.:", {'label_attr': {'class': 'lb_perso'}}) }}
+                                    {{form_widget(form_update.tel1Eleve,{'attr':{'class':'form_tel'}})}}
+                                    {{form_errors(form_update.tel1Eleve)}}
+                                    {{form_widget(form_update.tel2Eleve,{'attr':{'class':'form_tel'}})}}
+                                    {{form_errors(form_update.tel2Eleve)}}
+                                    </div>
+
+                                    <div>
+                                    {{form_label(form_update.tel3Eleve,".", {'label_attr': {'class': 'lb_perso'}}) }}
+                                    {{form_widget(form_update.tel3Eleve,{'attr':{'class':'form_tel'}})}}
+                                    {{form_errors(form_update.tel3Eleve)}}
+                                
+                                    {{form_widget(form_update.tel4Eleve,{'attr':{'class':'form_tel'}})}}
+                                    {{form_errors(form_update.tel4Eleve)}}
+                                    </div>
+                                    
+
+                                    <div>
+                                        {{form_label(form_update.emailEleve,"E.mail:", {'label_attr': {'class': 'lb_perso'}}) }}  
+                                        {{form_widget(form_update.emailEleve,{'attr':{'class':'form_mail'}})}}
+                                        {{form_errors(form_update.emailEleve)}}
+                                        <input onclick="showmail()" type="button" value="Envoyer un mail">
+                                    </div>
+                                                                                        
+                                    <div id="fichierImage_update">
+                                        {{form_label(form_update.photoEleve,"Photo:", {'label_attr': {'class': 'lb_perso'}}) }}  
+                                        {{form_widget(form_update.photoEleve)}}
+                                        {{form_errors(form_update.photoEleve)}}
+                                    </div>
+
+                            </fieldset>
+                        </div>
+
+                        <div class="cadre col-sm-12 col-md-6 cadrep mx-auto pb-2">
+                            <fieldset>
+                                <legend class="legendeleve">Personnes à prévenir</legend>
+
+                                <div class="row mt-5">
+
+                                <div class="col-sm-12">
+                                {{form_label(form_update.Tuteur.nomTuteur,'Nom:', {'label_attr': {'class': 'lb_perso'}}) }}
+                                {{form_widget(form_update.Tuteur.nomTuteur,{'attr':{'class':'form_tuteur'}})}}
+                                {{form_errors(form_update.Tuteur.nomTuteur)}}
+                                </div>
+
+                                <div class="col-sm-12">
+                                {{form_label(form_update.Tuteur.prenomTuteur,'Prénom:', {'label_attr': {'class': 'lb_perso'}}) }}
+                                {{form_widget(form_update.Tuteur.prenomTuteur,{'attr':{'class':'form_tuteur'}})}}
+                                {{form_errors(form_update.Tuteur.prenomTuteur)}}
+                                </div>
+                                
+                                <div class="col-sm-12">
+                                {{form_label(form_update.Tuteur.adresseTuteur,'Adresse:', {'label_attr': {'class': 'lb_perso'}}) }}
+                                {{form_widget(form_update.Tuteur.adresseTuteur,{'attr':{'class':'form_tuteur'}})}}
+                                {{form_errors(form_update.Tuteur.adresseTuteur)}}
+                                </div>
+
+                                <div class="col-sm-12">
+                                {{form_label(form_update.Tuteur.tel1Tuteur,'Tél1:', {'label_attr': {'class': 'lb_perso'}}) }}
+                                {{form_widget(form_update.Tuteur.tel1Tuteur,{'attr':{'class':'form_tuteur'}})}}
+                                {{form_errors(form_update.Tuteur.tel1Tuteur)}}
+                                </div>
+
+                                <div class="col-sm-12">
+                                {{form_label(form_update.Tuteur.tel2Tuteur,'Tél2:', {'label_attr': {'class': 'lb_perso'}}) }}
+                                {{form_widget(form_update.Tuteur.tel2Tuteur,{'attr':{'class':'form_tuteur'}})}}
+                                {{form_errors(form_update.Tuteur.tel2Tuteur)}}
+                                </div>   
+
+                                </div>
+
+                            </fieldset>
+                        </div>
+
+                    </div>
+                    
+                    <!-- LIGNE 6 -->
+                    <div class="row w-100 mt-2">
+                        <div class="cadre col-12 cadrep mx-auto pb-2">
+                            <fieldset>
+                                <legend class="legendeleve">Informations supplémentaires</legend>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-6">
+                                        </div>
+
+                                        <div class="col-sm-12 col-md-6">
+                                            {{form_widget(form_update.informationEleve,{'attr':{'class':'form_info'}})}}
+                                            {{form_errors(form_update.nomEleve)}}
+                                        </div>
+                                    </div>
+                            <fieldset>
+                        </div>
+                    </div>
+
+                    <!-- LIGNE 7 -->
+                    <div class="row w-100 mt-2">
+
+                        <div class="cadre col-sm-12 col-md-6 cadrep">
+                        
+                            <fieldset>
+                                <legend class="legendeleve">Instrument</legend>
+                                    <div class="instr1">
+                                    <p style="font-size:20px;">Au moment de l'inscription :</p>
+                                    
+                                    {{form_label(form_update.InfoI.havemusic,'Il avait des connaissances musicales ?', {'label_attr': {'class': 'lb_instr'}}) }}
+                                    {{form_widget(form_update.InfoI.havemusic)}}
+                                    {{form_errors(form_update.InfoI.havemusic)}}
+                                    
+
+                                    {{form_widget(form_update.InfoI.whathavemusic)}}
+                                    {{form_errors(form_update.InfoI.whathavemusic)}}
+                                    </div>
+                                    
+                                    
+                                    <div class="instr1">
+                                        {{form_label(form_update.InfoI.doinstrument,'Il pratiquait un instrument ?', {'label_attr': {'class': 'lb_instr'}}) }}
+                                        {{form_widget(form_update.InfoI.doinstrument)}}
+                                        {{form_errors(form_update.InfoI.doinstrument)}}
+
+                                        {{form_widget(form_update.InfoI.whatdoinstrument)}}
+                                        {{form_errors(form_update.InfoI.whatdoinstrument)}}
+                                    </div>
+
+                                    <div class="instr1">
+                                        {{form_label(form_update.InfoI.haveinstrument,'Il possédait un instrument ?', {'label_attr': {'class': 'lb_instr'}}) }}
+                                        {{form_widget(form_update.InfoI.haveinstrument)}}
+                                        {{form_errors(form_update.InfoI.haveinstrument)}}
+
+                                        {{form_widget(form_update.InfoI.whathaveinstrument)}}
+                                        {{form_errors(form_update.InfoI.whathaveinstrument)}}
+                                    </div>
+
+
+                            </fieldset>
+
+                        </div>
+
+                        <div class="cadre col-sm-12 col-md-6 cadrep mx-auto pb-2">
+                            <fieldset>
+                                <legend class="legendeleve">Connu par</legend>
+                                    <select name="mode">
+                                        <option value="tract">Tract</option>
+                                        <option value="internet">Internet</option>
+                                        <option value="connaissance">Connaissance</option>
+                                    </select>
+                                    
+                                    <div>
+                                        <label class="connuautre" for="possede">Autre:</label>
+                                        <input type="text" name="connuautre" id="connuautre">
+                                    </div>
+                                    
+
+                            </fieldset>
+                        </div>
+
+                    </div>
+            </div>
+            
+        {{form_end(form_update)}}
+        </div>
+
+    </div>
+</div> 
+
+
+
+<!-- 
+    <div id="affichemail1">
+
+        <div id="boite_mail">
+
+            <div id="boite_mail_id">
+                <p>Envoyer un e.mail à {{uneleve.nomEleve}} {{uneleve.prenomEleve}}:</p>
+            </div>
+
+
+
+            <form action="{{ path('mail', {id: uneleve.id}) }}" method="post">
+                
+                
+                <div class="de">
+                    <label for="from">De : </label>
+                    <input type="text" name="from" id="from" placeholder="email de l'expéditeur" value="itachan2701@gmail.com">
+                </div>
+
+                <div class="a">
+                    <label for="a">A : </label>
+                    <input type="text" name="a" id="a" placeholder="email du destinataire" value="{{uneleve.emailEleve}}">
+                </div>
+
+                <div class="objet">
+                    <label for="objet">Objet : </label>
+                    <input type="text" name="objet" id="objet" placeholder="objet du message">
+                </div>
+
+                <div class="message">
+                    <p class="p_message">Message :</p>
+                    <textarea name="message" id="message" cols="30" rows="18" placeholder="Ecrivez votre message"></textarea>
+                </div>
+                
+                <input type="submit" name="envoiMail" value="ENVOYER LE MESSAGE">
+
+            </form>
+
+
+        </div>
+
+    </div>
+-->
+
+{% block javascripts %}
+
+
+{% endblock %}
+
+
+<script src="{{ asset('/js/app_scuola/admin.js') }}"></script>
+
+
+{% endblock body %}
+                    

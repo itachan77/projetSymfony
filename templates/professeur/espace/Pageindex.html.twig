@@ -1,0 +1,89 @@
+{% extends 'header_scuola.html.twig' %}
+
+{% block title %}ESPACE SCUOLA PROFESSEUR{% endblock title %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/espaceProf/style_espace.css') }}">
+{% endblock stylesheets %}
+
+
+{% block body %}
+    
+
+<div class="container-fluid mt-2">
+
+        <!--BaseEspaceProf contient le menu vertical. Include en position fixed donc tout l'écran est à nous-->
+        <div id="MenuProf">
+            {% include "professeur/espace/baseEspaceProf.html.twig" %}
+        </div>
+
+
+        <div class="row">
+            <div id="espaceVertical" class="col-sm-2">
+            </div>
+
+            <div id="ContenuProf" class="col-sm-10">
+                <div>
+                    <h1 id="titre" class="text-center">Accueil</h1>
+                    <!-- {% include "professeur/espace/baseBanniere.html.twig" %} -->
+                </div>
+
+                <!-- Le contenu de l'espace ici -->
+                <div class="row">
+
+                    <div class="mt-5 col-sm-12 ">
+                        <div class="card text-black bg-warning h-75 overflow-auto" style="max-width: 18rem;">
+                            <h4 class="card-header"><i class="fas fa-map-pin text-danger mr-3"></i>Liste de vos élèves</h4>
+                            <div class="card-body">
+                                {% for row in professeur.eleves %}
+                                    <p class="card-text">{{row}}</p>    
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="h4">Date : </div>
+                        {% for row in sonMail %}
+                        <div>
+                            date : {{row.dateMail|date}}
+
+
+                        </div>
+                            
+                        <hr>
+                        {% endfor %}
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="h4">Objet : </div>
+                        
+                        {% for row in sonMail %}
+                        <div>{{row.objetMail}}</div>
+                        <hr>
+                        {% endfor %}
+                        
+                    </div>
+
+
+                    <div class="col-sm-4">
+                        <div class="h4">Messages : </div>
+                        {% for row in sonMail %}
+                        <div>{{row.messageMail}}</div>
+                        <hr>
+                        {% endfor %}
+                    </div>
+
+
+                    
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock body %}

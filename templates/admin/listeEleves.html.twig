@@ -1,0 +1,90 @@
+{% extends 'menuAdminEleves.html.twig' %}
+
+{% block title %}ESPACE ADMINISTRATION{% endblock %}
+
+{% block body %}
+
+
+
+<div id="liste_admin" class="container">
+
+            
+            <div class="text-center mb-5"><a class="btn btn-primary none" href="{{ path('insert')}}">AJOUTER UN NOUVEL ELEVE</a></div>
+
+            {% if nbrst_nom > 0 or nbrst_prenom > 0 or nbrst_prenom > 0 or nbrst_adresse > 0 or nbrst_email > 0 or nbrst_cpville > 0 %} 
+            <h2 class="text-center">Résultat de votre recherche : comportant le mot </h2>
+            
+            {% else %}
+                <h1>{{aucunResultat}}</h1>
+            {% endif %}
+
+            <h2 class="text-center">Liste de tous les élèves</h2>
+            <div class="table-responsive-lg">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr class="text-center">
+
+                        <form name="check" id="check" action="">
+                        <!-- Il faudra mettre un checkbox qui pourra tout selectionner ou tout deselectionner -->
+                        
+                        <th>
+                        <input id="idCheckAll" name="checkAll" data-dechecke="{{ path('toutDeselection')}}" data-checke="{{ path('touteSelection')}}" type="checkbox" />
+                        </th>
+
+                        <th scope="col">PHOTO</th>
+                        <th scope="col">NOM</th>
+                        <th scope="col">PRENOM</th>
+                        <th scope="col">DISCIPLINE</th>
+                        <th scope="col">PARAMETRES</th>
+
+                    </tr>
+                </thead>
+                
+            <tbody>
+
+            {% for row in eleves %}
+                <tr>
+                    <th class="text-center" scope="row">
+                        {% if row.selectEleve != 0 %}
+                        {% set selection = 'checked' %}
+                        {% else %}
+                        {% set selection = '' %}
+                        {% endif %}
+                        
+                        <input id="monId" name="checkName" data-decheck="{{ path('deselection', {'id':row.Id} )}}" data-check="{{ path('selection', {'id':row.Id} )}}" data-id="{{row.Id}}" type="checkbox" {{selection}} />
+                        
+                        
+                        </form> 
+                    </th>
+                    
+                    <td class="text-center"><img width="50" class="img-thumbnail" src="{{ asset('img_eleve/'~ row.photoEleve) }}"></img></td>
+                    <td class="text-center">{{ row.nomEleve }}</td>
+                    <td class="text-center">{{ row.prenomEleve }}</td>
+
+                    <td class="text-center">
+                        {% for ligne in row.category %}
+                        <div>{{ ligne.nomCategorie }}</div>  
+                        {% endfor %}
+                    </td>
+                    
+                    <td class="row">
+                        {% if is_granted('ROLE_ADMIN') %}
+                        <div class="mx-auto row">
+                                <div class="col-sm-12 col-md-4 mr-3"><a title="MODIFIER" class="btn btn-warning none" href="{{ path('update', {'id':row.Id} )}}">Modifier</a></div>
+                                <div class="col-sm-12 col-md-4"><a title="SUPPRIMER" class="btn btn-danger none" href="{{ path('delete', {'id':row.Id} )}}">Supprimer</a></div>
+                        </div>
+                        {% endif %}
+                    </td>
+
+                </tr>
+
+
+            {% endfor %}
+
+            </table>
+            </div>
+</div>
+
+
+<script src="{{ asset('/js/app_scuola/admin_list.js') }}"></script>
+{% endblock %}

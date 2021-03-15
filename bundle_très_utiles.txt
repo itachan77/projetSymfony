@@ -1,0 +1,50 @@
+packagist.org/
+
+// vich/uploader-bundle //renommer les fichiers upoloadés des visiteurs de manière à ce qu'ils soient unique
+// liip/imagine-bundle //redimentionner les images comme on veut
+
+// tattali/calendar-bundle
+
+// redimensionner une image : 
+
+TRES TRES IMPORTANT : 
+https://packagist.org/packages/knplabs/knp-snappy-bundle
+
+http://www.ajarunthomas.com/tutorials/php/resize-an-image-in-php-using-the-gd-library/
+
+
+https://packagist.org/
+https://packagist.org/packages/vich/uploader-bundle
+https://packagist.org/packages/liip/imagine-bundle
+https://packagist.org/packages/easycorp/easyadmin-bundle
+https://packagist.org/packages/friendsofsymfony/ckeditor-bundle
+https://packagist.org/packages/tattali/calendar-bundle
+https://packagist.org/packages/alterphp/easyadmin-extension-bundle
+https://packagist.org/packages/knplabs/knp-snappy-bundle
+https://api-platform.com/
+De Dubai SALLES VINCENNES à tout le monde:  02:59 PM
+http://www.ajarunthomas.com/tutorials/php/resize-an-image-in-php-using-the-gd-library/
+De Dubai SALLES VINCENNES à tout le monde:  03:06 PM
+    private function managePicture($files){
+        // Préparation du futur nom de l'image pour qu'il soit unique.
+        // On récupère l'extension du fichier téléchargé à l'aide de la méthode native pathinfo
+        $ext = pathinfo($files["picture"]["name"], PATHINFO_EXTENSION);
+        // On crée un nom pour l'image en utilisant la méthode native uniqueid()
+        // https://www.php.net/manual/fr/function.uniqid.php
+        $name = "article-".uniqid().'.'.$ext;
+        // On déplace l'image du dossier temporaire du serveur pour la mettre dans le dossier image du site (front)
+        move_uploaded_file($files['picture']['tmp_name'],'../../images/'.$name);
+        // On pourrait aller plus loin en prenant en charge le redimessionement de l'image
+        // https://www.php.net/manual/fr/book.image.php sinon pour Symfony cf liip Image sur packagist.org
+        // On renvoit le nom de l'image
+        return $name;
+    }
+De Dubai SALLES VINCENNES à tout le monde:  03:27 PM
+https://getbootstrap.com/docs/4.5/components/alerts/
+
+
+
+ou
+html2pdf
+
+

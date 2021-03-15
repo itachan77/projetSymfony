@@ -1,0 +1,280 @@
+{% extends 'haut_admin.html.twig' %}
+{% block title %}Création d'une fiche{% endblock %}
+
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/style_adform.css') }}">
+{% endblock %}
+
+
+
+{% block body %}
+<div class="container-fluid">
+        
+    <div class="container pb-5">
+
+        <div id="myForm" class="ml-5">
+
+            {{form_start(form_insert)}}
+            {{form_errors(form_insert)}}
+            
+                <div class="titre mt-5 bg-success mr-3 row">
+
+                    <div class="col-md-4">
+                    </div>
+
+                        <div class="col-sm-12 text-center col-md-4">
+                            <h1>AJOUTER UN ELEVE</h1>
+                        </div>
+                        
+                        <div class="col-sm-12 text-center col-md-4 ">
+                            {{form_row(form_insert.ajouter,{'attr':{'class':'ajouter_perso'}})}}
+                        </div>
+
+                    </div>
+
+                    <div class="row">      
+                        
+                            <div class="row w-100">
+                    
+                                <div class="col-sm-12 col-md-4 cadrep mx-auto pb-2">
+                                    <fieldset>        
+                                        <legend class="legendeleve">Catégorie:</legend>
+
+                                        {{form_widget(form_insert.categorie,{'attr':{'class':'form_categorie'}})}}
+                                        {{form_errors(form_insert.categorie)}}
+                                        
+                                    </fieldset>        
+                                </div>
+
+
+                                <div class="col-sm-12 col-md-4 cadrep mx-auto pb-2">
+                                    <fieldset>
+                                        <legend class="legendeleve">Date d'inscription</legend>
+                                        
+                                        {{form_widget(form_insert.dinscriptionEleve,{'attr':{'class':'form_inscr'}})}}
+                                        {{form_errors(form_insert.nomEleve)}}
+                                    </fieldset>
+                                </div>
+
+
+                            </div>
+
+                            <div class="row mt-2 w-100">
+
+                                <div class="col-sm-12 col-md-6 cadrep mx-auto pb-2">
+                                    <fieldset>
+                                        <legend class="legendeleve">Elève</legend>
+                                            
+                                            <div class="a1">
+                                                
+                                                {{form_label(form_insert.nomEleve, "Nom:", {'label_attr': {'class': 'lb_perso'}}) }}
+                                                {{form_widget(form_insert.nomEleve,{'attr':{'class':'form_nom'}})}}
+                                                {{form_errors(form_insert.nomEleve)}}
+                                                
+
+                                                <select name="titre" id="titre">
+                                                    <option value="Monsieur">Mr</option>
+                                                    <option value="Madame">Mme</option>
+                                                    <option value="Mademoiselle">Mlle</option>
+                                                    <option value="Enfant">Enfant</option>
+                                                </select>  
+                                                
+                                            </div>
+                                            
+
+
+                                            <div class="a">
+                                                {{form_label(form_insert.prenomEleve,"Prénom:", {'label_attr': {'class': 'lb_perso'}}) }}
+                                                {{form_widget(form_insert.prenomEleve,{'attr':{'class':'form_prenom'}})}}
+                                                {{form_errors(form_insert.prenomEleve)}}
+                                            </div>
+                                            
+                                            <div class="b">
+                                                {{form_label(form_insert.naissanceEleve,"DDN:", {'label_attr': {'class': 'lb_perso'}}) }}
+                                                {{form_widget(form_insert.naissanceEleve,{'attr':{'class':'form_naiss'}})}}
+                                                {{form_errors(form_insert.naissanceEleve)}}
+                                            </div>
+
+                                            <div class="c">
+                                                {{form_label(form_insert.adresseEleve,"Adresse:", {'label_attr': {'class': 'lb_perso'}}) }}
+                                                {{form_widget(form_insert.adresseEleve,{'attr':{'class':'form_adresse'}})}}
+                                                {{form_errors(form_insert.adresseEleve)}}
+                                            </div>
+
+
+                                            <div class="d">
+                                                <label for="cpville">CPville</label>
+                                                <select name="cpville" id="cpville">
+                                                <!-- liste deroulante -->
+                                                </select>
+                                            </div>
+
+
+                                            <div class="e">
+                                            {{form_label(form_insert.naissanceEleve,"Tél.:", {'label_attr': {'class': 'lb_perso'}}) }}
+                                            {{form_widget(form_insert.tel1Eleve,{'attr':{'class':'form_tel'}})}}
+                                            {{form_errors(form_insert.tel1Eleve)}}
+                                            {{form_widget(form_insert.tel2Eleve,{'attr':{'class':'form_tel'}})}}
+                                            {{form_errors(form_insert.tel2Eleve)}}
+                                            </div>
+
+                                            <div>
+                                            {{form_label(form_insert.tel3Eleve,".", {'label_attr': {'class': 'lb_perso'}}) }}
+                                            {{form_widget(form_insert.tel3Eleve,{'attr':{'class':'form_tel'}})}}
+                                            {{form_errors(form_insert.tel3Eleve)}}
+                                        
+                                            {{form_widget(form_insert.tel4Eleve,{'attr':{'class':'form_tel'}})}}
+                                            {{form_errors(form_insert.tel4Eleve)}}
+                                            </div>
+                                            
+
+                                            <div class="g">
+                                                {{form_label(form_insert.emailEleve,"E.mail:", {'label_attr': {'class': 'lb_perso'}}) }}  
+                                                {{form_widget(form_insert.emailEleve,{'attr':{'class':'form_mail'}})}}
+                                                {{form_errors(form_insert.emailEleve)}}
+                                                <input onclick="showmail()" type="button" value="Envoyer un mail">
+                                            </div>
+
+                                            <div>
+                                                {{form_label(form_insert.photoEleve,"Photo:", {'label_attr': {'class': 'lb_perso'}}) }}  
+                                                {{form_widget(form_insert.photoEleve)}}
+                                                {{form_errors(form_insert.photoEleve)}}
+                                            </div>
+
+
+                                    </fieldset>
+                                </div>
+
+                                <div class="cadre col-sm-12 col-md-6 cadrep mx-auto pb-2">
+                                    <fieldset>
+                                        <legend class="legendeleve">Personnes à prévenir</legend>
+
+                                        <div class="row mt-5">
+
+                                        <div class="col-sm-12">
+                                        {{form_label(form_insert.Tuteur.nomTuteur,'Nom:', {'label_attr': {'class': 'lb_perso'}}) }}
+                                        {{form_widget(form_insert.Tuteur.nomTuteur,{'attr':{'class':'form_tuteur'}})}}
+                                        {{form_errors(form_insert.Tuteur.nomTuteur)}}
+                                        </div>
+
+                                        <div class="col-sm-12">
+                                        {{form_label(form_insert.Tuteur.prenomTuteur,'Prénom:', {'label_attr': {'class': 'lb_perso'}}) }}
+                                        {{form_widget(form_insert.Tuteur.prenomTuteur,{'attr':{'class':'form_tuteur'}})}}
+                                        {{form_errors(form_insert.Tuteur.prenomTuteur)}}
+                                        </div>
+
+                                        <div class="col-sm-12">
+                                        {{form_label(form_insert.Tuteur.adresseTuteur,'Adresse:', {'label_attr': {'class': 'lb_perso'}}) }}
+                                        {{form_widget(form_insert.Tuteur.adresseTuteur,{'attr':{'class':'form_tuteur'}})}}
+                                        {{form_errors(form_insert.Tuteur.adresseTuteur)}}
+                                        </div>
+
+                                        <div class="col-sm-12">
+                                        {{form_label(form_insert.Tuteur.tel1Tuteur,'Tél1:', {'label_attr': {'class': 'lb_perso'}}) }}
+                                        {{form_widget(form_insert.Tuteur.tel1Tuteur,{'attr':{'class':'form_tuteur'}})}}
+                                        {{form_errors(form_insert.Tuteur.tel1Tuteur)}}
+                                        </div>
+
+                                        <div class="col-sm-12">
+                                        {{form_label(form_insert.Tuteur.tel2Tuteur,'Tél2:', {'label_attr': {'class': 'lb_perso'}}) }}
+                                        {{form_widget(form_insert.Tuteur.tel2Tuteur,{'attr':{'class':'form_tuteur'}})}}
+                                        {{form_errors(form_insert.Tuteur.tel2Tuteur)}}
+                                        </div>   
+
+                                        </div>
+
+                                    </fieldset>
+                                </div>
+
+                            </div>
+                            
+                            <div class="row w-100 mt-2">
+                                <div class="cadre col-12 cadrep mx-auto pb-2">
+                                    <fieldset>
+
+                                        <legend class="legendeleve">Informations supplémentaires</legend>
+                                        {{form_widget(form_insert.informationEleve,{'attr':{'class':'form_info'}})}}
+                                        {{form_errors(form_insert.nomEleve)}}
+
+                                    </fieldset>
+                                </div>
+                            </div>
+
+                            <div class="row w-100 mt-2">
+
+                                <div class="cadre col-sm-12 col-md-6 cadrep">
+                                
+                                    <fieldset>
+                                        <legend class="legendeleve">Instrument</legend>
+                                            <div class="instr1">
+                                            <p style="font-size:20px;">Au moment de l'inscription :</p>
+                                            
+                                            {{form_label(form_insert.InfoI.havemusic,'Il avait des connaissances musicales ?', {'label_attr': {'class': 'lb_instr'}}) }}
+                                            {{form_widget(form_insert.InfoI.havemusic)}}
+                                            {{form_errors(form_insert.InfoI.havemusic)}}
+                                            
+
+                                            {{form_widget(form_insert.InfoI.whathavemusic)}}
+                                            {{form_errors(form_insert.InfoI.whathavemusic)}}
+                                            </div>
+                                            
+                                            
+                                            <div class="instr1">
+                                                {{form_label(form_insert.InfoI.doinstrument,'Il pratiquait un instrument ?', {'label_attr': {'class': 'lb_instr'}}) }}
+                                                {{form_widget(form_insert.InfoI.doinstrument)}}
+                                                {{form_errors(form_insert.InfoI.doinstrument)}}
+
+                                                {{form_widget(form_insert.InfoI.whatdoinstrument)}}
+                                                {{form_errors(form_insert.InfoI.whatdoinstrument)}}
+                                            </div>
+
+                                            <div class="instr1">
+                                                {{form_label(form_insert.InfoI.haveinstrument,'Il possédait un instrument ?', {'label_attr': {'class': 'lb_instr'}}) }}
+                                                {{form_widget(form_insert.InfoI.haveinstrument)}}
+                                                {{form_errors(form_insert.InfoI.haveinstrument)}}
+
+                                                {{form_widget(form_insert.InfoI.whathaveinstrument)}}
+                                                {{form_errors(form_insert.InfoI.whathaveinstrument)}}
+                                            </div>
+
+
+                                    </fieldset>
+
+                                </div>
+
+                                <div class="cadre col-sm-12 col-md-6 cadrep mx-auto pb-2">
+                                    <fieldset>
+                                        <legend class="legendeleve">Connu par</legend>
+                                            <select name="mode">
+                                                <option value="tract">Tract</option>
+                                                <option value="internet">Internet</option>
+                                                <option value="connaissance">Connaissance</option>
+                                            </select>
+                                            
+                                            <div>
+                                                <label class="connuautre" for="possede">Autre:</label>
+                                                <input type="text" name="connuautre" id="connuautre">
+                                            </div>
+                                            
+                                    </fieldset>
+                                </div>
+
+                            </div>
+                    </div>
+                {{form_end(form_insert)}}
+            </div>
+        
+        
+
+        </div>
+    </div>
+
+<!-- fin container fluid -->
+</div> 
+
+
+
+
+
+{% endblock body %}

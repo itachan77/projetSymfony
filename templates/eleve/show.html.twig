@@ -1,0 +1,32 @@
+{% if is_granted('ROLE_ADMIN') %} 
+
+    {% extends 'haut_admin.html.twig' %}
+
+{% endif %}
+
+
+{% block title %}Un élève et toutes les catégories{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/style_perso.css') }}">
+{% endblock %}
+
+
+{% block body %}
+
+
+
+
+<h1>BIENVENUE SUR VOTRE PAGE {{uneleve.nomEleve}} {{uneleve.prenomEleve}}</h1>
+<p>Voici la photo qui vous représente : </p>
+
+<p><img src="{{ asset('img_eleve/'~ uneleve.PhotoEleve) }}"></img></p>
+
+
+
+
+{% endblock %}
+
+
+
+

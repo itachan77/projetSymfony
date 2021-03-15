@@ -1,0 +1,93 @@
+{% extends 'header_scuola.html.twig' %}
+
+{% block title %}ESPACE ELEVE DE LA SCUOLA{% endblock title %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/espaceEleve/style_espace.css') }}">
+{% endblock stylesheets %}
+
+
+{% block body %}
+    
+
+<div class="container-fluid mt-2">
+
+        <div class="row">
+            <div id="espaceVertical" class="col-sm-2">
+            </div>
+
+            <div id="ContenuElev" class="col-sm-10">
+                <div>
+                    <h1 id="titre" class="text-center">Mes documents disponibles</h1>
+                    
+                </div>
+
+                <!-- Le contenu de l'espace ici -->
+                <div class="row">
+
+                    <div class="mt-5 col-sm-12 ">
+
+                        <div class="text-center">
+
+                            <h4 class="mb-3">Documents mis à votre disposition par votre professeur :</h4> 
+
+                                {# Affiche le nom du professeur #}
+                                {% for row in sonProf %}
+                                    <div><h5>{{row}}
+                                        {# Affiche le ou les cours dispensés par ce professeur #}
+                                        Professeur de 
+                                        {% for row in row.categories %}
+                                            <span class="h3 text-danger">{{row}}</span>
+                                        {% endfor %} 
+                                    </h5></div>
+
+
+
+
+                                    {# Si le nombre de document est supérieur à 0 affiche le tableau
+                                        des documents sinon aucun tableau n'est affiché  #}
+
+                                        <div class="row w-75 mx-auto">
+                                            <div class="col table-responsive">
+                                                <table class="table">
+                                                    <tr class="bg-dark text-white">
+                                                        <th>Titre du fichier</th>
+                                                        <th>Description</th>
+                                                        <th>Nom</th>
+                                                    </tr>
+                                                    {% if row.fichiers.count == 0 %}
+                                                    <tr>
+                                                        <td colspan="3">Aucun document mis à votre disposition pour l'instant</td>
+                                                    </tr>
+                                                    <tr><td colspan="3"></td></tr>
+                                                    {% endif %}
+
+                                                    {% for row in row.fichiers %}
+                                                    <tr>
+                                                        <td>{{row.titreFichier}}</td>
+                                                        <td>{{row.descrFichier}}</td>
+                                                        <td><a href="{{ asset('espace/documents/'~ row.fichier) }}" title='Pour télécharger, cliquez sur le bouton droit puis "enregistrer le lien sous"'>{{row.fichier}}</a></td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                    
+                                                </table>
+                                            </div>    
+                                        </div> 
+                                    
+                                {% endfor %}
+                                                    
+                                                
+                                
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock body %}

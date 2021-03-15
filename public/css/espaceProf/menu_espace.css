@@ -1,0 +1,88 @@
+#menuImgTitre {
+    background-image:url('../../images/scuola/background1.jpg');
+    color:white;
+    border:0px;
+}
+
+#menuComplet{
+    width:288px;
+}
+
+#menuComplet li, #menuReduit li{
+    background-image:url('../../images/scuola/background1.jpg');
+    font-weight:bold;
+}
+
+#menuComplet .nav-link, #menuReduit .nav-link {
+    background-color:wheat;
+    color:black;
+}
+
+#menuComplet .nav-link:hover, #menuReduit .nav-link:hover{
+    background-color:blue;
+    color:white;
+}
+
+#permMenu,#permMenu2 {
+    background-image:url('../../images/scuola/background1.jpg');
+}
+
+#permMenu #sand:hover,#permMenu #doigt:hover {
+    cursor:pointer;
+    color:red;
+}
+#permMenu #sandVue:hover,#permMenu #doigtVue:hover {
+    cursor:pointer;
+    color:red;
+}
+
+#permMenu2 #sand2:hover,#permMenu2 #doigt2:hover {
+    cursor:pointer;
+    color:red;
+}
+#permMenu2 #sandVue2:hover,#permMenu2 #doigtVue2:hover {
+    cursor:pointer;
+    color:red;
+}
+
+#menuReduit .dimPerso {
+    width:90px;
+}
+#permMenu2 .dimPerso {
+    width:90px;
+}
+
+.cible {
+cursor:move;
+/* Obligatoire sur l'élément draggable */
+position:absolute;
+}
+
+/* .cible et l'id clible2 doivent être à l'intérieur de l'id cont pour qu'il prenne en position absolute la meme
+position 0 0 initialement pour une bonne situation du menu au chargement. 
+ainsi, avant j'ai positionné l'id cible 2 de manière adéquate */
+#cont {
+    width:50px;
+    height:50px;
+    margin-left:100px;
+}
+
+/* Class ajouté quand on dragge */
+.oWdgCursorDrag{border-color:red;
+  box-shadow: 3px 3px 5px 3px #656565;
+} 
+#cible2.oWdgCursorDrag{border-color:green} 
+/* POsition initiale */
+
+#cible2{
+    left : 5%;
+        
+}
+
+
+
+
+
+
+
+

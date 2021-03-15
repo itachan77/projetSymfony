@@ -1,0 +1,107 @@
+{% extends 'header_scuola.html.twig' %}
+
+{% block title %}ESPACE SCUOLA PROFESSEUR - ELEVES{% endblock title %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/espaceProf/style_espace.css') }}">
+{% endblock stylesheets %}
+{% block body %}
+    
+
+
+<div class="container-fluid mt-2">
+    
+    <!--BaseEspaceProf contient le menu vertical. Include en position fixed donc tout l'écran est à nous-->
+    <div id="MenuProf">
+        {% include "professeur/espace/baseEspaceProf.html.twig" %}
+    </div>
+
+
+    <div class="row">
+        <div id="espaceVertical" class="col-sm-2">
+        </div>
+
+        <div id="ContenuProf" class="col-sm-10">
+            <div>
+                <h1 id="titre" class="text-center">Mes élèves</h1>
+            </div>
+
+            <!-- Le contenu de l'espace ici -->
+            <div class="row">
+
+                    <div class="col-sm-12 mt-5">
+                        <table class="mx-auto table w-75">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Vos groupes</th>
+                                <th scope="col">Elèves</th>
+                                <th scope="col"></th>
+                                <th scope="col">Paramètres</th>
+                                <th scope="col">Ajouter un élève</th>
+                                <th scope="col"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {% for row in vuGroupe %}
+                                    <tr>
+                                        <td>
+                                            <div>{{row.nomGroupe}}</div>
+                                        </td>
+                
+                                        <td>
+                                            {% for eleve in row.eleves %}
+                                            <div>{{eleve}}</div>    
+                                            {% endfor %}
+                                        </td>
+                                        
+                                        <td>
+                                            
+                                            {% for eleve in row.eleves %}
+                                            <div><a href="{{ path('deleteEleveGroupe', {'idGroupe': row.id, 'id': professeur.id, 'idEleve':eleve.id}) }}" title="Supprimer {{eleve}} de ce groupe"><i class="fas fa-times mr-5"></a></i></div>
+                                            {% endfor %}
+                                        </td>
+                
+                                        <td>
+                                            <a class="btn btn-danger" href="{{ path('groupe_delete', {'idGroupe': row.id, 'id': professeur.id}) }}">Supprimer</a>
+                                        </td>
+                
+                                        <td>
+                                            <form method="post" action="{{ path('ajoutEleveGroupe', {'id': professeur.id, 'idGroupe':row.id}) }}">
+                                                <select id="groupe_eleves" name="eleveSelect[]" multiple="multiple">
+                                                    {% for row in professeur.eleves %}
+                                                        
+                                                    <option value="{{row.id}}">{{row.nomEleve}} {{row.prenomEleve}}</option>
+                
+                                                    {% endfor %}
+                                                </select> 
+                                        </td>
+                
+                                        <td>
+                                                <input type="submit" value="OK">
+                                        </td>
+                
+                                    </tr>
+                                            </form>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="5">Aucun groupe</td>
+                                    </tr>
+                                {% endfor %}
+                
+                                </tbody>
+                        </table>
+                    </div>
+                
+                    <div class="col-sm-12">
+                        <div>{{ include('professeur/espace/ajoutGroupe.html.twig', {'button_label': 'Update'}) }}</div>
+                    </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock body %}

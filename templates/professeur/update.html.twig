@@ -1,0 +1,211 @@
+
+{% extends 'menuAdminProf.html.twig' %}
+{% block title %}Modifier une fiche{% endblock %}
+
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/style_adform.css') }}">
+{% endblock %}
+
+
+{% block body %}
+<div class="container-fluid">
+
+    <div class="container">
+
+        <div id="formProf" class="ml-5 mb-5">
+            {{form_start(form_update)}}
+            {{form_errors(form_update)}}
+            <!-- Bande verte -->
+            <div class="mr-3 row bg-warning border border-primary rounded">
+                
+                    <div class="col-sm-3 offset-md-3">
+                        <h1 class="text-center">MODIFIER LA FICHE</h1>
+                    </div>
+
+                    <div class="col-sm-3 offset-3 mb-2">
+                        {{form_row(form_update.modifier,{'attr':{'class':'modifier_perso'}})}}
+                    </div>
+                
+            </div>  
+
+            <!-- Identifiant et photo -->
+            <div class="row cadrep w-100 pb-4">
+
+                <div class="col-sm-12 col-md-4">
+                    <div class="col-sm-12">
+                        {{form_label(form_update.nomProf, "Nom :", {'label_attr': {'class': 'h5'}}) }}
+                    </div> 
+
+                    <div class="col-sm-12">
+                        {{form_widget(form_update.nomProf,{'attr':{'class':'form-control'}})}}
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-4">
+                    <div class="col-sm-12">
+                        {{form_label(form_update.prenomProf, "Prénom :", {'label_attr': {'class': 'h5'}}) }}
+                    </div>
+
+                    <div class="col-sm-12">
+                        {{form_widget(form_update.prenomProf,{'attr':{'class':'form-control'}})}}
+                    </div>
+                </div>
+
+
+                <div class="col-sm-12 col-md-4">
+                    <div class="col-sm-12">
+                        {{form_label(form_update.emailProf, "Email :", {'label_attr': {'class': 'h5'}}) }}
+                    </div>
+
+                    <div class="col-sm-12">                            
+                        {{form_widget(form_update.emailProf,{'attr':{'class':'form-control'}})}}
+                    </div>
+                </div>
+                    
+            </div>
+
+            <div id="photo" class="w-100 row cadrep">
+                
+
+                <div class="col-sm-12 col-md-6 my-auto">
+                    <div class="col-sm-12">
+                    {{form_label(form_update.photoProf, "Modifier la photo :", {'label_attr': {'class': 'h5'}}) }}
+                    {{form_widget(form_update.photoProf,{'attr':{'class':''}})}}
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6">
+                    <img class="mx-auto" src="{{ asset('images/professeurs/'~ professeur.photoProf) }}" width="25%" alt="Photo professeur">
+                </div>
+
+            </div>
+
+
+            <div class="w-100 text-center row">                    
+                <div class="cadrep col-sm-12 col-md-6">
+                    <!--COURS PRATIQUES PAR LE PROFESSEUR-->
+                    <div class="form-group">
+                        
+                        <label class="text-danger h4" for="cours">Sélectionnez un ou plusieurs cours</label>
+
+                            <select class="w-75 form-control mx-auto" id="cours" multiple name="categSelect[]">
+                                    
+                                <!-- tabCategorie vient du Repository de l'entite Categorie
+                                Dans le champs select on a ainsi tous les cours. -->
+                                {% for row in tabCategorie %}
+                                    <option value="{{row.Id}}">{{row.nomCategorie}}</option>
+                                {% endfor %} 
+                            </select>
+                    </div>
+
+                    <div class="mx-2">
+
+                        <div class="table-responsive row mt-2 mx-auto">
+
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr class="text-center">
+                
+                                        <th scope="col">COURS PRATIQUE(S) PAR CE PROFESSEUR</th>
+                                        <th scope="col">PARAMETRES</th>
+                                    </tr>
+                                </thead>
+                
+                            <tbody>
+                
+                            {% for row in professeur.categories %}
+                                <tr>
+
+                                    <td class="text-center">{{row.nomCategorie}}</td>
+                                    
+                                    <td class="row">
+                                        {% if is_granted('ROLE_ADMIN') %}
+                                        <div class="mx-auto row">
+                                            <div class="col-sm-12 col-md-4"><a title="SUPPRIMER" class="btn btn-danger none" href="{{ path('categorie_delete', {'id':row.id} )}}">S</a></div>
+
+                                        </div>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="text-center cadrep col-sm-12 col-md-6">
+                    <!--ELEVES APPARTENANT AU PROFESSEUR-->
+                    <div class="form-group">
+                        
+                        <label for="eleves" class="text-danger h4">Sélectionnez un ou plusieurs élèves</label>
+                        <select id="eleves" class="w-75 mx-auto form-control" multiple name="eleveSelect[]">
+                            
+                            {% for row in eleves %}
+                                <option value="{{row.Id}}">{{row.nomEleve}} {{row.prenomEleve}}</option>
+                            {% endfor %}
+                        </select>
+
+                    </div>
+
+                    <div class="mx-2">
+
+                        <div class="table-responsive row mt-2 mx-auto">
+
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr class="text-center">
+                                        <th scope="col">LISTE DES ELEVES DE CE PROFESSEUR   </th>
+                                        <th scope="col">PARAMETRES</th>
+                                    </tr>
+                                </thead>
+                
+                            <tbody>
+                
+                            {% for row in professeur.eleves %}
+                                <tr>
+                                    <td class="text-center">{{row.nomEleve}} {{row.prenomEleve}}</td>
+                                    
+                                    <td class="row">
+                                        {% if is_granted('ROLE_ADMIN') %}
+                                        <div class="mx-auto row">
+                                            <!-- récupérer l'id du professeur est également indispensable pour pouvoir supprimer un ou des élèves du professeur. Je décide
+                                            donc de le mettre en paramètre de l'url dans le controller et donc aussi dans le lien de suppression d'un ou des élèves d'un professeur -->
+                                                <div class="col-sm-12 col-md-4"><a title="SUPPRIMER" class="btn btn-danger none" href="{{ path('eleve_delete', {'id':row.Id, 'ipf':professeur.id } )}}">S</a></div>
+                                        
+                                                
+                                        </div>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            {{form_end(form_update)}}
+
+
+            
+
+
+                
+            
+        </div>
+
+</div> 
+
+
+
+
+<script src="{{ asset('/js/app_scuola/admin.js') }}"></script>
+{% endblock body %}
+                    

@@ -1,0 +1,81 @@
+{% extends 'header_scuola.html.twig' %}
+
+{% block title %}CONNEXION{% endblock %}
+
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/connexion/style_connex.css') }}">
+
+{% endblock %}
+
+
+{% block body %}
+
+    <div class="container mt-5">
+
+        <div id="connect" class="col-sm-12 w-100 col-md-9 mx-auto boite_perso p-1">
+
+            <div class="row">
+
+                <div class="col-sm-12 text-left">
+                    <a class="btn btn-perso" href="javascript:history.back()">Revenir</a>
+                </div>
+
+                <div class="col-sm-12 text-center pt-5 pb-5">
+                    <h2>VOUS AVEZ OUBLIE VOTRE MOT DE PASSE ?</h2>
+                </div>
+
+                <div class="mx-auto">
+                    {% for message in app.session.flashbag.get('message') %}
+                    <span class="alert alert-{{ app.session.get('statut')}}">
+                        {{message}}
+                    </span>
+                    {% endfor %}
+                    {% for message2 in app.session.flashbag.get('message2') %}
+                    <span class="alert alert-{{ app.session.get('statut')}}">
+                        {{message2}}
+                    </span>
+                    {% endfor %}
+                </div>
+
+                <div class="col-sm-12 text-center h4 mt-5">
+                    <div>Entrez votre adresse mail</div>
+                    <div>et nous vous enverrons</div> 
+                    <div>un lien pour recréer un mot de passe.</div>
+                </div>
+                
+            </div>
+
+
+            <div class="row">
+                <form class="mx-auto mt-3" method="post">
+
+                    <div class="row"> 
+
+                        <div class="col-sm-12 text-center mb-4">
+                            {{form_start(form)}}
+                            {{form_errors(form)}}
+
+                                {{form_label(form.username,"Votre identifiant :")}}
+                                {{form_widget(form.username,{'attr':{'class':'form-control'}})}}
+                                {{form_errors(form.username)}}
+                        </div>
+
+                        <div class="col-sm-12 text-center mb-4">
+                            <div class="mx-auto text-center">{{form_row(form.Valider,{'attr':{'class':'btn btn-dark'}})}}</div>
+                            {{ form_end(form) }}
+                        </div>
+                        
+
+                    </div>
+
+                </form>
+                
+            </div>
+
+        </div>
+
+
+    </div>
+    
+{% endblock body %}

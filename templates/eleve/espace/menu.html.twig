@@ -1,0 +1,107 @@
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/espaceEleve/menu_espace.css') }}">
+{% endblock stylesheets %}
+
+
+{% block body %}
+
+    <div id="permMenu" class="card mx-auto" style="width: 18rem;">
+        <div class="row h3 text-center text-white pt-2">
+            <div class="col-6">
+                <i id="sand" class="fas fa-eye-slash"></i>
+                <i id="sandVue" class="fas fa-bars"></i>
+            </div>
+
+            <div class="col-6">
+                <i id="doigt" class="fas fa-angle-left"></i>
+                <i id="doigtVue" class="fas fa-angle-left"></i>
+            </div>
+        </div>
+    </div>
+
+    <div id="permMenu2" class="dimPerso cible list-group list-group-flush nav nav-pills nav-fill mx-auto">
+        <div class="row h3 text-center text-white pt-2">
+            <div class="col-12">
+                <i id="sand2" class="fas fa-bars"></i>
+                <i id="sandVue2" class="fas fa-bars"></i>
+            </div>
+            <hr>
+            <div class="col-12 mt-3">
+                <i id="doigt2" class="fas fa-angle-left"></i>
+                <i id="doigtVue2" class="far fa-eye-slash"></i>
+            </div>
+        </div>
+    </div>
+    
+    <div id="menuImgTitre" class="card mx-auto" style="width: 18rem;">    
+        <div id="Titre" class="card-body text-center">
+        <img id="Img" src="{{ asset('img_eleve/'~ user.eleve.photoEleve ) }}" class="card-img-top rounded-circle" alt="Image de {{user.eleve.nomEleve}}" width='140' height='250' ">
+        <h5 class="card-title">{{user.eleve.nomEleve}} {{user.eleve.prenomEleve}}</h5>
+        </div>
+
+    </div>
+
+
+        
+    <ul id="menuComplet" class="overflow-scroll list-group list-group-flush nav nav-pills nav-fill mx-auto">
+
+        <li class="list-group-item">
+            <a class="nav-link" href="{{path('accueil_eleve', {'id':user.Id})}}"><i class="fas fa-home pr-1"></i>Accueil</a>
+        </li>
+        <li class="list-group-item">
+            <span id="profil" data-target="#sousProfil" class="nav-link" href=""><i class="far fa-id-card pr-1"></i>Mon profil<i class="leftPerso fas fa-sort-down"></i></span>
+            
+            <div id="sousProfil">
+            <a class="nav-link bg-danger border text-center mt-2 mb-2" href="{{path('PageCompteEleve', {'id':user.Id})}}">Mon compte</a>
+            <a class="nav-link bg-danger border text-center" href="{{path('PageRensEleve', {'id':user.Id})}}">Mes infos</a>
+            </div>
+        </li>
+
+        <li class="list-group-item">
+            <a class="nav-link" href="{{path('PageProfEleve', {'id':user.Id})}}"><i class="fas fa-user-friends pr-1"></i>Mon professeur</a>
+        </li>
+        <li class="list-group-item">
+            <a class="nav-link" href="{{path('PageAgendaEleve', {'id':user.Id})}}"><i class="far fa-calendar-alt pr-1"></i>Mon planning</a>
+        </li>
+        <li class="list-group-item">
+            <a class="nav-link" href="{{path('PageDocEleve', {'id':user.Id})}}"><i class="fas fa-file-contract pr-1"></i>Mes documents</a>
+        </li>
+        <li class="list-group-item">
+            <a class="nav-link" href=""><i class="fas fa-file-video pr-1"></i>Nos vidéos</a>
+        </li>
+    </ul>
+        
+
+<div id="cont">
+    
+    <ul id="menuReduit" class="dimPerso cible list-group list-group-flush nav nav-pills nav-fill mx-auto">
+
+        <li class="list-group-item">
+            <a class="nav-link dim text-center" title='ACCUEIL' href="{{path('accueil_eleve', {'id':user.Id})}}"><i class="fas fa-home pr-1 h4"></i></a>
+        </li>
+        <li class="list-group-item">
+            <a class="nav-link dim text-center" title='MON PROFIL' href="{{path('PageRensEleve', {'id':user.Id})}}"><i class="far fa-id-card pr-1 h4"></i></a>
+        </li>
+        <li class="list-group-item">
+            <a class="nav-link dim text-center" title='MON COMPTE' href="{{path('PageCompteEleve', {'id':user.Id})}}"><i class="fas fa-user-friends pr-1 h4"></i></a>
+        </li>
+        <li class="list-group-item">
+            <a class="nav-link dim text-center" title='MON PLANNING' href="{{path('PageAgendaEleve', {'id':user.Id})}}"><i class="far fa-calendar-alt pr-1 h4"></i></a>
+        </li>
+        <li class="list-group-item">
+            <a class="nav-link dim text-center" title='MES DOCUMENTS' href="{{path('PageDocEleve', {'id':user.Id})}}"><i class="fas fa-file-contract pr-1 h4"></i></a>
+        </li>
+        <li class="list-group-item">
+            <a class="nav-link dim text-center" title='MES VIDEOS' href=""><i class="fas fa-file-video pr-1 h4"></i></a>
+        </li>
+    </ul>
+
+</div>
+
+
+
+<script src="{{ asset('js/espaceElev/menu.js') }}"></script>
+{% endblock body %}
+
+
+

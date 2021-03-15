@@ -1,0 +1,52 @@
+
+{% extends 'haut_admin.html.twig' %}
+
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/style_adform.css') }}">
+{% endblock %}
+
+
+
+{% block body %}
+<div class="container">
+    {{mdpAleatoire}}
+
+{{form(form)}}
+
+        <div id="boite_mail">
+
+            <div id="boite_mail_id">
+                <p>Envoyer un e.mail à {{uneleve.nomEleve}} {{uneleve.prenomEleve}}:</p>
+            </div>
+
+            <form action="{{ path('mail', {id: uneleve.id}) }}" method="post">
+
+                <div class="de">
+                    <label for="from">De : </label>
+                    <input type="text" name="from" id="from" placeholder="email de l'expéditeur" value="itachan2701@gmail.com">
+                </div>
+
+                <div class="a">
+                    <label for="a">A : </label>
+                    <input type="text" name="a" id="a" placeholder="email du destinataire" value="{{uneleve.emailEleve}}">
+                </div>
+
+                <div class="objet">
+                    <label for="objet">Objet : </label>
+                    <input type="text" name="objet" id="objet" placeholder="objet du message">
+                </div>
+
+                <div class="message">
+                    <p class="p_message">Message :</p>
+                    <textarea name="message" id="message" cols="30" rows="18" placeholder="Ecrivez votre message"></textarea>
+                </div>
+                
+                <input type="submit" name="envoiMail" value="ENVOYER LE MESSAGE">
+
+            </form>
+
+        </div>
+
+
+{% endblock body %}

@@ -1,0 +1,25 @@
+easy_admin:
+    site_name: La scuola
+
+    design:
+        menu : 
+            - {route: 'route_eleves', label: 'Revenir au site web', icon: 'home'}
+            - {entity: 'Eleve', label: 'Eleves'}
+            - {entity: 'Categorie', label: 'Catégorie'}
+            - {entity: 'Cpville', label: 'Code postal et Ville'}
+            - {entity: 'Tuteur', label: 'Responsable Elève'}
+            
+    entities:
+        Eleve : 
+            class: App\Entity\Eleve
+        Categorie:
+            class: App\Entity\Categorie
+        Tuteur:
+            class: App\Entity\Tuteur
+        ConnuPar:
+            class: App\Entity\ConnuPar
+        Cpville:
+            class: App\Entity\CpVille
+            
+
+

@@ -1,0 +1,109 @@
+
+#menu_boule
+{
+    margin-top:100px;
+    width:500px;
+    padding:20px;
+    border-radius:60px;
+    box-shadow:2px 2px 2px;
+    background-image:url('../../images/massif.jpg');
+    
+    
+}
+
+#menu_boule a
+{
+    color:white;
+    font-weight:bold;
+    font-size:20px;
+    
+}
+
+#menu_boule a:hover
+{
+    font-weight:bold;
+    color:maroon;
+    text-decoration:none;
+    font-size:25px;}
+
+
+#administration div.colo {
+    
+    
+    background-color:blanchedalmond;
+    border:1px solid black;
+    
+}
+
+#administration #bienvenue {
+    padding-top:100px;
+
+    
+}
+#administration #bienvenue a {
+    color:black;
+    text-decoration:none;
+}
+
+
+
+#bienvenue #scuola {
+    border:2px solid rgb(128, 0, 122);
+}
+#bienvenue #scuola:hover {
+    box-shadow:6px 6px 6px black!important;
+    cursor:pointer;
+    color:red;
+}
+#bienvenue #message {
+    border:2px solid red;
+}
+#bienvenue #message:hover {
+    box-shadow:6px 6px 6px black!important;
+    cursor:pointer;
+}
+#bienvenue #professeur {
+    border:2px solid green;
+}
+
+#bienvenue #professeur:hover {
+    box-shadow:5px 5px 10px black!important;
+    cursor:pointer;
+}
+
+#bienvenue #lprofesseur >div{
+    border:2px solid green;
+}
+
+
+#bienvenue #utilisateur {
+    border:2px solid rgb(98, 0, 128);
+}
+#bienvenue #utilisateur:hover {
+    box-shadow:6px 6px 6px black!important;
+    cursor:pointer;
+}
+#bienvenue #lutilisateur >div {
+    border:2px solid rgb(98, 0, 128);
+}
+
+#bienvenue #eleve {
+    border:2px solid rgb(119, 128, 0);
+}
+#bienvenue #eleve:hover {
+    box-shadow:6px 6px 6px black!important;
+    cursor:pointer;
+}
+#bienvenue #leleve >div {
+    border:2px solid rgb(119, 128, 0);
+}
+
+#titre{
+    margin-bottom:100px;
+}
+
+
+
+
+
+

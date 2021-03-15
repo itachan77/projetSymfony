@@ -1,0 +1,105 @@
+{% extends 'header_scuola.html.twig' %}
+
+{% block title %}ESPACE ELEVE DE LA SCUOLA{% endblock title %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/espaceEleve/style_espace.css') }}">
+{% endblock stylesheets %}
+
+
+{% block body %}
+    
+
+<div class="container-fluid mt-2">
+
+        <div class="row">
+            <div id="espaceVertical" class="col-sm-2">
+            </div>
+
+            <div id="ContenuElev" class="col-sm-10">
+                <div>
+                    <h1 id="titre" class="text-center">Mon Compte</h1>
+                    
+                </div>
+
+                <!-- Le contenu de l'espace ici -->
+                <div class="row">
+
+                    <div class="mt-5 col-sm-12">
+
+                        <div class="text-center w-50 mx-auto">
+
+                            <!--Message session de confirmation de prise en compte des modifications-->
+                            <div class="text-center mt-5">
+                                {% for message in app.session.flashbag.get('message') %}
+                                <span class="mt-5 alert alert-{{ app.session.get('statut')}}">
+                                    {{message}}
+                                </span>
+                                {% endfor %}
+
+                            </div>
+
+                            <div class="container mt-5">
+                                {{form_start(form_update)}}
+                                {{form_errors(form_update)}}
+
+                                <h5>Votre identifiant :</h5>
+        
+                                <div>
+                                    {{user.username}}
+                                </div>
+        
+                                <div id="widgetUn">
+                                    {{form_widget(form_update.username,{'attr':{'class':'form-control w-100'}})}}
+                                    {{form_errors(form_update.username)}}
+                                </div>
+                                
+                                <button id="widgetUnBtn" type="button" class="btn btn-warning">Modifier</button>
+                                <hr>
+        
+                                <h5>Votre mot de passe :</h5>
+                                <div class="text-bold">
+                                    ********
+                                </div>
+
+                                <div id="widgetPwd">
+                                
+
+                                {{form_label(form_update.password.first,'Nouveau mot de passe :', {'attr':{'class':'form-control'}})}}
+                                {{form_widget(form_update.password.first,{'attr':{'class':'form-control'}})}}
+                                {{form_errors(form_update.password.first)}}
+
+                                {{form_label(form_update.password.second,'Répéter nouveau mot de passe :', {'attr':{'class':'form-control'}})}}
+                                {{form_widget(form_update.password.second,{'attr':{'class':'form-control'}})}}
+                                {{form_errors(form_update.password.second)}}
+                                </div>
+                                    
+
+                                <button id="widgetPwdBtn" type="button" class="btn btn-warning">Modifier</button>
+                                <hr>
+
+                                
+                                <div class="text-center">{{form_row(form_update.modifier,{'attr':{'class':'btn btn-danger'}})}}
+                                {{form_end(form_update)}}
+                                </div>
+        
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+</div>
+
+
+
+
+<script src="{{ asset('js/espaceElev/pageCompte.js') }}"></script>
+{% endblock body %}

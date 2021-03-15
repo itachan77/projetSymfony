@@ -1,0 +1,117 @@
+{% extends 'header_scuola.html.twig' %}
+
+{% block title %}
+LA SCUOLA - FLUTE
+{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/scuola/style_sbody.css') }}">
+{% endblock %}
+
+
+
+{% block body %}
+
+<div>
+
+        <img src="{{ asset('images/scuola/cours/saxophone2.jpg') }}" class="img-fluid" alt="cours">
+
+</div>
+
+{% if is_granted('ROLE_ADMIN') %} 
+
+
+<div class="row">
+        <a id="ajouter" class="btn btn-warning mx-auto mt-5">Modifier</a>
+</div>
+
+<div class="row">
+        <a id="masquer" class="btn btn-warning mx-auto mt-5">Masquer Modifier</a>
+</div>
+
+<div class="container-fluid">
+
+
+        
+        
+
+                <div id="boite_ajout" class="col-sm-12 w-100 mx-auto mt-5 col-md-6 w-50 boite_perso">
+
+                        {{form_start(form_insert)}}
+                        {{form_errors(form_insert)}}
+                        <div class="row mx-auto">
+                                <div class="col-sm-6 w-100 mx-auto col-md-3 w-50">
+                                        {{form_label(form_insert.nomCategorie, "Catégorie:", {'label_attr': {'class': 'col-sm-6 col-form-label'}}) }}
+                                        {{form_widget(form_insert.nomCategorie,{'attr':{'class':'form-control'}})}}
+                                        {{form_errors(form_insert.nomCategorie)}}
+                                </div>
+
+                                <div class="col-sm-6 w-100 mx-auto col-md-3 w-50">
+                                        {{form_label(form_insert.photoCours, "Photo du cours:", {'label_attr': {'class': 'col-form-label'}}) }}
+                                        {{form_widget(form_insert.photoCours,{'attr':{'class':''}})}}
+                                        {{form_errors(form_insert.photoCours)}}
+                                </div>
+                        </div>
+                
+                        <div class="row">
+
+                                <div class="mx-auto col-md-10">
+                
+                                        {{form_label(form_insert.descrCategorie,'Contenu:', {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
+                                        {{form_widget(form_insert.descrCategorie,{'attr':{'class':'areaperso'}})}}
+                                        {{form_errors(form_insert.descrCategorie)}}
+                        
+                                        {{form_row(form_insert.Modifier,{'attr':{'class':'btn btn-dark w-100 mx-auto'}})}}
+                                        
+                                        {{form_end(form_insert)}}
+                
+                                </div>
+                        </div>
+                
+                </div>    
+                {% endif %}
+        
+</div>
+
+
+<div class="container-fluid">
+
+        <div id="letitre" class="text-center mt-2 mb-5">Les cours</div>
+
+        <div class="container mb-5">
+
+                <div id="coursBox">
+                        <div id="coursAll" class="p-2">
+                        <div class="coursAlld"><i class="fas fa-plus ml-5 mr-3"></i><a href="{{ path('scuola_cours_eveil', {'id':2} )}}#Eveil musical">Eveil musical</a></div>
+                        <div class="coursAlld"><i class="fas fa-plus ml-5 mr-3"></i><a href="{{ path('scuola_cours_piano', {'id':14} )}}#Piano">Piano</a></div>
+                        <div class="coursAlld"><i class="fas fa-plus ml-5 mr-3"></i><a href="{{ path('scuola_cours_guitare', {'id':4} )}}">Guitare</a></div>
+                        <div class="coursAlld"><i class="fas fa-plus ml-5 mr-3"></i><a href="{{ path('scuola_cours_basse', {'id':15} )}}">Basse</a></div>
+
+                        <div id="{{lacategorie}}" class="coursAlld"><i class="vide"></i><a class="h1">Quator</a></div>
+                        <div id="coursDetail" class="row mx-auto">
+                                <div class="col-sm-6 mt-5">
+                                        
+                                        {{lacategorie.descrCategorie|raw|nl2br}}
+                                </div>
+                                <div class="col-sm-6">
+                                        <img src="{{ asset('images/scuola/cours/'~ cours.photoCours) }}" class="img-fluid" alt="image cours {{lacategorie|upper}}">
+                                </div>
+                        </div>
+
+                        <div class="coursAlld"><i class="fas fa-plus ml-5 mr-3"></i><a href="{{ path('scuola_cours_batterie', {'id':1} )}}">Batterie</a></div>
+                        <div class="coursAlld"><i class="fas fa-plus ml-5 mr-3"></i><a href="{{ path('scuola_cours_saxo', {'id':6} )}}">Saxophone</a></div>
+                        <div class="coursAlld"><i class="fas fa-plus ml-5 mr-3"></i><a href="{{ path('scuola_cours_violon', {'id':8} )}}">Violon</a></div>
+                        <div class="coursAlld"><i class="fas fa-plus ml-5 mr-3"></i><a href="{{ path('scuola_cours_violoncelle', {'id':16} )}}">Violoncelle</a></div>
+                        <div class="coursAlld"><i class="fas fa-plus ml-5 mr-3"></i><a href="{{ path('scuola_cours_chant', {'id':3} )}}">Chant</a></div>
+                        <div class="coursAlld"><i class="fas fa-plus ml-5 mr-3"></i><a href="{{ path('scuola_cours_chorale', {'id':17} )}}">Chorale</a></div>
+                        <div class="coursAlld"><i class="fas fa-plus ml-5 mr-3"></i><a href="{{ path('scuola_cours_quator', {'id':18} )}}">Quator</a></div>
+                        </div>
+                </div>
+        </div>
+</div>
+
+
+
+<script src="{{ asset('/js/scuola/coursPage.js') }}"></script>
+<script src="{{ asset('/js/scuola/cours.js') }}"></script>
+{% endblock %}

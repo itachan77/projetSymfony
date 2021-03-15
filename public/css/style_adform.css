@@ -1,0 +1,212 @@
+.cadrep {
+border-radius:10px;
+border:1px solid black;
+background-color:floralwhite;
+box-shadow:5px 5px 3px;
+
+
+}
+
+.form_categorie {
+    font-size:25px;
+    font-weight:bold;
+}
+
+.form_nom {
+    width:297px;
+    font-weight:bold;
+    font-size:25px;
+    height:38px;
+}
+
+.form_prenom, .form_naiss {
+    width:370px;
+    font-size:20px;
+    height:30px;
+    margin-top:5px;
+}
+
+.form_adresse {
+    width:370px;
+    font-size:20px;
+    height:30px;
+    margin-top:5px;
+}
+
+.form_tel1 {
+    width:72%;
+    font-size:20px;
+    height:30px;
+    margin-left:58px;
+    
+}
+.form_tel2,.form_tel3,.form_tel4 {
+    width:72%;
+    font-size:20px;
+    height:30px;
+    margin-bottom:5px;
+    margin-left:84px;
+}
+
+
+.form_mail {
+    width:200px;
+    font-size:20px;
+    height:30px;
+    margin-top:5px;
+    margin-bottom:5px;
+}
+
+
+.form_photo {
+    display:block;
+    width:300px;
+    margin-top:5px;
+}
+
+.form_info {
+    width:100%;
+    height:100px;
+    font-size:20px;
+}
+
+.form_inscr {
+    font-size:25px;
+    font-weight:bold;
+}
+
+.form_tuteur {
+    width:70%;
+}
+
+
+#MyForm, .lb_perso {
+    width:100px;
+}
+
+.lb_instr {
+    width:280px;
+}
+
+.ajouter_perso {
+    width:100px;
+    font-size:28px; 
+    padding-bottom:10px;
+    font-weight:bold;
+    height:50px;
+    border-radius:5px;
+    background-color:blue;
+    margin-top:25px;
+    color:floralwhite;
+
+}
+
+.ajouter_perso:hover {
+background-color:yellow;
+color:black;
+}
+
+
+.modifier_perso {
+    width:170px;
+    font-size:28px; 
+    padding-bottom:10px;
+    font-weight:bold;
+    height:50px;
+    border-radius:5px;
+    background-color:blue;
+    margin-top:25px;
+    color:floralwhite;
+}
+
+.modifier_perso:hover {
+background-color:yellow;
+color:black;
+}
+
+
+#sousFormProf .monLab {
+    width:100px;
+}
+
+#sousFormProf .formPerso {
+    font-size:25px;
+    font-weight:bold;
+}
+
+#sousFormProf .formSelectPerso {
+    font-size:30px;
+    font-weight:bold;
+    width:325px;
+    height:400px;
+}
+
+#sousFormProf .formPersoNom
+{
+    width:230px;
+    font-size:30px;
+    font-weight:bold;
+}
+
+
+
+#formProf #photo .col-md-6 {
+    text-align: center;
+
+    /* flex: 0 0 50%; */
+    max-width: 50%;
+}
+
+
+.ville {
+    background-color:pink;
+}
+
+
+/* Modifier utilisateur : templates\register\update.html.twig */
+
+.modifier_user {
+    width:170px;
+    font-size:28px; 
+    padding-bottom:10px;
+    font-weight:bold;
+    height:130px;
+    border-radius:5px;
+    background-color:blue;
+    margin-top:25px;
+    color:floralwhite;
+}
+
+.modifier_user:hover {
+    background-color:yellow;
+    color:black;
+    }
+
+.overlay {
+    position:fixed;
+    background-color:rgba(0,0,0, 0.5);
+    left:0px;
+    top:0px;
+    width:100%;
+    height:100%;
+    z-index:2;
+    
+}
+
+.overlay .fa-times {
+    line-height: 100px;
+    font-size:30px;
+}
+
+.overlay .fa-times:hover {
+    cursor:pointer;
+    color:red;
+    font-size:40px;
+}
+
+/* Je suis obligée de créer un affichage supérieur car sinon, on voit 
+dans le blanc du formulaire des éléments de l'écran inférieur */
+.overlay .popup {
+    z-index:3;
+}
+

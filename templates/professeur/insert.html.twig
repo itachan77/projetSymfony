@@ -1,0 +1,101 @@
+
+{% extends 'menuAdminProf.html.twig' %}
+{% block title %}Créer un professeur{% endblock %}
+
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/style_adform.css') }}">
+{% endblock %}
+
+
+{% block body %}
+<div class="container-fluid">
+
+    <div class="container">
+
+        <div id="formProf" class="ml-5 mb-5">
+            {{form_start(form_insert)}}
+            {{form_errors(form_insert)}}
+            <!-- Bande verte -->
+            <div class="mr-3 row bg-warning border border-primary rounded">
+                
+                    <div class="col-sm-3 offset-md-3">
+                        <h1 class="text-center">CREER UN PROFESSEUR</h1>
+                    </div>
+
+                    <div class="col-sm-3 offset-3 mb-2">
+                        {{form_row(form_insert.creer,{'attr':{'class':'modifier_perso'}})}}
+                    </div>
+                
+            </div>  
+
+            <!-- Identifiant et photo -->
+            <div class="row cadrep w-100 pb-4">
+
+                <div class="col-sm-12 col-md-4">
+                    <div class="col-sm-12">
+                        {{form_label(form_insert.nomProf, "Nom :", {'label_attr': {'class': 'h5'}}) }}
+                    </div> 
+
+                    <div class="col-sm-12">
+                        {{form_widget(form_insert.nomProf,{'attr':{'class':'form-control'}})}}
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-4">
+                    <div class="col-sm-12">
+                        {{form_label(form_insert.prenomProf, "Prénom :", {'label_attr': {'class': 'h5'}}) }}
+                    </div>
+
+                    <div class="col-sm-12">
+                        {{form_widget(form_insert.prenomProf,{'attr':{'class':'form-control'}})}}
+                    </div>
+                </div>
+
+
+                <div class="col-sm-12 col-md-4">
+                    <div class="col-sm-12">
+                        {{form_label(form_insert.emailProf, "Email :", {'label_attr': {'class': 'h5'}}) }}
+                    </div>
+
+                    <div class="col-sm-12">                            
+                        {{form_widget(form_insert.emailProf,{'attr':{'class':'form-control'}})}}
+                    </div>
+                </div>
+                    
+            </div>
+
+            <div id="photo" class="w-100 row cadrep pb-5">
+                
+                    <div class="col-sm-12">
+                    {{form_label(form_insert.photoProf, "Insérer une photo :", {'label_attr': {'class': 'h5'}}) }}
+                    <div>
+
+                    <div class="col-sm-12">
+                    {{form_widget(form_insert.photoProf,{'attr':{'class':'text-center'}})}}
+                    </div>
+                
+
+            </div>
+
+
+
+
+            {{form_end(form_insert)}}
+
+
+            
+
+
+                
+            
+        </div>
+
+</div> 
+
+
+
+
+<script src="{{ asset('/js/app_scuola/admin.js') }}"></script>
+{% endblock body %}
+                    

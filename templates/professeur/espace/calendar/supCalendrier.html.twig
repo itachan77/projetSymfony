@@ -1,0 +1,51 @@
+<form name="calendar" method="post">
+
+
+    <div id="formCardSup" class="card mx-auto bg-danger mt-2" style="width: 28rem;">
+        <div id="enteteSup" data-target="#corpsSup" class="card-header">
+            <h3 class="text-center">SUPPRIMER UN RENDEZ-VOUS</h3>
+        </div>
+        <ul id="corpsSup" class="list-group list-group-flush">
+    
+            <li class="list-group-item">
+                
+                
+                <table class="table">
+                    <thead class="thead-dark">
+                    <tr class="text-center">
+                        <th scope="col">Nom du RV</th>
+
+                        
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for row in calendrier %}
+                            <tr class="text-center">
+                                <td class="h4 fas fa-times" data-suppression="{{ path('calend_delete', {'idCalend': row.id,'id':professeur.id}) }}">
+                                    <div id="suppression">
+
+                                        <div>{{row.title}}</div><div class="supp">{{row.start|date("d/m/Y H:i")}}</div>
+                                        <div class="supp">{{row.end|date("d/m/Y H:i")}}</div>
+                                    
+                                    </div>
+                                    <hr>
+                                </td>
+                            </tr>
+                            
+                        {% endfor %}
+                    </tbody>
+                </table>
+                
+            </li>
+
+    
+    
+        </ul>
+    </div>
+    
+    
+    <input type="hidden" id="calendar__token" name="calendar[_token]" value="hRbJuH36d5SNRNaZM9vUirPa2RqcFbQLKhSVdslDzOE">
+
+
+</form>

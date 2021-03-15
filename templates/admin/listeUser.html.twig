@@ -1,0 +1,112 @@
+{% block title %}ESPACE ADMINISTRATEUR{% endblock %}
+
+
+
+{% extends 'menuAdminUser.html.twig' %}
+
+{% block body %}
+
+
+<div class="container">
+
+
+            <div class="h3 col-sm-8 mx-auto text-center mb-5">
+                {% for message in app.session.flashbag.get('message') %}
+                <span class="alert alert-{{ app.session.get('statut')}}">
+                    {{message}}
+                </span>
+                {% endfor %}
+            </div>
+
+            <div class="text-center mb-5"><a class="btn btn-primary none" href="{{ path('register')}}" target="_self">CREER UN COMPTE UTILISATEUR</a></div>
+
+            {% if nbrst_nom > 0 or nbrst_prenom > 0 or nbrst_prenom > 0 or nbrst_adresse > 0 or nbrst_email > 0 or nbrst_cpville > 0 %} 
+            <h2 class="text-center">Résultat de votre recherche : comportant le mot </h2>
+            
+
+            {% else %}
+                <h1>{{aucunResultat}}</h1>
+            {% endif %}
+            
+            <h2 class="text-center">Liste des comptes utilisateurs</h2>
+            <div class="table-responsive-lg">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr class="text-center">
+                        
+
+                        <th scope="col">IDENTIFIANT</th>
+                        <th scope="col">NOM</th>
+                        <th scope="col">RÔLE</th>
+                        <th scope="col">PARAMETRES</th>
+                    </tr>
+                </thead>
+
+            <tbody>
+
+            {% for row in user %}
+
+                <tr>                    
+
+                    <td class="text-center">{{ row.username }}</td>
+
+                    <td class="text-center">{{ row.eleve }}{{ row.professeur }}</td>
+                    
+
+                    <!-- Puisque row.roles est un tableau, on fait une boucle
+                    for pour accéder au contenu du tableau
+                    Le role user est toujours indiqué car seuls les rôles users ont un 
+                    compte et peuvent se connecter. 
+                    l'attribution permanente du role user est faite dans l'entité user
+                    cf. méthode (getRoles)
+                    -->
+                    <td class="text-center">
+                        
+                        <div>
+                            {% for ligne in row.roles %}
+                            <div>{{ligne}}</div>
+                            {% endfor %}
+                        </div>
+
+                    </td>
+
+                    <td class="row">
+                        {% if is_granted('ROLE_ADMIN') %}
+                        <div class="mx-auto row">
+                            
+                                <div class="col-sm-12 col-md-3">
+                                    {% include "user/insertModUser.html.twig" %}
+                                </div>
+
+                                <div class="col-sm-12 col-md-3"><a title="SUPPRIMER" class="btn btn-danger none" href="{{ path('deleteuser', {'id':row.id} )}}">S</a></div>
+                                
+                                <div class="col-sm-12 col-md-3">
+                                    {% include "user/insertMail.html.twig" %}
+                                </div>
+
+                        </div>
+                        {% endif %}
+                    </td>
+                </tr>
+
+
+            {% endfor %}
+
+            </table>
+            </div>
+
+
+            
+
+</div>
+
+
+
+
+
+
+<script src="{{ asset('/js/app_scuola/listeUser.js') }}"></script>
+
+
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'header_scuola.html.twig' %}
+
+
+{% block title %}PAGE VIDEOS{% endblock title %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/espaceProf/style_espace.css') }}"/>
+    {{encore_entry_link_tags('app')}}
+    {{encore_entry_script_tags('app')}}
+{% endblock stylesheets %}
+
+
+{% block body %}
+    
+
+<div class="container-fluid mt-2">
+
+        <!-- <div> dans baseEspaceProf -->
+            {% include "professeur/espace/baseTitle.html.twig" %}
+            
+    <div class="row">
+        
+        <!--Include du menu vertical gauche -->
+        <div id="MenuProf" class="col-sm-2">
+            {% include "professeur/espace/baseEspaceProf.html.twig" %}
+        </div>
+        
+        
+        <div id="ContenuProf" class="col-sm-8">
+
+            
+
+            <!-- <div>
+                {% for row in eleves %}
+                <post-comments data-post="{{row.id}}" data-user="{{ app.user ? app.user.id : 0}}"></post-comments>
+                <p>{{row.nomEleve}} {{row.prenomEleve}}</p>
+                {% endfor %}
+            </div>
+            
+            <div id="myUser" class="container" data-users={{ eleves|json_encode()|e('html_attr') }}></div> -->
+
+        </div>
+
+    </div>
+
+{% endblock body %}

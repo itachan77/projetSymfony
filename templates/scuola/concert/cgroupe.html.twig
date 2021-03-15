@@ -1,0 +1,174 @@
+{% extends 'header_scuola.html.twig' %}
+
+{% block title %}
+CONCERT DE GROUPE
+{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/scuola/style_sbody.css') }}">
+<!-- Add the slick-theme.css if you want default styling -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<!-- Add the slick-theme.css if you want default styling -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+{% endblock %}
+
+{% block body %}
+
+
+
+
+
+<div id="concert" class="container-fluid">
+
+
+	<div class="row mt-5">
+		<div class="col-sm-12 col-md-6">
+
+			<img class="img-fluid rounded w-75 mx-auto d-block" src="{{ asset('images/scuola/concerts/concertGp/'~ spectacle.logoConcertInd) }}" alt="{{spectacle.titreConcertInd}}">
+				
+			<div id="comConcert">{{spectacle.comConcertInd}}</div>
+
+
+			{% if is_granted('ROLE_ADMIN') %} 
+
+						
+						<div class="row">
+							<a id="modifier" class="btn btn-warning mx-auto mt-5">Modifier</a>
+						</div>
+
+						<div class="row">
+								<a id="masquer" class="btn btn-warning mx-auto mt-5">Masquer Modifier</a>
+						</div>
+
+
+			{% endif %}
+
+
+		</div>
+
+		<div>
+
+
+	
+
+		</div>
+
+
+		<div class="col-sm-12 col-md-6 mt-5">
+
+			<div class="conteneur mt-5">
+				
+			<ul id="controls">
+				<li id="prev"><img src="{{ asset('images/icons/bprev.jpg') }}" alt="bouton précédent"></li>
+				<li id="next"><img src="{{ asset('images/icons/bnext.jpg') }}" alt="bouton suivant"></li>
+			</ul>
+			<hr>
+
+			<div class="monSliderSlick">
+				{% for row in images %}
+				<div><img src="{{ asset('images/scuola/concerts/concertGp/'~ row.nomImgCi) }}" alt=""></div>
+				{% endfor %}
+			</div>
+
+			<hr>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	{% if is_granted('ROLE_ADMIN') %} 
+	<hr>
+	<div id="boite_ajout">
+
+	<div class="row">
+		
+		<div class="col-sm-12 col-md-6">
+			
+			<div class="col-sm-12 w-100 mx-auto mt-5 mb-5 pb-5 boite_perso">
+
+					{{form_start(form_update)}}
+					{{form_errors(form_update)}}
+
+					
+
+					<div class="row mx-auto">
+							<div class="col-sm-12 w-100 mx-auto col-md-3">
+									{{form_label(form_update.titreConcertInd, "Titre de la page :", {'label_attr': {'class': 'col-sm-12 col-form-label'}}) }}
+									{{form_widget(form_update.titreConcertInd,{'attr':{'class':'form-control'}})}}
+									{{form_errors(form_update.titreConcertInd)}}
+
+							</div>
+					</div>
+			
+					<div class="row">
+						
+							<div class="mx-auto col-md-10">
+									{{form_label(form_update.comConcertInd,'Contenu:', {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
+									{{form_widget(form_update.comConcertInd,{'attr':{'class':'areaperso'}})}}
+									{{form_errors(form_update.comConcertInd)}}
+							</div>
+
+							<div class="mx-auto col-md-10">
+								{{form_label(form_update.imgTmpConcertInd,'Rajouter une image', {'label_attr': {'class': 'btn btn-dark col-sm-2'}}) }}
+								{{form_widget(form_update.imgTmpConcertInd,{'attr':{'class':''}})}}
+								{{form_errors(form_update.imgTmpConcertInd)}}
+							</div>
+
+							<div class="mx-auto col-sm-10">
+							{{form_row(form_update.Modifier,{'attr':{'class':'col-sm-12 btn btn-dark w-100'}})}}
+							{{form_end(form_update)}}
+							</div>
+
+					</div>
+
+			</div>
+
+		</div>
+
+		<div class="col-sm-12 col-md-6 mt-5 boite_perso">
+
+			<div id="blocSupp" class="col-sm-12 mt-5">
+
+				<div id="fenetreScroll" class="row">
+					
+					{% for row in images %}
+					<span class="col-sm-2 mt-2">
+					
+						<img id="imgSuppr" src="{{ asset('images/scuola/concerts/concertGp/'~ row.nomImgCi) }}" alt="slide" width="50%">
+						
+						<div class="mt-2 text-center"><a class="btn btn-danger" href="{{ path('spectacleCg_delete', {'id':row.id} )}}">Supprimer</a></div>
+					
+					</span>
+					{% endfor %}
+					
+					
+				</div>
+
+			</div>
+			
+
+
+		</div>
+		
+
+	</div>
+
+	</div>
+
+	{% endif %}
+
+<div id="ma_modal"><div id="modal-image"><i class="text-white far fa-times-circle"></i><img class="figure-img img-fluid rounded" src="" id='grandeImage' alt="une image blablabla"></div></div>
+
+</div>
+
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="{{asset('/js/scuola/cindiv.js')}}"></script>
+{% endblock %}
+
+
+
+
+

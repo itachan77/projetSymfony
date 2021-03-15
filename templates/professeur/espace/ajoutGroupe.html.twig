@@ -1,0 +1,45 @@
+{{form_start(form_insert)}}
+{{form_errors(form_insert)}}
+
+
+<div id="formCard" class="card mx-auto" style="width: 21rem;">
+    <div id="entete" data-target="#corps" class="card-header">
+        <h3 class="text-center">AJOUTER UN GROUPE</h3>
+    </div>
+    <ul id="corps" class="list-group list-group-flush">
+
+        <li class="list-group-item">
+            {{form_label(form_insert.nomGroupe,"Nom du groupe :")}}
+            {{form_widget(form_insert.nomGroupe,{'attr':{'class':'form-control'}})}}
+            {{form_errors(form_insert.nomGroupe)}}
+        </li>
+
+
+        <li class="list-group-item">
+            {{form_label(form_insert.descriptionGroupe,"Description du groupe:")}}
+            {{form_widget(form_insert.descriptionGroupe,{'attr':{'class':'form-control'}})}}
+            {{form_errors(form_insert.descriptionGroupe)}}
+        </li>
+
+
+
+        <li class="list-group-item">
+            <div class="mx-auto">{{form_row(form_insert.Valider,{'attr':{'class':'btn btn-dark'}})}}</div>
+        </li>
+
+
+    </ul>
+</div>
+
+
+{{ form_end(form_insert) }}
+
+
+
+
+
+
+
+
+
+

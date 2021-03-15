@@ -1,0 +1,328 @@
+{% block formperso %}
+
+
+<form action="'.$action.'" method="POST" name="formulaire_admin" enctype="application/x-www-form-urlencoded">
+                                    
+    <legend class="legend-global-formulaire">'.$titre.'</legend>
+            
+                <div id="mesblocs">      
+                    
+                        <div id="part1">
+
+                            <div class="divfieldset">
+                                <fieldset>        
+                                    <legend class="legendeleve">Catégorie:</legend>
+
+                                        '.$this->typeaffichage($type,$category,$categoryid).'
+                                            
+                                </fieldset>        
+                            </div>
+
+                            <div class="divfieldset">
+                                <fieldset>
+                                    <legend class="legendeleve">Elève</legend>
+                                        
+                                        <div class="a1">
+                                            <label for="nom">Nom</label>    
+                                            <input type="text" name="nom" id="nom" value="'.$nom.'">
+                                            <input type="hidden" name="hidden" id="hidden" value="'.$id.'">
+
+                                            <select name="titre" id="titre">
+                                                    <option value="Monsieur">Mr</option>
+                                                    <option value="Madame">Mme</option>
+                                                    <option value="Mademoiselle">Mlle</option>
+                                                    <option value="Enfant">Enfant</option>
+                                            </select>                                            
+                                        </div>
+                                        
+
+
+                                        <div class="a">
+                                        <label for="prenom">Prénom</label>
+                                        <input type="text" name="prenom" id="prenom" value="'.$prenom.'">
+                                        </div>
+                                        
+                                        <div class="b">
+                                        <label for="naissance">Naissance</label>
+                                        <input type="date   " name="naissance" id="naissance">
+                                        <input type="number" name="calcage" id="calcage" placeholder="Age"/>
+                                        </div>
+
+                                        <div class="c">
+                                        <label for="adresse">Adresse</label>
+                                        <input type="text" name="adresse" id="adresse" value="'.$adresse.'">
+                                        </div>
+
+
+                                        <div class="d">
+                                        <label for="cpville">CPville</label>
+                                        <select name="cpville" id="cpville">
+
+                                        '.$this->cpville_in_formu().'
+                                        
+                                        
+                                        </select>
+                                        </div>
+
+
+                                        <div class="e">
+                                        <label for="telephone">Téléphone</label>
+                                        <input type="text" name="telephone1" id="telephone1" value="'.$tel1.'">
+                                        <input type="text" name="telephone2" id="telephone2"value="'.$tel2.'">
+                                        <label for="telephone2"></label>
+                                        <input type="text" name="telephone3" id="telephone3"value="'.$tel3.'">
+                                        <input type="text" name="telephone4" id="telephone4"value="'.$tel4.'">
+                                        </div>
+
+
+                                        <div class="g">
+                                        <label for="email">E.mail</label>
+                                        <input type="email" name="email" id="email" value="'.$email.'"></label>
+                                        </div>
+
+                                </fieldset>
+                            </div>
+                            
+
+                            <div class="divfieldset">
+                                <fieldset>
+                                    <legend class="legendeleve">Personnes à prévenir</legend>
+                                        <div class="boutonscreer">
+                                        <label for="prevnom">Nom</label>    
+                                        <input type="text" name="prevnom" id="prevnom" value="'.$prevnom.'"><br>
+                                        <label for="prevprenom">Prénom</label>
+                                        <input type="text" name="prevprenom" id="prevprenom" value="'.$prevprenom.'"><br>
+                                        <label for="prevadresse">Adresse</label>
+                                        <input type="text" name="prevadresse" id="prevadresse"  value="'.$prevadresse.'"><br>
+                                        <label for="prevcpville">CP/Ville</label>
+                                        <input type="text" name="prevcpville" id="prevcpville"  value="'.$prevcpville.'"><br>
+                                        <label for="prevtel">Téléphone</label>
+                                        <input type="text" name="prevtel" id="prevtel"  value="'.$prevetel.'">
+                                </fieldset>
+                            </div>
+                        </div>
+
+                        <div id="part2">
+
+                            <div class="divfieldset">
+                                <fieldset>
+                                    <legend class="legendeleve">Date d\'inscription</legend>
+                                    <input type="date" name="dateinscription" id="dateinscription" value="'.$dateinsc.'"><br>
+                                        
+                                </fieldset>
+                            </div>
+                            
+                            
+                            <div class="divfieldset">
+                            
+                                <fieldset>
+                                    <legend class="legendeleve">Instrument</legend>
+                                        <div class="instr1">
+                                        <p class="pinstrument">Avez-vous déjà des connaissances musicales ?</p>
+                                        <label class="labelquestion" for="niveau">Si oui quel niveau ?</label>
+                                        <input type="text" name="niveau" id="niveau">
+                                        </div>
+                                        
+                                        <div class="instr1">
+                                        <p class="pinstrument">Pratiquez-vous un instrument ?</p>
+                                        <label class="labelquestion" for="niveau">Si oui lequel ?</label>
+                                        <input type="text" name="niveau" id="niveau">
+                                        </div>
+
+                                        <div class="instr1">
+                                        <p class="pinstrument">Possédez-vous un instrument ?</p>
+                                        <label class="labelquestion" for="possede">Si oui lequel ?</label>
+                                        <input type="text" name="possede" id="possede">
+                                        </div>
+
+                                        <div class="instr1">
+                                        <p class="pinstrument">Quel instrument souhaiteriez-vous posséder ?</p>
+                                        <input type="text" name="souhaiter" id="souhaiter">
+                                        </div>
+
+                                </fieldset>
+
+                            </div>
+                    
+
+                    
+
+                            <div class="divfieldset">
+                                <fieldset>
+                                    <legend class="legendeleve">Connu par</legend>
+                                        
+                                        <p class="pinstrument">Comment avez-vous connu notre école ?</p> 
+                                        <select name="mode">
+                                            <option value="tract">Tract</option>
+                                            <option value="internet">Internet</option>
+                                            <option value="connaissance">Connaissance</option>
+                                        </select>
+                                        
+
+                                        <label class="connuautre" for="possede">Autre</label>
+                                        <input type="text" name="connuautre" id="connuautre">
+
+                                </fieldset>
+                            </div>
+                        </div>
+
+
+                        <div id="part4">
+                            <div class="divfieldset">
+                                <fieldset>
+                                    <legend class="legendeleve">Informations supplémentaires</legend>
+                                    <textarea name="infocomp" id="infocomp" cols="47" rows="32" value="infocomp" maxlenght="500">'.$infocomp.'</textarea>
+                                    
+                                </fieldset>
+                            </div>
+
+                        </div>
+
+                </div>
+
+            
+</div>            
+</div>
+</div>
+
+
+
+<div id="part3">
+
+<details>
+<summary><legend class="legendeparametres">MON APPLICATION</legend></summary>
+    <div class="divfieldsetp">
+        <fieldset>
+        <a href="theme.php">CHOISIR UN THEME</a>
+        </fieldset>
+    </div>
+</details>
+
+
+<details>
+<summary><legend class="legendeparametres">MODE AFFICHAGE</legend></summary>
+    <div class="divfieldsetp">
+        <fieldset>
+
+        
+        <div>
+        <div id="mode_liste"><a style="text-align:center;" href="liste.php">Mode liste</a></div>
+        <div id="mode_form"><a style="text-align:center;" href="liste.php">Mode formulaire</a></div>
+        </div>
+
+        </fieldset>
+    </div>
+</details>
+
+        
+
+
+<details>
+<summary><legend class="legendeparametres">ACTIONS</legend></summary>
+    <div class="divfieldsetp">
+        <fieldset>
+
+        <!-- class boutonscreer dans input qui permet de modifier ces boutons de manière personnalisée -->
+        <div class="action_submit">
+            <a href="nvformulaire.php">AJOUTER UN ELEVE</a>
+            <input class="b1" type="submit" name="creation" id="toutselec" value="Valider"></br>
+            
+            <a href="formulaire.php?p='.$id.'">SUPPRIMER CET ELEVE</a>
+        </div>
+
+        </fieldset>
+    </div>
+</details>
+
+
+
+<details>
+<summary><legend class="legendeparametres">CREER ET ENVOYER</legend></summary>
+    <div class="divfieldsetp">
+        <fieldset>
+            
+                
+                <!-- class boutonscreer dans input qui permet de modifier ces boutons de manière personnalisée -->
+                <div class="boutonscreer">
+                    <input class="lettre" type="button" name="lettre" id="lettre" value="Lettre">
+                    <input class="courriel" type="submit" name="courriel" id="courriel" value="Courriel">
+                    <input class="enveloppe" type="button" name="enveloppe" id="enveloppe" value="Enveloppe">
+                    <input class="sms" type="button" name="sms" id="sms" value="SMS">
+                </div>
+        </fieldset>
+    </div>
+</details>
+
+
+
+
+<details>
+<summary><legend class="legendeparametres">RECHERCHER</legend></summary>   
+    <div class="divfieldsetp">
+        <fieldset>    
+    
+
+            <a href="formulaire.php">RECHERCHER UNE FICHE</a><br>
+            
+                        <div class="gridendeux">
+                            <div class="a1">
+                                <div>
+                                <label class="rechnom" for="rechnom">Nom</label><br>
+                                <input type="search" name="rechnom" id="rechnom" size="30%">
+                                </div>  
+                                
+                                <div>
+                                <label class="rechprenom" for="rechprenom">Prénom</label>
+                                <input type="search" size="30%" name="rechprenom">
+                                </div>
+
+                                <div>
+                                <label class="rechadresse" for="rechadresse">Adresse</label>
+                                <input type="search" size="30%" name="rechadresse">
+                                </div>
+                            </div>
+
+                            <div class="b1">
+                                <div>
+                                <label class="rechinscrip" for="rechinscrip">Date d\'inscription</label>
+                                <input type="search" size="30%" name="rechinscrip">
+                                </div>
+
+                                <div>
+                                <label class="rechemail" for="rechemail">Courriel</label>
+                                <input type="search" size="30%" name="rechemail">
+                                </div>
+
+                                <div>
+                                <label class="rechcodepostal" for="rechcodepostal">Code postal</label>
+                                <input type="search" size="30%" name="rechcodepostal">
+                                </div>
+                            </div>
+                        </div>
+                            <div class="width60">
+                                <div class="c1">
+                                    <div>
+                                    
+                                    <input type="submit" name="recherche" id="maRecherche" value="RECHERCHER">
+                                    
+                                    
+                                    </div>
+                                    
+                                    <div class="suivprec">
+                                    // <input type="button" name="precedent" id="precedent" value="Précédent">
+                                    <input type="button" name="suivant" id="suivant" value="Suivant">
+                                    </div>
+                                </div>
+                            </div>
+                        
+                
+                        
+            </div>
+            
+        </fieldset>
+    </div> 
+</details>
+
+</form>
+
+{% endblock formperso %}

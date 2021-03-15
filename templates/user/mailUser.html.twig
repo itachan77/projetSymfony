@@ -1,0 +1,70 @@
+{% extends 'menuAdminUser.html.twig' %}
+{% block title %}ENVOYER UN MAIL A L'UTILISATEUR{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/style_adform.css') }}">
+{% endblock %}
+
+{% block body %}
+
+{{form_start(form_insert)}}
+{{form_errors(form_insert)}}
+
+    <div class="mx-auto text-center mb-5">
+        {% for message in app.session.flashbag.get('message') %}
+        <span class="alert alert-{{ app.session.get('statut')}}">
+            {{message}}
+        </span>
+        {% endfor %}
+    </div>
+
+    <div class="container cadrep mx-auto pb-5">
+
+        <div class="row bg-warning border border-primary rounded">
+            
+            <div class="col-sm-6">
+                <div class="h1 text-center">ENVOYER UN EMAIL A {{user.username}} </div>
+            </div>
+
+            <div class="col-sm-4 ml-auto">
+                {{form_row(form_insert.envoyer,{'attr':{'class':'modifier_perso'}})}}
+            </div>
+        
+        </div>  
+
+        <div class="row mb-5">
+
+            <div class="col-sm-6">
+            {{form_label(form_insert.toMail, "A :", {'label_attr': {'class': 'h5 mt-3'}}) }}
+            {{form_widget(form_insert.toMail,{'attr':{'class':'form-control','value':user.username}})}}
+            {{form_errors(form_insert.toMail)}}
+            </div>
+
+            <div class="col-sm-6">
+            {{form_label(form_insert.fromMail, "De :", {'label_attr': {'class': 'h5 mt-3'}}) }}
+            {{form_widget(form_insert.fromMail,{'attr':{'class':'form-control','value':'itachan2701@gmail.com'}})}}
+            {{form_errors(form_insert.fromMail)}}
+            </div>
+
+
+            <div class="col-sm-12">
+            {{form_label(form_insert.objetMail, "Objet :", {'label_attr': {'class': 'h5 mt-3'}}) }}
+            {{form_widget(form_insert.objetMail,{'attr':{'class':'form-control w-100','value':'Message de La Scuola'}})}}
+            {{form_errors(form_insert.objetMail)}}
+            </div>
+
+            <div class="col-sm-12">
+            {{form_label(form_insert.messageMail, "Message :", {'label_attr': {'class': 'h5 mt-3'}}) }}
+            {{form_widget(form_insert.messageMail,{'attr':{'class':'form-control h-100 mb-5'}})}}
+            {{form_errors(form_insert.messageMail)}}
+            </div>
+        
+        </div>
+
+
+
+    </div>
+    {{form_end(form_insert)}} 
+
+    
+{% endblock body %}

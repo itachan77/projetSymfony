@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+        
+    <!-- CDN BOOTSTRAP -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" 
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{{ asset('css/style_menuAdmin.css') }}"
+    {% block stylesheets %}{% endblock %}
+    >
+
+</head>
+
+<body>
+    <div class="container">
+        <header>
+
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                            <ul class="navbar-nav mr-auto mx-auto nav-justified">
+
+                                <details class="nav-item">
+                                    <summary><legend class="legendeparametres">APPLICATION</legend></summary>
+                                        <div class="divfieldsetp">
+                                            <fieldset>
+                                                <div class="menu_application">    
+                                                    <a href="theme.php">CHOISIR UN THEME</a>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                </details>
+
+
+                                <details class="nav-item">
+                                    <summary><legend class="legendeparametres">AFFICHAGE</legend></summary>
+                                        <div class="divfieldsetp">
+                                            <fieldset>
+
+                                            
+                                            <div>
+
+
+
+                                                <div class="menu_affichage">
+                                                <div id="mode_liste"><a style="text-align:center;" href="{{ path('route_liste')}}">AFFICHER LE MODE LISTE</a></div>
+                                                <div id="mode_form"><a style="text-align:center;" href="{{ path('insert')}}">AFFICHER LE MODE FORMULAIRE</a></div>
+                                                <div id="mode_affich"><a style="text-align:center;" href="">AFFICHER L'ESPACE ELEVE</a></div>
+                                                </div>
+
+                                                <div>
+                                                    <form action="{{action}}" method="post">
+            
+                                                        <select class="selection" name="leleve"> 
+                                                
+                                                            {% for eleve in eleves %}
+                                                            <option value="{{eleve.id}}"><a href="{{ path('route_particulier', {id: eleve.id}) }}">{{eleve}}</a></option>
+                                                            {% endfor %}
+                                                
+                                                        </select>
+                                                
+                                                        <input type="submit" name="direleve" value="OK">
+                                                    
+                                                    
+                                                    </form>
+                                                </div>
+
+
+                                            </div>
+
+                                            </fieldset>
+                                        </div>
+                                </details>
+
+                                        
+
+
+                                <details class="nav-item">
+                                    <summary><legend class="legendeparametres">ACTIONS</legend></summary>
+                                        <div class="divfieldsetp">
+                                            <fieldset>
+
+                                            
+                                            <div class="menu_action">
+                                                <a href="{{ path('insert')}}">AJOUTER UN ELEVE</a>
+                                            </div>
+
+                                            </fieldset>
+                                        </div>
+                                </details>
+
+
+
+                                <details class="nav-item">
+                                    <summary><legend class="legendeparametres">ENVOYER</legend></summary>
+                                        <div class="divfieldsetp">
+                                            <fieldset>
+                                                
+                                                    
+                                                    
+                                                    <div>
+                                                        <div><a class="lienSendmail" href="" target="_self">ENVOYER UN E.MAIL</a></div>
+                                                    <div><a href="{{ path('insert')}}">ENVOYER UN S.M.S.</a></div>
+                                                    <div><a href="{{ path('insert')}}">ENVOYER UN COURRIER</a></div>
+                                                    </div>
+                                            </fieldset>
+                                        </div>
+                                </details>
+
+
+
+
+                                <details class="nav-item">
+                                    
+
+                                    <summary><legend class="legendeparametres">RECHERCHER</legend></summary>   
+                                        <div class="divfieldsetp">
+                                            <fieldset>    
+                        <form name="chercheformulaire" action="{{action}}" method="post">
+                                                
+                                    
+                                                <div class="gridendeux">
+                                                    <div class="a1">
+
+                                                        <div>
+                                                        <label class="rechnom" for="rechnom">Nom</label><br>
+                                                        <input type="search" name="rechnom" id="rechnom" size="30%">
+                                                        </div>  
+                                                        
+                                                        <div>
+                                                        <label class="rechprenom" for="rechprenom">Prénom</label>
+                                                        <input type="search" size="30%" name="rechprenom">
+                                                        </div>
+
+                                                        <div>
+                                                        <label class="rechadresse" for="rechadresse">Adresse</label>
+                                                        <input type="search" size="30%" name="rechadresse">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="b1">
+
+
+                                                        <div>
+                                                        <label class="rechemail" for="rechemail">Courriel</label>
+                                                        <input type="search" size="30%" name="rechemail">
+                                                        </div>
+
+                                                        <div>
+                                                        <label class="rechcodepostal" for="rechcodepostal">Code postal</label>
+                                                        <input type="search" size="30%" name="rechcodepostal">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="width60">
+                                                    <div class="c1">
+                                                            <div>
+                                                                
+                                                                <input type="submit" name="recherche" value="RECHERCHER">
+                                                            </div>
+
+                                                    </div>
+                                                </div>
+                        </form>
+                                            </fieldset>                
+                                        </div>
+                                                            
+                                                        
+
+                                </details>
+
+
+
+
+
+                                </div>
+                            </ul>
+                </div>
+        </nav>
+        </header>
+    </div>
+
+        {% block body %}
+        
+        {% endblock %}
+        
+
+<!-- CDN BOOTSTRAP JS-->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+</body>
+</html>
+

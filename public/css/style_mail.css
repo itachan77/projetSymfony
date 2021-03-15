@@ -1,0 +1,72 @@
+#boite_mail_id {
+    font-weight:bold;
+    font-size:30px;
+    color:white;
+    font-family:'Times New Roman', Times, serif;
+    margin-left:10px;
+    margin-right:10px;
+    border-bottom:7px solid black;
+}
+
+#boite_mail
+{
+    width:600px;
+    margin:auto;
+    background-image:url('../images/bois.png');
+    border-radius:10px;
+    border:7px solid black;
+}
+
+
+#boite_mail form div label {
+    display:inline-block;
+    width:100px;
+    font-weight:bold;
+    font-size:25px;
+    margin-left:10px;
+    color:white;
+    
+}
+
+#boite_mail .p_message
+{
+    font-weight:bold;
+    font-size:25px;
+    margin-left:10px;
+    color:white;
+    margin-bottom:0px;
+    
+}
+
+#boite_mail form div input {
+
+    font-size:20px;
+    width:420px;
+    margin-top:10px;
+    border-radius:10px;
+}
+
+#boite_mail form textarea {
+
+    font-size:20px;
+    width:575px;
+    margin-top:10px;
+    margin-left:10px;
+    border-radius:10px;
+}
+
+#boite_mail form input[type="submit"] {
+background-color:red;
+font-weight:bold;
+font-size:25px;
+display:block;
+
+margin:auto;
+
+
+}
+
+#boite_mail form input[type="submit"]:hover {
+    color:white;
+
+    }

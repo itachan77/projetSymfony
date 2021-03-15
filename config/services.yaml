@@ -4,6 +4,14 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    emplacement_image: '%kernel.project_dir%/public/img_eleve'
+    emplacement_image_professeurs: '%kernel.project_dir%/public/images/professeurs'
+    emplacement_image_scuola: '%kernel.project_dir%/public/images/scuola'
+    emplacement_concertCi: '%kernel.project_dir%/public/images/scuola/concerts/concertInd'
+    emplacement_concertCg: '%kernel.project_dir%/public/images/scuola/concerts/concertGp'
+    emplacement_concertCp: '%kernel.project_dir%/public/images/scuola/concerts/concertProf'
+    emplacement_image_cours: '%kernel.project_dir%/public/images/scuola/cours/'
+    emplacement_docs: '%kernel.project_dir%/public/espace/documents'
 
 services:
     # default configuration for services in *this* file

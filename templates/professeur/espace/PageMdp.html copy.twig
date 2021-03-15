@@ -1,0 +1,55 @@
+{% extends 'header_scuola.html.twig' %}
+
+{% block title %}ESPACE SCUOLA PROFESSEUR{% endblock title %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/espaceProf/style_espace.css') }}">
+{% endblock stylesheets %}
+
+
+{% block body %}
+    
+
+<div class="container-fluid mt-2">
+
+        <!-- <div> dans baseEspaceProf -->
+            {% include "professeur/espace/baseTitle.html.twig" %}
+            
+    <div class="row">
+        
+        <!--Include du menu vertical gauche -->
+        <div id="MenuProf" class="col-sm-2">
+            {% include "professeur/espace/baseEspaceProf.html.twig" %}
+        </div>
+        
+        
+        <div id="ContenuProf" class="col-sm-8">
+
+            {{form_start(formMdp)}}
+            {{form_errors(formMdp)}}
+
+            <div class="w-25 mx-auto" id="widgetPw">
+
+            {{form_label(formMdp.password,"Merci de saisir votre nouveau mot de passe", {'label_attr': {'class': ''}}) }}
+            {{form_widget(formMdp.password,{'attr':{'class':'form-control text-center'}})}}
+            {{form_errors(formMdp.password)}}
+            </div>
+
+
+            <div class="text-center mt-2">{{form_row(formMdp.modifier,{'attr':{'class':'btn btn-danger'}})}}</div>
+            
+            {{form_end(formMdp)}}
+
+
+            <div class="text-center mt-5">
+                {% for message in app.session.flashbag.get('message') %}
+                <span class="mt-5 alert alert-{{ app.session.get('statut')}}">
+                    {{message}}
+                </span>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+    <script src="{{ asset('js/espaceProf/pageMdp.js') }}"></script>
+{% endblock body %}

@@ -1,0 +1,67 @@
+{% extends 'header_scuola.html.twig' %}
+
+{% block title %}
+CONCERT DES PROFESSEURS
+{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/scuola/style_sbody.css') }}">
+<!-- Add the slick-theme.css if you want default styling -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<!-- Add the slick-theme.css if you want default styling -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+{% endblock %}
+
+{% block body %}
+
+
+
+
+<div id="cindiv" class="container-fluid">
+
+	<div class="row">
+		<div class="col-sm-12 col-md-6">
+
+			<img class="img-fluid rounded w-75 mx-auto d-block" src="{{ asset('images/scuola/concerts/concertProf/'~ spectacle.logoConcertProf) }}" alt="{{spectacle.titreconcertProf}}">
+				
+			<div id="comConcert">{{spectacle.comconcertProf}}</div>
+
+		</div>
+
+
+		<div class="col-sm-12 col-md-6 mt-5">
+
+			<div class="conteneur">
+
+			<ul id="controls">
+				<li id="prev"><img src="{{ asset('images/icons/bprev.jpg') }}" alt="bouton précédent"></li>
+				<li id="next"><img src="{{ asset('images/icons/bnext.jpg') }}" alt="bouton suivant"></li>
+			</ul>
+			<hr>
+
+			<div class="monSliderSlick">
+				{% for row in images %}
+				<div><img src="{{ asset('images/scuola/concerts/concertProf/'~ row.nomImgProf) }}" alt=""></div>
+				{% endfor %}
+			</div>
+			<hr>
+
+			</div>
+
+		</div>
+
+	</div>
+
+<div id="ma_modal"><div id="modal-image"><i class="text-white far fa-times-circle"></i><img class="figure-img img-fluid rounded" src="{{ asset('images/scuola/concerts/concertProf/concertProf1.jpg') }}" id='grandeImage' alt=""></div></div>
+
+</div>
+
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="{{asset('/js/scuola/cindiv.js')}}"></script>
+{% endblock %}
+
+
+
+
+

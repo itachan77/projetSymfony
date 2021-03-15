@@ -1,0 +1,55 @@
+{% block title %}LISTE DES MESSAGES ENVOYES VIA LE FORMULAIRE DE LA SCUOLA{% endblock %}
+
+
+{% extends 'haut_admin.html.twig' %}
+
+{% block body %}
+
+
+<div class="container">
+
+            <h2 class="text-center">TOUS LES MESSAGES ENVOYES VIA LE FORMULAIRE DE CONTACT DE LA-SCUOLA.FR</h2>
+
+
+            <div class="table-responsive-lg">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr class="text-center">
+                        <th scope="col">TITRE</th>
+                        <th scope="col">NOM</th>
+                        <th scope="col">PRENOM</th>
+                        <th scope="col">EMAIL</th>
+                        <th scope="col">VOTRE REPONSE</th>
+                        <th scope="col">MESSAGE</th>
+                    </tr>
+                </thead>
+            
+            <tbody>
+
+            {% for row in contacts %}
+            
+                {% if is_granted('ROLE_ADMIN') %}
+                <tr>
+                    
+                    <th class="text-center" scope="row">{{ row.titreContact }}</th>
+                    <td class="text-center">{{ row.nomContact }}</td>
+                    <td class="text-center">{{ row.prenomContact }}</td>
+                    <td class="text-center">{{ row.emailContact }}</td>
+                    <td class="text-center">{{ row.reponseContact|raw|nl2br }}</td>
+
+                    <td class="text-center">
+                        <div class="mx-auto"><a class="btn btn-success none" href="{{ path('scuola_contact_réponse', {'id':row.id} )}}">VOIR LE MESSAGE</a></div>
+                        
+                    </td>
+                    
+
+                </tr>
+                {% endif %}
+
+            {% endfor %}
+
+            </table>
+            </div>
+</div>
+
+{% endblock %}

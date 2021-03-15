@@ -1,0 +1,109 @@
+{% extends 'header_scuola.html.twig' %}
+
+{% block title %}ESPACE SCUOLA PROFESSEUR{% endblock title %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/espaceProf/style_espace.css') }}">
+{% endblock stylesheets %}
+
+
+{% block body %}
+
+
+<div class="container-fluid mt-2">
+
+    <!--BaseEspaceProf contient le menu vertical. Include en position fixed donc tout l'écran est à nous-->
+    <div id="MenuProf">
+        {% include "professeur/espace/baseEspaceProf.html.twig" %}
+    </div>
+
+
+    <div class="row">
+        <div id="espaceVertical" class="col-sm-2">
+        </div>
+
+        <div id="ContenuProf" class="col-sm-10">
+            <div>
+                <h1 id="titre" class="text-center">Mes documents</h1>
+                <!-- {% include "professeur/espace/baseBanniere.html.twig" %} -->
+            </div>
+
+            <!-- Le contenu de l'espace ici -->
+            <div class="row">
+
+                <div class="mt-5 col-sm-12 ">
+
+                    <table class="table">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Nom du fichier</th>
+                            <th scope="col">Description du fichier</th>
+                            <th scope="col">Fichier</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for fichier in fichiers %}
+                                <tr>
+                                    <td>{{ fichier.id }}</td>
+                                    <td>{{ fichier.titreFichier }}</td>
+                                    <td>{{ fichier.descrFichier }}</td>
+                                    <td>{{ fichier.fichier }}</td>
+                                    <td>
+                                        
+                                        <a class="btn btn-danger" href="{{ path('fichiers_delete', {'idDoc': fichier.id, 'id': professeur.id}) }}">Supprimer</a>
+                                        
+                                        
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="5">Aucun fichier trouvé</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+
+                </div>
+
+                <div class="col-sm-12">
+
+                        <div>{{ include('professeur/espace/fichiers/new.html.twig', {'button_label': 'Update'}) }}</div>
+                    
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="{{ asset('js/espaceProf/pageCompte.js') }}"></script>
+
+{% endblock body %}
+
+
+
+
+
+
+

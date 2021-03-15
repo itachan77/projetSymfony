@@ -1,0 +1,9 @@
+.myVideo {
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.myScroll {
+    overflow:scroll;
+    height:580px;
+}

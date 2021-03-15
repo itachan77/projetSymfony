@@ -1,0 +1,99 @@
+    {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/espaceProf/menu_espace.css') }}">
+    {% endblock stylesheets %}
+    
+
+    {% block body %}
+
+        <div id="permMenu" class="card mx-auto" style="width: 18rem;">
+            <div class="row h3 text-center text-white pt-2">
+                <div class="col-6">
+                    <i id="sand" class="fas fa-bars"></i>
+                    <i id="sandVue" class="fas fa-eye-slash"></i>
+                </div>
+    
+                <div class="col-6">
+                    <i id="doigt" class="fas fa-angle-left"></i>
+                    <i id="doigtVue" class="far fa-eye-slash"></i>
+                </div>
+            </div>
+        </div>
+
+        <div id="permMenu2" class="dimPerso cible list-group list-group-flush nav nav-pills nav-fill mx-auto">
+            <div class="row h3 text-center text-white pt-2">
+                <div class="col-12">
+                    <i id="sand2" class="fas fa-bars"></i>
+                    <i id="sandVue2" class="fas fa-eye-slash"></i>
+                </div>
+                <hr>
+                <div class="col-12 mt-3">
+                    <i id="doigt2" class="fas fa-angle-left"></i>
+                    <i id="doigtVue2" class="far fa-eye-slash"></i>
+                </div>
+            </div>
+        </div>
+
+        <div id="menuImgTitre" class="card mx-auto" style="width: 18rem;">    
+            <div id="Titre" class="card-body">
+            <img id="Img" src="{{ asset('images/professeurs/'~ professeur.photoProf) }}" class="card-img-top rounded-circle" alt="Image de {{professeur.nomProf}}" width='140' height='250'>
+            <h5 class="card-title">{{professeur.nomProf}} {{professeur.PrenomProf}}</h5>
+            <p class="card-text">Bienvenue sur l'espace professeur</p>
+            </div>
+        </div>
+
+
+            
+        <ul id="menuComplet" class="list-group list-group-flush nav nav-pills nav-fill mx-auto">
+
+            <li class="list-group-item">
+                <a class="nav-link" href="{{path('accueil_professeur', {'id':professeur.user.Id})}}"><i class="fas fa-home pr-1"></i>Accueil</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="{{path('PageCompte', {'id':professeur.Id})}}"><i class="far fa-id-card pr-1"></i>Mon compte</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="{{path('PageEleves', {'id':professeur.Id})}}"><i class="fas fa-user-friends pr-1"></i>Mes élèves</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="{{path('PageCalend', {'id':professeur.Id})}}"><i class="far fa-calendar-alt pr-1"></i>Mon emploi du temps</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="{{path('PageDocuments', {'id':professeur.Id})}}"><i class="fas fa-file-contract pr-1"></i>Mes documents</a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="{{path('PageVideos', {'id':professeur.Id})}}"><i class="fas fa-file-video pr-1"></i>Nos vidéos</a>
+            </li>
+        </ul>
+            
+
+    <div id="cont">
+        
+        <ul id="menuReduit" class="dimPerso cible list-group list-group-flush nav nav-pills nav-fill mx-auto">
+
+            <li class="list-group-item">
+                <a class="nav-link dim" href="{{path('accueil_professeur', {'id':professeur.user.Id})}}"><i class="fas fa-home pr-1"></i></a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link dim" href="{{path('PageCompte', {'id':professeur.Id})}}"><i class="far fa-id-card pr-1"></i></a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link dim" href="{{path('PageEleves', {'id':professeur.Id})}}"><i class="fas fa-user-friends pr-1"></i></a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link dim" href="{{path('PageCalend', {'id':professeur.Id})}}"><i class="far fa-calendar-alt pr-1"></i></a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link dim" href="{{path('PageDocuments', {'id':professeur.Id})}}"><i class="fas fa-file-contract pr-1"></i></a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link dim" href="{{path('PageVideos', {'id':professeur.Id})}}"><i class="fas fa-file-video pr-1"></i></a>
+            </li>
+        </ul>
+
+    </div>
+
+    <script src="{{ asset('js/espaceProf/menu.js') }}"></script>
+    {% endblock body %}
+
+    
+

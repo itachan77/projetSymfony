@@ -1,0 +1,85 @@
+{% block title %}ESPACE ADMINISTRATEUR{% endblock %}
+
+
+{% extends 'haut_admin.html.twig' %}
+
+{% block body %}
+
+
+
+<div class="container">
+
+            <h1 class="text-center">Adminitration de l'espace SCUOLA</h1>
+            <h2 class="text-center">Liste des professeurs</h2>
+
+
+
+            <div class="text-center mb-5"><a class="btn btn-primary none" href="{{ path('prof_insert')}}">AJOUTER UN NOUVEAU PROFESSEUR</a></div>
+
+            <div class="table-responsive-lg">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr class="text-center">
+                        <th scope="col"><a class="text-light" href="{{ path('deselectionProf')}}">S</a></th>
+                        <th scope="col">PHOTO</th>
+                        <th scope="col">NOM</th>
+                        <th scope="col">PRENOM</th>
+                        <th scope="col">COURS</th>
+                        <th scope="col">PARAMETRES</th>
+                    </tr>
+                </thead>
+
+            <tbody>
+
+            {% for row in professeurs %}
+                <tr>
+                    <th class="text-center" scope="row">
+                        {% if row.selectProf != 0 %}
+                        {% set selection = 'checked' %}
+                        {% else %}
+                        {% set selection = '' %}
+                        {% endif %}
+                        <label for="check{{row.Id}}"></label>
+                        
+                        <form name="check" action="">
+
+                        <a href="{{ path('selectionProf', {'id':row.Id} )}}"><input type="checkbox" {{selection}} id="check{{row.Id}}"></a>
+                        
+                        </form>
+                    </th>
+
+                    <td class="text-center"><img width="50" class="img-thumbnail" src="{{ asset('images/professeurs/'~ row.photoProf) }}"></img></td>
+                    <td class="text-center">{{ row.nomProf }}</td>
+                    <td class="text-center">{{ row.prenomProf }}</td>
+                    <td class="text-center">
+                        {% if row.categories is not null %}                        
+                            {% for categ in row.categories %}
+                                <div>{{categ.nomCategorie}}</div>
+                            {% endfor %}
+                        {% endif %}
+                        
+                    </td>
+                    
+                    <td class="row">
+                        {% if is_granted('ROLE_ADMIN') %}
+                        <div class="mx-auto row">
+                                <div class="col-sm-12 col-md-4"><a title="VOIR" class="btn btn-success none" href="{{ path('show', {'id':row.Id} )}}">V</a></div>
+                                <div class="col-sm-12 col-md-4"><a title="MODIFIER" class="btn btn-warning none" href="{{ path('prof_update', {'id':row.Id} )}}">M</a></div>
+                                <div class="col-sm-12 col-md-4"><a title="SUPPRIMER" class="btn btn-danger none" href="{{ path('prof_delete', {'id':row.Id} )}}">S</a></div>
+                        
+                        </div>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+
+            </table>
+
+            
+            </div>
+</div>
+
+
+
+
+{% endblock %}

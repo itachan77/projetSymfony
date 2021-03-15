@@ -1,0 +1,29 @@
+
+            {{form_start(formMdp)}}
+            {{form_errors(formMdp)}}
+
+            <div class="w-25 mx-auto" id="widgetPw">
+
+            {{form_label(formMdp.password,"Merci de saisir votre nouveau mot de passe", {'label_attr': {'class': ''}}) }}
+            {{form_widget(formMdp.password,{'attr':{'class':'form-control text-center'}})}}
+            {{form_errors(formMdp.password)}}
+            </div>
+
+
+            <div class="text-center mt-2">{{form_row(formMdp.modifier,{'attr':{'class':'btn btn-danger'}})}}</div>
+            
+            {{form_end(formMdp)}}
+
+
+            <div class="text-center mt-5">
+                {% for message in app.session.flashbag.get('message') %}
+                <span class="mt-5 alert alert-{{ app.session.get('statut')}}">
+                    {{message}}
+                </span>
+                {% endfor %}
+            </div>
+        
+
+    
+    <script src="{{ asset('js/espaceProf/pageMdp.js') }}"></script>
+

@@ -1,0 +1,59 @@
+//app.js
+import React, {useEffect, useState} from 'react';
+import SearchBar from './SearchBar';
+import youtube from './apis/youtube';
+import VideoList from './apis/VideoList';
+import VideoDetails from './apis/VideoDetails';
+import myScroll from './apis/VideoItem.css';
+import useVideos from './hooks/useVideos.js';
+
+
+const IndexTube = () => {
+    const [selectedVideo, setSelectedVideo] = useState(null);
+    
+    //on utilise notre useVideos.js : On doit spécifier search (valeur ddéjà retournée dans useVideos)
+    //car on doit en faire mention dans notre onFormSubmit
+    const [videos, search] = useVideos('buildings');
+
+    //api : c'est une clef qui nous permet de récupérer les données déjà disponibles ailleurs et les exploiter 
+    //le get a déjà toute l'adresse. Il suffit de rajouter search https://www.googleapis.com/youtube/v3/search
+    //ce lien remplace une requete SQL c'est à dire qu'il fait recherche ce qu'on veut
+    // q veut dire query. q permet donc de rechercher ce equi a été saisi dans l'input
+    //context.js = redux (sauf que redux est utilisé pour les très gros projets)
+    //q est un paramètre de youtube qui pourrait se mettre dans le module youtube.js mais qui est ici
+    //car on ne connait pas déjà la valeur de q puisque (sa valeur est ce que nous tapons dnas la barre de recherche)
+//https://www.youtube.com/embed/
+
+    //une fois que l'application est montée (useEffect), on demande à ce que l'affichage de la videos par default
+    //soit la première videos (item[0])
+
+    useEffect(()=> {
+        setSelectedVideo(videos[0])
+    }, [videos])
+
+    const onVideoSelect = (video) => {
+        // this.state.selectedVideo
+        console.log('depuis notre app', video);
+        setSelectedVideo(video)
+    }
+
+        return (
+            <div className="container mt-5">
+                <SearchBar onFormSubmit={search}/>
+                J'ai {videos.length} vidéos avec useVideos.js
+                
+                <div className="row">
+                    <div className="col-12 col-lg-8">
+                        <VideoDetails video={selectedVideo}/>
+                    </div>
+                    <div className="col-lg-4 col-12 myScroll">
+                        <VideoList onVideoSelect={onVideoSelect} videos={videos}/>
+                    </div>
+                    
+                </div>
+            </div>
+        );
+    
+}
+
+export default IndexTube;

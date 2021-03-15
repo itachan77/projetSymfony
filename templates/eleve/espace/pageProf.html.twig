@@ -1,0 +1,92 @@
+{% extends 'header_scuola.html.twig' %}
+
+{% block title %}ESPACE ELEVE DE LA SCUOLA{% endblock title %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/espaceEleve/style_espace.css') }}">
+{% endblock stylesheets %}
+
+
+{% block body %}
+    
+
+<div class="container-fluid mt-2">
+
+        <div class="row">
+        
+            <div id="espaceVertical" class="col-sm-2">
+            </div> 
+
+            <div id="ContenuElev" class="col-sm-10">
+                    <h1 id="titre" class="text-center">
+                        {% if eleve.professeur.count > 0 %}
+                        Mes professeurs
+
+                        {% else %}
+                        Mon professeur
+                        {% endif %}
+                    </h1>
+
+                <!-- Le contenu de l'espace ici -->
+            
+                    <div class="marketting mt-5">
+                        <div class="mt-5 w-50 mx-auto">
+                            <div class="row text-center">
+                                {% for row in eleve.professeur %}
+                                <div class="mt-5 border border-black mx-auto">
+                                    <img class="rounded-circle" src="{{ asset('images/professeurs/'~ row.photoProf) }}" alt="Generic placeholder image" width="140" height="140">
+                                    <h2>{{row.nomProf}} {{row.prenomProf}}
+                                        <div class="h5 mt-4">
+                                                
+                                                <!-- affiche la liste de tous les groupes du professeurs quels qu'ils soient -->
+                                                {% for row in row.groupe %}
+
+                                                    <!-- or, on veut afficher la liste des groupes
+                                                    où seul l'élève figure. il faut donc une condition  
+                                                    si l'élève fait partie d'un de tous ces groupes, affiche 
+                                                    que les groupes dont il fait partie-->
+                                                    {% if eleve in row.eleves %}
+                                                        
+                                                        <!-- n'affiche que les groupes où figure l'élève -->
+                                                        <a href="" title="Groupe dont tu fais partie">
+                                                            <div class="btn btn-warning">{{row.nomGroupe}}</div>
+                                                        </a>
+
+                                                        <div class="h6" id="cacheEleve">
+
+                                                            {% for ligne in row.eleves %}
+
+                                                                <div class="">
+                                                                    <div class="text-danger">{{ligne.nomEleve}} {{ligne.prenomEleve}}</div>
+                                                                </div>
+                                                            {% endfor %}
+                                                            
+
+                                                        </div>
+                                                    
+                                                    {% endif %}
+
+                                                {% endfor %}
+
+                                            
+
+                                        </div>
+
+                                    </h2>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+
+
+
+</div>
+
+{% endblock body %}

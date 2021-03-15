@@ -1,0 +1,45 @@
+{% extends 'header.html.twig' %}
+
+{% block title %}Modifier une fiche{% endblock %}
+
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/style_adform.css') }}">
+{% endblock %}
+
+
+{% block body %}
+
+
+    
+
+<div class="text-center h1 mt-5">
+    Voir l'espace professeur
+</div>
+
+<div class="marketting mt-5">
+    <div class="row text-center">
+        {% for row in professeurs %}
+        <div class="col-sm-4 mt-5 border border-black">
+
+            <img class="rounded-circle" src="{{ asset('images/professeurs/'~ row.photoProf) }}" alt="Generic placeholder image" width="140" height="140"> 
+            
+            <h2>{{row.nomProf}} {{row.prenomProf}}</h2>
+
+            <p><a class="btn btn-secondary" href="{{ path('voirEspaceProf', {idEspace: 
+                row.id
+            }) }}" role="button">Voir l'espace</a></p>
+
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+
+
+
+
+
+{% endblock body %}

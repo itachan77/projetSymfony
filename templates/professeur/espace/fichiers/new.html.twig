@@ -1,0 +1,49 @@
+{{form_start(form_insert)}}
+{{form_errors(form_insert)}}
+
+
+<div id="formCard" class="card mx-auto" style="width: 25rem;">
+    <div id="entete" data-target="#corps" class="card-header">
+        <h3 class="text-center">AJOUTER UN FICHIER</h3>
+    </div>
+    <ul id="corps" class="list-group list-group-flush">
+
+        <li class="list-group-item">
+            {{form_label(form_insert.fichier,"Fichier :")}}
+            {{form_widget(form_insert.fichier)}}
+            {{form_errors(form_insert.fichier)}}
+        </li>
+
+
+        <li class="list-group-item">
+            {{form_label(form_insert.titreFichier,"Titre du fichier:", {'label_attr': {'class': 'lb_perso'}}) }}
+            {{form_widget(form_insert.titreFichier,{'attr':{'class':'form-control'}})}}
+            {{form_errors(form_insert.titreFichier)}}
+        </li>
+
+
+        <li class="list-group-item">
+            {{form_label(form_insert.descrFichier,"Description du fichier:")}}
+            {{form_widget(form_insert.descrFichier,{'attr':{'class':'form-control'}})}}
+            {{form_errors(form_insert.descrFichier)}}
+        </li>
+
+
+
+        <li class="list-group-item">
+            <div class="mx-auto text-center">{{form_row(form_insert.Ajouter,{'attr':{'class':'btn btn-dark'}})}}</div>
+        </li>
+
+
+
+    </ul>
+</div>
+
+
+{{ form_end(form_insert) }}
+
+
+
+                        
+    
+

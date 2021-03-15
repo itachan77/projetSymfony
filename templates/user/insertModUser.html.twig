@@ -1,0 +1,70 @@
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/style_adform.css') }}">
+{% endblock %}
+
+<div class="fermeture">
+
+
+<div class="btn btn-warning text-dark btn-js"><a href="#" title="MODIFIER UN UTILISATEUR" class="text-white">M</a>
+
+
+<div class="overlay">
+
+    <div class="popup">
+            
+        
+                <form name="user" method="post" action="{{ path('updateUserPop', {'id':row.id} )}}">
+
+                    <div class="container">
+                    
+                        <div class="row no-gutters">
+                    
+                            <div class="row col-sm-12 bg-warning border border-primary rounded mx-auto">
+                            
+                                <div class="col-sm-5 mt-3 text-center">
+                                    <h1>MODIFIER UN UTILISATEUR</h1>
+                                </div>
+                    
+                                <div class="col-sm-4 mb-3 ml-auto">
+                                    <div><button type="submit" id="user_createUser" name="user[createUser]" class="modifier_user">Modifier le compte utilisateur</button></div>
+                                </div>
+
+                                <div class="col-sm-1 ml-auto">
+                                    <div class="fas fa-times"></div>
+                                </div>
+                            
+                            </div> 
+                    
+                            <div class="row col-sm-12 cadrep mx-auto">
+                    
+                                    <div class="form-group mx-auto w-50">
+                    
+                                    
+                                    <label class="h5 mt-3 required" for="user_username">Identifiant :</label>
+                                    
+                                    <input type="text" id="user_username" name="user[username]" required="required" maxlength="180" class="form-control w-100" value="{{row.username}}">
+                    
+                                    <label class="h5 mt-3 required" for="user_roles">Rôles :</label>
+                                    <select id="user_roles" name="user[roles][]" required="required" class="form-control" multiple="multiple"><option>ROLE_USER</option><option>ROLE_ADMIN</option><option>ROLE_ELEVE</option><option>ROLE_PROFESSEUR</option><option>ROLE_SUPER_ADMIN</option></select>
+                    
+                                    <input type="hidden" id="user__token" name="user[_token]" value="wSIbT-tzNXar4Ix5ZfNe_JLjJMARJAKv08YXUVMho-g"> 
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            
+
+
+
+
+        
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+

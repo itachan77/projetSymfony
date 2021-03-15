@@ -1,0 +1,93 @@
+{% extends 'header_scuola.html.twig' %}
+
+{% block title %}ESPACE ELEVE DE LA SCUOLA{% endblock title %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/espaceEleve/style_espace.css') }}">
+{% endblock stylesheets %}
+
+
+{% block body %}
+    
+
+<div class="container-fluid mt-2">
+
+    <div class="row">
+        <div id="espaceVertical" class="col-sm-2">
+        </div>
+
+        <div id="ContenuElev" class="col-sm-10">
+            <div>
+                <h1 id="titre" class="text- center">Mon planning</h1>
+                
+            </div>
+
+            <!-- Le contenu de l'espace ici -->
+            <div class="row">
+
+                <div id="calendrier" class="col-sm-10"></div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+{% block javascript %}
+
+
+<script>
+
+window.onload = () => {
+    let calendarElt = document.querySelector("#calendrier");
+    let recupEvents = document.querySelector("#events");
+
+
+    let calendar = new FullCalendar.Calendar(calendarElt, {
+        
+        dropAccept: '.cool-event',
+        drop: function() {
+        alert('dropped!');
+        },
+        
+        initialView : 'timeGridWeek',
+        locale:'fr',
+        timeZone: 'Europe/Paris',
+        headerToolbar: {
+            start: 'prev,next today',
+            center: 'title',
+            end: 'dayGridMonth, timeGridWeek,listMonth'
+        },
+        buttonText: {
+            today:    'Aujourd\'hui',
+            month:    'Mois',
+            week:     'Semaine',
+            day:      'Jour',
+            list:     'Liste',
+            
+        },
+        events:{{data|raw}},
+        editable: false, 
+        eventResizableFromStart:false
+    })
+
+    calendar.render();
+    
+    }
+
+
+</script>
+
+{% endblock javascript %}
+
+{% endblock body %}

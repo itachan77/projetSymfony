@@ -1,0 +1,47 @@
+{% extends 'header_scuola.html.twig' %}
+
+{% block title %}ESPACE ELEVE DE LA SCUOLA{% endblock title %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/espaceEleve/style_espace.css') }}">
+{% endblock stylesheets %}
+
+
+{% block body %}
+    
+
+<div class="container-fluid mt-2">
+
+        <div class="row">
+            <div id="espaceVertical" class="col-sm-2">
+            </div>
+
+            <div id="ContenuElev" class="col-sm-10">
+                <div>
+                    <h1 id="titre" class="text-center">Accueil</h1>
+                    
+                </div>
+
+                <!-- Le contenu de l'espace ici -->
+                <div class="row">
+
+                    <div class="mt-5 col-sm-12 ">
+
+                        <div class="text-center">
+                            <h1>BIENVENUE {{user.eleve.prenomEleve}}</h1>
+                            <h5>L'espace élève regroupe les informations qui vous sont propres.</h5>
+                            <h5>Vous pouvez consulter les documents mis à votre disposition par votre professeur et gérer vos informations personnelles.</h5>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+</div>
+
+{% endblock body %}

@@ -1,0 +1,386 @@
+#letitre {
+    font-family: 'Charm', cursive;
+    font-size:70px;
+}
+
+body {
+    z-index:1;
+}
+
+.radius-perso {
+border-radius:0 0 10px 10px;
+}
+
+.box-perso {
+    border-radius:5px;
+    border:1px solid black;
+    overflow-wrap: break-word;
+}
+
+.lg-perso {
+    width:10%;
+}
+
+.areaperso {
+    width:100%;
+    height:250px;}
+
+/********************************************INDEX***************************************************/
+
+/* #blocImage1 est une boite centrée mesurant 1000px */
+/* ATTENTION : BIEN SPECIFIER LA HAUTEUR SINON NE MARCHERA PAS*/
+
+#index #blocImage1 {
+position:relative;
+width:1000px;
+overflow:hidden;
+height:300px;
+}
+
+/* les img sont dans la boite (#blocImage1 mesurant 1000px).
+Elles ont la meme largeur. Toutes les images qui sortiront de la boite seront invisibles grace
+à overflow hidden */
+#index #blocImage1 img {
+position:absolute;
+text-align:center;
+border-radius:30px;
+top:0;left:0; opacity:0;}
+
+#index #blocImage1 img:first-child {opacity:1;}
+
+#imgSuppr{
+    border:3px solid black;
+    border-radius:10px;}
+
+#titre_accueil {
+    color:black;
+
+
+}
+#titre_accueil .bienvenue {
+    font-weight:bold;
+}
+
+#titre_accueil .bienvenue1 {
+    text-align:right;
+    font-weight:bold;
+}
+#titre_accueil .ecole{
+    font-size:40px;
+    font-weight:bold;
+}
+
+#section_piano{
+
+
+    margin:200px auto 0 auto;
+
+}
+
+#bande{
+margin-top:200px;
+}
+
+#bande img {
+box-shadow:5px 5px 5px black;
+border-radius:20px;
+}
+
+/***********************************************ACTUALITE***************************************************/
+
+#actualite .boite_perso {
+    background-color:rgb(213, 240, 247);
+    border-radius:5px;
+    width:100px;
+}
+
+
+
+.d-block {
+    border-radius:50px;
+}
+
+
+/***********************************************LES COURS***************************************************/
+
+
+#lescours {
+    font-family:Arial;
+    color:white;
+    text-align:justify;
+    background-color: #014464;
+    background:linear-gradient(#016898,#014464);
+    
+    
+    margin-top:220px;
+    padding:35px;
+    font-size:150%;
+    
+    border-radius:10px;
+    border-style:groove;
+    box-shadow:3px 3px 20px black;
+    overflow:auto;
+    word-wrap:break-word;
+    }
+
+#lescours h1 {
+    text-align:center;
+    font-size:200%;
+    text-shadow:3px 3px 3px silver;
+    margin-bottom:20px;
+    }
+
+
+#lescours #boite_ajout.boite_perso {
+    background-color:rgb(253,255,230);
+    border-radius:5px;
+    width:100px;
+}
+
+
+#coursHaut {
+    background-color:grey;
+}
+
+#coursHaut .champs {
+    font-size:20px;
+    font-weight: bold;
+}
+
+#coursDetail {
+    
+
+    
+    text-align:center;
+    font-family: 'Charm', cursive;
+    border:1px solid black;
+    box-shadow:5px 5px 5px black;
+    font-size:30px;
+    background-color:rgb(252,249,228);
+    color:green;
+    font-weight:bold;
+    
+}    
+
+#coursHaut {
+    background-color:rgb(209,209,209);
+}
+
+#coursAll {
+    background-color:rgb(248,248,248);
+    
+}
+
+#coursAll a {
+    color:black;
+}
+
+#coursAll a:hover {
+    color:red;
+}
+
+
+
+#coursAll .coursAlld {
+    margin-top:20px;
+    font-size:20px;
+    color:burlywood;
+}
+
+#coursAll .coursAlld:hover {
+    background-color:darkgrey;
+    cursor:pointer;
+    
+    
+}
+
+#coursBas {
+    background-color:rgb(248,248,248);
+    font-size:20px;
+}
+
+#coursBox {
+    border:3px solid green;
+    box-shadow:8px 8px 8px 8px black;
+}
+
+
+
+
+/*****************************************************LES PROFESSEURS*****************************************************/
+/*
+#profText {
+    margin-top:200px;
+}
+.champs {
+    font-weight:bold;
+    border-style:groove;
+    box-shadow:2px 2px 20px #014464;
+    font-family:Garamond;
+    font-size:2.8em;
+    line-height:1em;
+    border-radius:10px;
+    }
+*/
+
+#profText {
+font-size:40px;
+font-weight: bold;
+
+}
+
+#profDetail {
+    background-color:white;
+    box-shadow:2px 2px 20px #014464;
+    border:1px solid black; 
+}    
+
+#profAll {
+    background-color:rgb(248,248,248);
+}
+
+#profAll .profAlld {
+    
+    font-size:20px;
+    color:burlywood;
+    margin:20px 20px;
+    
+}
+
+.profAlld a {
+    color:black;
+}
+
+.profAlld a:hover {
+    color:red;
+    text-decoration:none;
+}
+
+#profAll .profAlld:hover {
+    background-color:darkgrey;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+#profBas {
+    background-color:darkgrey;
+    font-size:20px;
+    border-radius:40px 0 40px 0px;
+    
+}
+/*****************************************************************************CONTACT**************************************************************/
+
+
+    #contact {
+        background-image:url('../../images/contact/background.png');
+        background-repeat:no-repeat;
+        background-position:right;
+        z-index:3;
+    }
+
+    legend {
+        display: block;
+        padding-inline-start: 2px;
+        padding-inline-end: 2px;
+        font-family: 'Charm', cursive;
+        font-size:40px;
+        color:black
+    }
+    
+    .areaperso {
+        height:160px;
+    }
+
+    #indic {
+        width:100%;
+        height:50px;
+        line-height:2.5;
+    }
+
+/**************************************SCUOLA****************************************/
+
+
+
+#map iframe{
+    width:80%;
+    height:500px;
+    border:2px solid black;
+    box-shadow:5px 5px 5px black;
+}
+
+.adresse {
+    
+    background-color:black;
+    color:white;
+    font-size:20px;
+
+}
+
+#adresses:hover {
+    color:red;
+    cursor:pointer;
+}
+
+#bus615 {
+    width:500px;
+}
+
+#bus1:hover {
+color:red;
+cursor:pointer;
+}
+
+.adresse .busimg {
+    width:30px;
+}
+
+/**************************************CINDIV****************************************/
+
+#ma_modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 350ms;
+}
+* { box-sizing: border-box; }
+.conteneur { max-width: 1000px; margin: 0 auto; padding: 20px; border: 1px solid #dedede; }
+img { max-width: 100%; width: 98%; margin: 1%; }
+
+#controls { display: flex; justify-content: space-between; margin: 0; padding: 0; }
+#controls li { padding: 10px 25px; width:110px; color: white; list-style: none; cursor: pointer; }
+body { position: relative; }
+#modal-image { text-align: right; position: fixed; width: 70%; margin: 0 auto 0 auto; top: 30px; left: 50%; transform: translate(-50%, 0); }
+#modal-image img { border: 20px solid #333; border-radius: 10px }
+#modal-image i { font-size: 21px; cursor: pointer; }
+
+
+
+#concert #comConcert {
+    padding:50px 50px 50px 50px;
+    box-shadow:5px 5px 5px black;
+    color:black;
+    font-weight:bold;
+    font-size:20px;
+    border:1px solid black;
+    
+    background-image:url('../../images/scuola/concerts/background.jpg');
+
+}
+
+#concert.margin-perso{
+    margin-top:150px;
+}
+
+
+#concert #boite_ajout .boite_perso {
+    background-color:rgb(253,255,230);
+    border-radius:5px;
+}
+
+#fenetreScroll {
+    height:300px;
+    overflow-x:scroll;
+}

@@ -1,0 +1,113 @@
+{% extends 'header_scuola.html.twig' %}
+
+{% block title %}
+La Scuola - Actualité
+{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/scuola/style_sbody.css') }}">
+{% endblock %}
+
+
+{% block body %}
+
+
+<div class="container-fluid bg-white radius-perso">
+
+
+    <!--Le formulaire de création des articles-->
+    {% if is_granted('ROLE_ADMIN') %} 
+
+    <div class="col-sm-12 bg-warning w-100 mx-auto mb-5 col-md-6 w-50">
+        
+        {{form_start(form_update)}}
+        {{form_errors(form_update)}}
+        <div class="row mx-auto">
+            <div class="col-sm-12 w-100 mx-auto col-md-3 w-50">
+                {{form_label(form_update.mois, "Mois:", {'label_attr': {'class': 'col-sm-6 col-form-label'}}) }}
+                {{form_widget(form_update.mois,{'attr':{'class':'form-control'}})}}
+                {{form_errors(form_update.mois)}}
+            </div>
+
+            <div class="col-sm-12 w-100 mx-auto col-md-3 w-50">
+                {{form_label(form_update.annee,'Annee:', {'label_attr': {'class': 'col-sm-6 col-form-label'}}) }}
+                {{form_widget(form_update.annee,{'attr':{'class':'form-control'}})}}
+                {{form_errors(form_update.annee)}}
+            </div>
+
+            <div class="col-sm-12 w-100 mx-auto col-md-3 w-50">
+                {{form_label(form_update.couleur,'Couleur:', {'label_attr': {'class': 'col-sm-6 col-form-label'}}) }}
+                {{form_widget(form_update.couleur,{'attr':{'class':'form-control'}})}}
+                {{form_errors(form_update.couleur)}}
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="mx-auto col-md-10">
+                {{form_label(form_update.contenuActu,'Contenu:', {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
+                {{form_widget(form_update.contenuActu,{'attr':{'class':'areaperso'}})}}
+                {{form_errors(form_update.contenuActu)}}
+
+                {{form_row(form_update.modifier,{'attr':{'class':'btn btn-dark w-100 mx-auto'}})}}
+
+                
+                {{form_end(form_update)}}
+
+            </div>
+        </div>
+    
+
+    </div>
+
+    {% endif %}
+
+
+
+
+
+
+    <!--L'actualité venant de la base de données-->
+        <!--Une boucle du tableau actualiteall permet d'afficher toutes les actualités de la base de données-->
+    <article>
+
+            
+        {% for row in actualiteall %}
+
+        <div class="row">
+                <div class="col-sm-12 col-md-4">
+
+                </div>
+
+                <div class="col-sm-12 text-center w-75 px-2 pt-2 mx-auto box-perso mb-5 col-md-4" style="background-color:{{row.couleur}};">
+                    <h1>Actualité {{row.mois}} {{row.annee}}</h1>
+                    <p>{{row.contenuActu|raw|nl2br}}</p>
+                </div>
+                <div class="col-sm-12 mb-5 col-md-4">
+                    {% if is_granted('ROLE_ADMIN') %} 
+                    <button class="btn btn-warning">Modifier</button>
+                    <a class="btn btn-danger" href="{{ path('actualite_delete', {'id':row.id} )}}">Supprimer</a>
+                    {% endif %}
+                </div>
+        </div>
+
+        {% endfor %}
+    </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+{% endblock body %}

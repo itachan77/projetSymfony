@@ -1,0 +1,481 @@
+
+/*******************************************************CSS DU FORMULAIRE ************************************************/
+
+
+
+
+
+.titre {
+    width:850px;
+    display:flex;
+    margin:auto;
+}
+
+    #conteneur_bois
+    {
+
+        background-image:url('../images/bois.png');
+        width:1230px;
+        height:780px;
+        font-family:arial;
+        margin:auto;
+        padding-top:35px;
+        border-radius:50px;
+        border:5px solid black;
+        margin-top:10px;
+        
+    }
+
+    #contenir
+        {
+        
+        width:1200px;
+        
+        font-family:arial;
+        margin:auto;
+
+        }                    
+
+    
+    #le_formulaire:first-child {
+                        
+        background-image:url(../images/background2.png);
+        background-repeat:repeat;
+        padding:0 10px 10px 10px;
+        border:1px solid black;
+        height:700px;
+        
+        
+        box-shadow:10px;
+        }
+            
+    .legend-global-formulaire {
+    font-size:35px;
+    font-weight: bold;
+    text-align:center;
+    margin-bottom:20px;
+    }                    
+    
+    .select_cours {
+    display:block;
+    
+    margin:0px auto auto auto;
+    text-align:center;
+    font-size:25px;
+    font-weight: bold;
+    }
+
+    
+    .type_cours {
+        font-weight:bold;
+        font-size:40px;
+    }
+
+    .legendcategorie {
+    font-size:15px;
+    margin-bottom:0px;
+    text-align:center;
+    
+    }
+    
+    .legendeleve {
+    font-weight:bold;
+    font-size:1.3em;
+    color:black;
+    background-color:white;
+
+    }
+    
+    .legendeparametres {
+        font-weight:bold;
+        font-size:1.3em;
+        /*color:#FF00FF;*/
+        color:black;
+        text-align:center;
+        background-color:white;
+        }
+                        
+    .categorie {
+    font-size:20px;
+    
+    }
+    
+    .divfieldset {
+        z-index: 1;
+    }
+
+    .divfieldset fieldset{
+    width:355px;
+    border-radius:10px;
+    margin-top:40px;
+    z-index: 1;
+    }
+
+
+
+.divfieldsetp fieldset #mode_form {
+    mix-blend-mode:difference;
+    opacity : 1;
+    -moz-opacity : 0.1;
+    -ms-filter: "alpha(opacity=300)"; /* IE 8 */
+    filter : alpha(opacity=10); /* IE < 8 */
+}
+    
+
+#part3 .divfieldsetp .selection {
+    background-color:rgba(255, 255, 255, 1);
+    opacity: 1;
+}
+
+.divfieldsetp fieldset{
+        width:300px;
+        border-radius:10px;
+        mix-blend-mode:luminosity;
+        z-index: 3;
+        
+        }
+    
+    
+    .divfieldsetp fieldset input {
+    
+    margin-bottom:2px;
+    
+    }
+    
+    /* il faut donner une grande largeur à label pour que les champs input soient bien alignés après les avoir converti en display block */
+    .divfieldset fieldset label { 
+    display:inline-block;
+    width:90px;
+    }
+    
+    .pinstrument {
+        color:black;
+        font-weight:bold;
+        font-size:15px; 
+        
+    }
+    
+    .divfieldset_question {
+        width:35%;
+    }
+    
+    .divfieldset_question fieldset{
+    
+        border-style:inset;
+        border-color:black;
+        border-style:dotted;
+        }
+    
+    .divfieldset_question fieldset label {
+        display:inline-block;
+        width:130px;
+        
+    }
+    
+    .divfieldset_search fieldset {
+        margin-top:30px;
+        z-index:4;
+        
+    }
+    
+    .divfieldset_search .gridendeux {
+    width:60%;
+        display:grid;
+    grid-template-columns:50% 50%;
+    
+        
+    }
+    
+    
+    .divfieldset_search .width60 {
+        
+        margin-top:10px;
+    }
+    
+    .divfieldset_search .c1 {
+        display:block;
+        width:30%;
+        margin:auto;
+        }
+
+    
+    .divfieldset_search .gridendeux .a1 label, .b1 label, .c1 label {
+        display:inline-block;
+        width:130px;
+        font-size:15px;
+        font-weight: bold;
+    }
+    
+    .divfieldset_search .gridendeux input {
+        margin-bottom:2px;
+    }
+    
+    .divfieldset_search .c1 input[value="RECHERCHER"] {
+        display:block;
+        margin:2px auto 10px auto;
+        font-size:13px;
+        font-weight:bold;
+        padding:2px;
+        width:150px;
+        border-radius:5px;
+        box-shadow:2px 1px 1px black;
+    }
+    
+    
+    .divfieldset_search .c1 .suivprec {
+        display:flex;
+    }
+    
+    .valid_modifier {
+        width:385.09px;
+        margin:auto;
+
+
+    }
+
+    .valid_modifier button {
+        font-size:20px;
+    }
+
+    .valid_modifier button:hover {
+        background-color:rgb(113, 161, 115);
+    }
+
+    #mesblocs{
+    margin:auto;
+    display:grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    grid-gap:5px;
+    
+    }
+    
+    #mesblocs label{
+    font-size:15px;
+    font-weight: bold;
+        }
+
+    #part1 .legendeleve
+    {
+        font-weight:bold;
+        font-size:20px;
+    }
+    
+    #part2 .labelquestion {
+    width:180px;
+    }
+    
+    #part2 .instr1 {
+    margin-top:10px;
+        }
+
+    #part3 
+    {
+        
+        margin:0 auto 0 auto;
+        background-image:url(../images/bois.png);
+        
+        padding:20px;
+        color:white;
+        /* overflow:scroll; */
+
+        border:7px solid black;
+        border-radius:40px;
+        width:95%;
+        display:grid;
+        grid-template-columns: 20% 20% 20% 20% 20%;
+        grid-gap:2px;
+        height:20px;
+
+    }
+
+    details {
+        margin-top:-25px;
+        /*margin-bottom:20px; */
+
+        
+    }
+
+
+
+    
+
+    #part3 fieldset
+    {
+        
+        background-color:black;
+        color:white;
+        z-index: 4;
+
+    }
+
+    #part3 fieldset a
+    {
+        text-decoration:none;
+        color:white;
+        font-family:arial;
+    }
+
+    #part3 fieldset a:hover
+    {
+        
+        text-decoration:none;
+        
+        color:red;
+        font-weight: bold;
+        font-size:20px;
+       
+    }
+
+
+
+    
+    
+/*******************************************************CSS DE LA BOITE MAIL************************************************/
+
+#boite_mail_id {
+    border-radius:50px;
+    font-weight:bold;
+    font-size:30px;
+    color:white;
+    font-family:'Times New Roman', Times, serif;
+    margin-left:10px;
+    margin-right:10px;
+    border-bottom:7px solid black;
+    
+
+}
+
+#boite_mail{
+    border-radius:50px;
+    height:760px;
+    width:550px;
+    margin:auto;
+    background-image:url('../images/bois.png');
+    border:5px solid black;
+}
+
+#general {
+    display:grid;
+    grid-template-columns: 67% 25%;
+}
+
+
+
+#boite_mail form div label {
+    display:inline-block;
+    width:100px;
+    font-weight:bold;
+    font-size:25px;
+    margin-left:10px;
+    color:white;
+    
+}
+
+#boite_mail .p_message
+{
+    font-weight:bold;
+    font-size:25px;
+    margin-left:10px;
+    color:white;
+    margin-bottom:0px;
+
+}
+
+#boite_mail form div input {
+
+    font-size:20px;
+    width:400px;
+    margin-top:10px;
+    border-radius:10px;
+}
+
+#boite_mail form textarea {
+
+    font-size:20px;
+    width:520px;
+    margin-top:10px;
+    margin-left:10px;
+    border-radius:10px;
+}
+
+#boite_mail form input[type="submit"] {
+background-color:red;
+font-weight:bold;
+font-size:25px;
+display:block;
+
+margin:auto;
+
+
+}
+
+#boite_mail form input[type="submit"]:hover {
+    color:white;
+
+    }
+
+
+/****************************************************CSS SUR FORMULAIRE SPECIAL TWIG SYMFONY************************************************/
+
+
+.form_categorie {
+    font-size:25px;
+    font-weight:bold;
+}
+
+.form_nom {
+    width:180px;
+    font-weight:bold;
+    font-size:25px;
+    height:25px;
+}
+
+.form_prenom, .form_naiss {
+    width:200px;
+    font-size:20px;
+    height:25px;
+    margin-top:5px;
+}
+
+.form_adresse {
+    width:200px;
+    font-size:20px;
+    height:25px;
+    margin-top:5px;
+}
+
+.form_tel1, .form_tel2, .form_tel3, .form_tel4 {
+    width:111px;
+    font-size:20px;
+    height:25px;
+    margin-top:5px;
+}
+
+.form_mail {
+    width:200px;
+    font-size:20px;
+    height:25px;
+    margin-top:5px;
+    margin-bottom:5px;
+}
+
+
+.form_photo {
+    display:block;
+    width:300px;
+    margin-top:5px;
+}
+
+.form_info {
+    width:350px;
+    height:100px;
+    font-size:20px;
+}
+
+.form_inscr {
+    font-size:30px;
+    font-weight:bold;
+}
+
+
+

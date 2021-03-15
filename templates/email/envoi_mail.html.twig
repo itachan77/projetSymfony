@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        h1 {
+            text-align:center;
+            width:50%;
+            border:2px solid black;
+            box-shadow:2px;
+            background-color:rgb(212, 199, 219);
+        }
+
+    </style>
+    
+</head>
+
+<body>
+    <a href="{{ path('scuola_index') }}"><img src="{{ asset('images/logscuola.png') }}"></a>
+    <h1>MESSAGE DE LA SCUOLA</h1>
+
+    {{messageAenvoyer|nl2br}}
+    
+</body>
+</html>

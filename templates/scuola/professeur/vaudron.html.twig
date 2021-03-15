@@ -1,0 +1,106 @@
+{% extends 'header_scuola.html.twig' %}
+
+{% block title %}
+LA SCUOLA - VAUDRON
+{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/scuola/style_sbody.css') }}">
+{% endblock %}
+
+
+{% block body %}
+<div>
+    <img src="{{ asset('images/professeurs/professeur.png') }}" class="img-fluid" alt="professeur">
+</div>
+
+
+{% if is_granted('ROLE_ADMIN') %} 
+
+<div class="container">
+    <div class="row">
+        <a id="ajouter" class="btn btn-warning mx-auto mt-5">Modifier</a>
+    </div>
+
+    <div class="row">
+        <a id="masquer" class="btn btn-warning mx-auto mt-5">Masquer Modifier</a>
+    </div>
+
+
+    <div class="row mt-5">
+        <div id="boite_ajout" class="col-sm-10 mt-12 bg-warning mx-auto">
+            {{form_start(form_update)}}
+            {{form_errors(form_update)}}
+
+            {{form_label(form_update.titreProf,'Titre:', {'label_attr': {'class': 'col-sm-6 col-form-label'}}) }}
+            {{form_widget(form_update.titreProf)}}
+            {{form_errors(form_update.titreProf)}}
+
+            {{form_label(form_update.nomProf,'Nom:', {'label_attr': {'class': 'col-sm-6 col-form-label'}}) }}
+            {{form_widget(form_update.nomProf)}}
+            {{form_errors(form_update.nomProf)}}
+
+            {{form_label(form_update.prenomProf,'Prénom:', {'label_attr': {'class': 'col-sm-6 col-form-label'}}) }}
+            {{form_widget(form_update.prenomProf)}}
+            {{form_errors(form_update.prenomProf)}}
+
+            {{form_label(form_update.professionProf,'Profession :', {'label_attr': {'class': 'col-sm-6 col-form-label'}}) }}
+            {{form_widget(form_update.professionProf)}}
+            {{form_errors(form_update.professionProf)}}
+
+            {{form_label(form_update.descriptionProf,'Description :', {'label_attr': {'class': 'col-sm-6 col-form-label'}}) }}
+            {{form_widget(form_update.descriptionProf,{'attr':{'class':'areaperso'}})}}
+            {{form_errors(form_update.descriptionProf)}}
+
+            {{form_label(form_update.photoProf,'Photo:', {'label_attr': {'class': 'col-sm-6 col-form-label'}}) }}
+            {{form_widget(form_update.photoProf)}}
+            {{form_errors(form_update.photoProf)}}
+
+
+            {{form_row(form_update.Modifier,{'attr':{'class':'btn btn-dark w-100 mx-auto'}})}}
+
+            {{form_end(form_update)}}
+        </div>
+    </div>
+</div>
+    {% endif %}
+
+<div class="container-fluid mb-5">
+    <div id="letitre" class="text-center mt-2 mb-5">Nos professeurs</div>
+        <div class="container">
+            <div id="profBox">
+                <div id="profAll" class="p-2">
+                    <div class="profAlld"><i class="fas fa-plus ml-5 mr-3"></i><a href="{{ path('scuola_prof_italiano', {'id':1} )}}#Italiano">Raphael Italiano</a></div>
+                    <div class="profAlld"><i class="fas fa-plus ml-5 mr-3"></i><a href="{{ path('scuola_prof_adel', {'id':2} )}}#Adel">Adel</a></div>
+                    <div class="profAlld"><i class="fas fa-plus ml-5 mr-3"></i><a href="{{ path('scuola_prof_hemmo', {'id':3} )}}#Hemmo">Agathe Hemmo</a></div>
+                    <div id="{{enr_prof.nomProf}}" class="profAlld"><i class="fas fa-minus ml-5 mr-3"></i><a class="h1" href="">Eric Vaudron</a></div>
+                        <div id="profDetail" class="row mx-auto">
+                            <div id="profHaut" class="col-sm-12">
+                                <div class="row">
+                                    <div id="profImg" class="col-sm-6">
+                                        <img src="{{ asset('images/professeurs/'~ enr_prof.photoProf) }}" class="w-75 rounded mx-auto d-block" alt="{{enr_prof.nomProf}} {{enr_prof.prenomProf}}"/>
+                                    </div>
+                                    <div id="profText" class="text-center col-sm-5">
+                                        <p>{{enr_prof.nomProf|upper}}</p>
+                                        <p>{{enr_prof.prenomProf|capitalize}}</p>
+                                        <p>Professeur de  {{enr_prof.professionProf|capitalize}}</p>
+                                    </div>
+
+                                </div>
+                            </div>
+    
+                            <div id="profBas" class="p-4 col-sm-12">
+                                {{enr_prof.descriptionProf|raw|nl2br}}
+                            </div>
+                        </div>
+                    <div class="profAlld"><i class="fas fa-plus ml-5 mr-3"></i><a href="{{ path('scuola_prof_luspinsky', {'id':5} )}}#Luspinsky">Mathias Luspinsky</a></div>
+                    <div class="profAlld"><i class="fas fa-plus ml-5 mr-3"></i><a href="{{ path('scuola_prof_rozand', {'id':6} )}}#Rozand">Laurent Rozand</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{ asset('/js/scuola/profsPage.js') }}"></script>
+<script src="{{ asset('/js/scuola/professeur.js') }}"></script>
+{% endblock %}

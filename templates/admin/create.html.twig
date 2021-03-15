@@ -1,0 +1,328 @@
+{% extends 'haut_admin.html.twig' %}
+{% block title %}Création d'une fiche{% endblock %}
+
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/style_adform.css') }}">
+{% endblock %}
+
+
+
+{% block body %}
+<div class="container-fluid">
+        
+    <div class="container pb-5">
+
+        <div id="myForm" class="ml-5">
+
+            {{form_start(form_insert)}}
+            {{form_errors(form_insert)}}
+            
+                <div class="titre mt-5 bg-success mr-3 row">
+
+                    <div class="col-md-4">
+                    </div>
+
+                        <div class="col-sm-12 text-center col-md-4">
+                            <h1>AJOUTER UN ELEVE</h1>
+                        </div>
+                        
+                        <div class="col-sm-12 text-center col-md-4 ">
+                            {{form_row(form_insert.ajouter,{'attr':{'class':'ajouter_perso'}})}}
+                        </div>
+
+                    </div>
+
+                    <div class="row">      
+                        
+                            <div class="row w-100">
+                    
+                                <div class="col-sm-12 col-md-3 cadrep mx-auto pb-2">
+                                    <fieldset>        
+                                        <legend class="legendeleve">Catégorie:</legend>
+        
+                                        {{form_widget(form_insert.Category,{'attr':{'class':'form_categorie form-control'}})}}
+                                        {{form_errors(form_insert.Category)}}
+                                        
+                                    </fieldset>        
+                                </div>
+
+                                <div class="col-sm-12 col-md-3 cadrep mx-auto pb-2">
+                                    <fieldset>        
+                                        <legend class="legendeleve">Professeur:</legend>
+        
+                                        {{form_widget(form_insert.professeur,{'attr':{'class':'form_categorie form-control'}})}}
+                                        {{form_errors(form_insert.professeur)}}
+                                        
+                                    </fieldset>        
+                                </div>
+
+                                <div class="col-sm-12 col-md-3 cadrep mx-auto pb-2">
+                                    <fieldset>
+                                        <legend class="legendeleve">Photo:</legend>
+                                            {{form_widget(form_insert.photoEleve)}}
+                                            {{form_errors(form_insert.photoEleve)}}
+                                        
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-sm-12 col-md-3 cadrep mx-auto pb-2">
+                                    <fieldset>
+                                        <legend class="legendeleve">Date d'inscription</legend>
+                                        
+                                        {{form_widget(form_insert.dinscriptionEleve,{'attr':{'class':'form_inscr w-100 form-control'}})}}
+                                        {{form_errors(form_insert.nomEleve)}}
+                                    </fieldset>
+                                </div>
+
+
+                            </div>
+
+                            <div class="row form-group mt-2 w-100">
+
+                                <div class="col-sm-12 col-md-6 cadrep mx-auto pb-2">
+                                    <fieldset>
+                                        <legend class="legendeleve">Elève</legend>
+                                            
+                                            <div class="row no-gutters">
+                                                
+
+                                                {{form_label(form_insert.nomEleve, "Nom:", {'label_attr': {'class': 'mb-2 col-sm-2'}}) }}
+
+                                                <select class="form-control col-sm-2" name="titre" id="titre">
+                                                    <option value="Monsieur">Mr</option>
+                                                    <option value="Madame">Mme</option>
+                                                    <option value="Mademoiselle">Mlle</option>
+                                                    <option value="Enfant">Enfant</option>
+                                                </select> 
+
+                                                {{form_widget(form_insert.nomEleve,{'attr':{'class':'col-sm-7 form-control'}})}}
+                                                {{form_errors(form_insert.nomEleve)}}
+                                            </div>
+
+                                            <div class="row no-gutters">
+
+                                            
+                                                {{form_label(form_insert.prenomEleve,"Prénom:", {'label_attr': {'class': 'col-sm-2'}}) }}
+                                                {{form_widget(form_insert.prenomEleve,{'attr':{'class':'mt-1 col-sm-9 form-control'}})}}
+                                                {{form_errors(form_insert.prenomEleve)}}
+
+                                                {{form_label(form_insert.naissanceEleve,"DDN:", {'label_attr': {'class': 'col-sm-2'}}) }}
+                                                {{form_widget(form_insert.naissanceEleve,{'attr':{'class':'mt-1 col-sm-9 form-control'}})}}
+                                                {{form_errors(form_insert.naissanceEleve)}}
+                                            
+                                                {{form_label(form_insert.adresseEleve,"Adresse:", {'label_attr': {'class': 'col-sm-2'}}) }}
+                                                {{form_widget(form_insert.adresseEleve,{'attr':{'class':'mt-1 col-sm-9 form-control'}})}}
+                                                {{form_errors(form_insert.adresseEleve)}}
+
+                                                <label class="col-sm-2" for="cp">Cp:</label>
+                                                <input type="text" id="cp" class="mt-1 col-sm-9 cp form-control" placeholder="  Suggérez un code postal" autocomplete="none">
+                                            
+                                                {{form_label(form_insert.cpville,"CP/Ville:", {'label_attr': {'class': 'col-sm-2'}}) }}
+                                                {{form_widget(form_insert.cpville,{'attr':{'class':'mt-1 col-sm-9 form-control ville'}})}}
+                                                {{form_errors(form_insert.cpville)}}
+
+                                                
+                                                <div class="col-sm-2">
+                                                {{form_label(form_insert.tel1Eleve,"Tél.:", {'label_attr': {'class': ''}}) }}
+                                                </div>
+                                                
+                                                <div class="col-sm-4">
+                                                {{form_widget(form_insert.tel1Eleve,{'attr':{'class':'mt-1 form-control '}})}}
+                                                {{form_errors(form_insert.tel1Eleve)}}
+                                                </div>
+
+                                                <div class="col-sm-4 offset-md-1">
+                                                {{form_widget(form_insert.tel2Eleve,{'attr':{'class':'mt-1 form-control '}})}}
+                                                {{form_errors(form_insert.tel2Eleve)}}
+                                                </div>
+
+                                                <div class="col-sm-2">
+                                                {{form_label(form_insert.tel3Eleve," ", {'label_attr': {'class': ''}}) }}
+                                                </div>
+                                                
+                                                <div class="col-sm-4">
+                                                {{form_widget(form_insert.tel3Eleve,{'attr':{'class':'mt-1 form-control '}})}}
+                                                {{form_errors(form_insert.tel3Eleve)}}
+                                                </div>
+
+                                                <div class="col-sm-4 offset-md-1">
+                                                {{form_widget(form_insert.tel4Eleve,{'attr':{'class':'mt-1 form-control '}})}}
+                                                {{form_errors(form_insert.tel4Eleve)}}
+                                                </div>
+                                            
+
+                                            
+                                                {{form_label(form_insert.emailEleve,"E.mail:", {'label_attr': {'class': 'col-sm-2'}}) }}  
+                                                
+                                                <div class="col-sm-9">
+                                                {{form_widget(form_insert.emailEleve,{'attr':{'class':'mt-1 mr-2 form-control'}})}}
+                                                {{form_errors(form_insert.emailEleve)}}
+                                                </div>
+                                                
+                                                <div class="mt-2 mx-auto"><input onclick="showmail()" type="button" value="Envoyer un mail"></div>
+                                                
+                                                
+                                            
+
+                                            </div>
+
+                                            
+                                    </fieldset>
+                                </div>
+
+                                <div class="cadre col-sm-12 col-md-6 cadrep mx-auto pb-2">
+                                    <fieldset>
+                                        <legend class="legendeleve">Personnes à prévenir</legend>
+
+                                        <div class="row mt-5 no-gutters">
+
+                                            
+                                            {{form_label(form_insert.Tuteur.nomTuteur,'Nom:', {'label_attr': {'class': 'col-sm-2'}}) }}
+                                            {{form_widget(form_insert.Tuteur.nomTuteur,{'attr':{'class':'mt-1 col-sm-9 form-control'}})}}
+                                            {{form_errors(form_insert.Tuteur.nomTuteur)}}
+
+                                            
+                                            {{form_label(form_insert.Tuteur.prenomTuteur,'Prénom:', {'label_attr': {'class': 'col-sm-2'}}) }}
+                                            {{form_widget(form_insert.Tuteur.prenomTuteur,{'attr':{'class':'mt-1 col-sm-9 form-control'}})}}
+                                            {{form_errors(form_insert.Tuteur.prenomTuteur)}}
+
+                                            
+                                            {{form_label(form_insert.Tuteur.adresseTuteur,'Adresse:', {'label_attr': {'class': 'col-sm-2'}}) }}
+                                            {{form_widget(form_insert.Tuteur.adresseTuteur,{'attr':{'class':'mt-1 col-sm-9 form-control'}})}}
+                                            {{form_errors(form_insert.Tuteur.adresseTuteur)}}
+
+                                            
+                                            {{form_label(form_insert.Tuteur.tel1Tuteur,'Tél1:', {'label_attr': {'class': 'col-sm-2'}}) }}
+                                            {{form_widget(form_insert.Tuteur.tel1Tuteur,{'attr':{'class':'mt-1 col-sm-9 form-control'}})}}
+                                            {{form_errors(form_insert.Tuteur.tel1Tuteur)}}
+
+                                            
+                                            {{form_label(form_insert.Tuteur.tel2Tuteur,'Tél2:', {'label_attr': {'class': 'col-sm-2'}}) }}
+                                            {{form_widget(form_insert.Tuteur.tel2Tuteur,{'attr':{'class':'mt-1 col-sm-9 form-control'}})}}
+                                            {{form_errors(form_insert.Tuteur.tel2Tuteur)}}   
+
+                                        </div>
+
+                                    </fieldset>
+                                </div>
+
+                            </div>
+                            
+                            <div class="row w-100 mt-2">
+                                <div class="cadre col-12 cadrep mx-auto pb-2">
+                                    <fieldset>
+
+                                        <legend class="legendeleve">Informations supplémentaires</legend>
+                                        {{form_widget(form_insert.informationEleve,{'attr':{'class':'form_info form-control'}})}}
+                                        {{form_errors(form_insert.nomEleve)}}
+
+                                    </fieldset>
+                                </div>
+                            </div>
+
+                            <div class="row w-100 mt-2">
+
+                                <div class="cadre col-sm-12 col-md-6 cadrep">
+                                
+                                    <fieldset class="mb-3">
+
+                                        <legend class="legendeleve">Instrument</legend>
+
+                                            <div class="row mb-2">
+                                            
+                                            
+                                                <div class="col-sm-12">
+                                                    <div class="h5">Au moment de l'inscription :</div>
+                                                {{form_label(form_insert.InfoI.havemusic,'Il avait des connaissances musicales ?', {'label_attr': {'class': 'col-sm-7'}}) }}
+                                                </div>
+
+                                                <div class="col-sm-1 offset-1">
+                                                {{form_widget(form_insert.InfoI.havemusic)}}
+                                                {{form_errors(form_insert.InfoI.havemusic)}}
+                                                </div>
+
+                                                <div class="col-sm-9">
+                                                {{form_widget(form_insert.InfoI.whathavemusic,{'attr':{'class':'mt-1 mr-2 form-control'}})}}
+                                                {{form_errors(form_insert.InfoI.whathavemusic)}}
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            <div class="row mb-2">
+                                                <div class="col-sm-12">
+                                                {{form_label(form_insert.InfoI.doinstrument,'Il pratiquait un instrument ?', {'label_attr': {'class': 'col-sm-7'}}) }}
+                                                </div>
+
+                                                <div class="col-sm-1 offset-1">
+                                                {{form_widget(form_insert.InfoI.doinstrument)}}
+                                                {{form_errors(form_insert.InfoI.doinstrument)}}
+                                                </div>
+
+                                                <div class="col-sm-9">
+                                                {{form_widget(form_insert.InfoI.whatdoinstrument,{'attr':{'class':'mt-1 mr-2 form-control'}})}}
+                                                {{form_errors(form_insert.InfoI.whatdoinstrument)}}
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-2">
+                                                <div class="col-sm-12">
+                                                {{form_label(form_insert.InfoI.haveinstrument,'Il possédait un instrument ?', {'label_attr': {'class': 'col-sm-7'}}) }}
+                                                </div>
+
+                                                <div class="col-sm-1 offset-1">
+                                                {{form_widget(form_insert.InfoI.haveinstrument)}}
+                                                {{form_errors(form_insert.InfoI.haveinstrument)}}
+                                                </div>
+
+                                                <div class="col-sm-9">
+                                                {{form_widget(form_insert.InfoI.whathaveinstrument,{'attr':{'class':'mt-1 mr-2 form-control'}})}}
+                                                {{form_errors(form_insert.InfoI.whathaveinstrument)}}
+                                                </div>
+                                            </div>
+
+                                    </fieldset>
+
+                                </div>
+
+                                <div class="cadre col-sm-12 col-md-6 cadrep mx-auto pb-2">
+
+                                    <fieldset>
+                                        <legend class="legendeleve">Connu par</legend>
+
+                                            <div class="row no-gutters pt-5">
+
+                                                {{form_label(form_insert.nomConnuPar.nomConnuPar,"Moyen:", {'label_attr': {'class': 'col-sm-2'}}) }}
+                                                {{form_widget(form_insert.nomConnuPar.nomConnuPar,{'attr':{'class':'mt-1 col-sm-9 form-control'}})}}
+                                                {{form_errors(form_insert.nomConnuPar.nomConnuPar)}}
+
+                                                {{form_label(form_insert.nomConnuPar.autreConnuPar,"Autre:", {'label_attr': {'class': 'col-sm-2'}}) }}
+                                                {{form_widget(form_insert.nomConnuPar.autreConnuPar,{'attr':{'class':'mt-1 col-sm-9 form-control'}})}}
+                                                {{form_errors(form_insert.nomConnuPar.autreConnuPar)}}
+                                            </div>
+                                    </fieldset>
+                                    
+                                </div>
+
+                            </div>
+                    </div>
+                {{form_end(form_insert)}}
+            </div>
+        
+        
+
+        </div>
+    </div>
+
+
+
+
+
+<!-- fin container fluid -->
+</div> 
+
+
+
+<script src="{{ asset('/js/app_scuola/admin.js') }}"></script>
+
+{% endblock body %}

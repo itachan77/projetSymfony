@@ -1,0 +1,72 @@
+#calendrier{
+    width:80%;
+    margin:auto;
+}
+
+.areaperso {
+    width:100%;
+    height:250px;}
+
+#widgetPw {
+    margin-top:200px;
+}
+
+#bulle {
+    border:1px solid rgb(129, 122, 122);
+    border-radius:200px;
+    box-shadow:5px 5px 5px black;
+}
+
+#formCard,#formCardSup {
+    background-color:beige;
+    box-shadow:5px 5px 5px black;
+}
+
+#formCard #entete:hover,#formCardSup #enteteSup:hover {
+    cursor:pointer;
+}
+
+#formCardSup #corpsSup, #formCard #corps{
+    height:400px;
+    overflow:scroll;
+}
+
+#tabFichierPerso {
+    height:500px;
+    
+    overflow: auto;
+}
+
+.marginLeftPerso {
+    margin-left:150px;
+}
+
+#cadreCalend {
+    height:730px;
+    border:1px solid grey;
+    box-shadow:5px 5px 5px grey;
+    overflow:scroll;
+    
+    
+}
+
+#titre {
+    box-shadow:5px 5px 5px black;
+    border:1px solid gainsboro;
+}
+
+/* z-index Très important pour que le menu réduit soit déplacable partout dans la fenetre
+*/
+#MenuProf {
+z-index: 3;
+position:fixed;
+}
+
+
+.fa-times:hover {
+color:red;
+
+}
+
+
+

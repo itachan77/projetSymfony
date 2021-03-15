@@ -1,0 +1,94 @@
+{% extends 'header_scuola.html.twig' %}
+
+{% block title %}CONNEXION{% endblock %}
+
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/connexion/style_connex.css') }}">
+
+{% endblock %}
+
+
+{% block body %}
+
+    <div class="container mt-5">
+
+        <div id="connect" class="col-sm-12 w-100 col-md-9 mx-auto boite_perso p-1">
+
+            <div class="row">
+
+                <div class="col-sm-12 text-left">
+                    <a class="btn btn-perso" href="javascript:history.back()">Précédent</a>
+                </div>
+
+
+                <div class="col-sm-12 text-center pt-5">
+                    <h2>CONNEXION</h2>
+                </div>
+
+                <div class="col-sm-12 text-center h4">
+                    Merci de saisir votre <b>"identifiant"</b> et votre mot de passe. 
+                </div>
+            </div>
+
+
+            <div class="row">
+                <form class="mx-auto mt-3" method="post">
+
+                    <div class="row"> 
+                        
+                        {% if error %}
+                        <span class="mx-auto">
+                            <span class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</span>
+                        </span>
+                        {% endif %}
+
+
+                        <div class="col-sm-12 text-center mt-5 mb-3">
+                        {% if app.user %}
+                            Vous êtes connecté en tant que {{ app.user.username }} 
+                            <div><a href="{{ path('app_logout') }}">Se déconnecter</a></div>
+                        {% endif %}
+                        </div>
+
+                        <div class="col-sm-12 text-center mb-2">
+                            <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control w-50 mx-auto" placeholder="Identifiant" required autofocus>
+                        </div>
+
+                        <div class="col-sm-12 text-center mb-4">
+                            <input type="password" name="password" id="inputPassword" placeholder="Mot de Passe" class="form-control w-50 mx-auto" required>
+                        </div>
+                    
+                            <input type="hidden" name="_csrf_token"
+                                value="{{ csrf_token('authenticate') }}">
+
+                        <div class="col-sm-12 text-center mb-4">
+                            <input class="btn btn-danger" type="submit" value="Valider">
+                        </div>
+
+                        <div class="col-sm-12 text-center mb-4">
+                            <a class="btn btn-perso" href="{{path('app_loginOubli')}}">Vous avez oublié votre mot de passe ?</a>
+                        </div>
+
+                    </div>
+
+                </form>
+                
+            </div>
+
+        </div>
+
+    </div>
+    
+{% endblock body %}
+
+
+
+
+
+
+
+
+
+
+

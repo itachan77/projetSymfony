@@ -1,0 +1,83 @@
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/style_adform.css') }}">
+{% endblock %}
+
+<div class="fermeture">
+
+<div class="btn btn-primary text-dark btn-js"><a href="#" title="ENVOYER UN EMAIL" class="text-white">@</a>
+
+<div class="overlay">
+
+    <div class="popup">
+            
+            <form name="mail" method="post" action="{{ path('mailUserPop', {'id':row.id} )}}">
+                
+                <div class="mx-auto text-center mb-5">
+                </div>
+            
+                <div class="container cadrep mx-auto pb-5">
+            
+                    <div class="row bg-warning border border-primary rounded">
+                        
+                        <div class="col-sm-4">
+                            <div class="h1 text-center">ENVOYER UN EMAIL</div>
+                            
+                        </div>
+
+            
+                        <div class="col-sm-4 ml-auto">
+                            <div><button type="submit" id="mail_envoyer" name="mail[envoyer]" class="modifier_perso">Envoyer</button></div>
+                        </div>
+
+                        <div class="col-sm-1 ml-auto">
+                            <div class="fas fa-times"></div>
+                        </div>
+                    
+                    </div>  
+            
+                    <div class="row mb-5">
+            
+                        <div class="col-sm-6">
+                        <label class="h5 mt-3" for="mail_toMail">A :</label>
+                        <input type="text" id="mail_toMail" name="mail[toMail]" maxlength="255" class="form-control" value="{{row.username}}">
+                        
+                        </div>
+            
+                        <div class="col-sm-6">
+                        <label class="h5 mt-3" for="mail_fromMail">De :</label>
+                        <input type="text" id="mail_fromMail" name="mail[fromMail]" maxlength="255" class="form-control" value="itachan2701@gmail.com">
+                        
+                        </div>
+            
+            
+                        <div class="col-sm-12">
+                        <label class="h5 mt-3" for="mail_objetMail">Objet :</label>
+                        <input type="text" id="mail_objetMail" name="mail[objetMail]" maxlength="255" class="form-control w-100" value="Message de La Scuola">
+                        
+                        </div>
+            
+                        <div class="col-sm-12">
+                        <label class="h5 mt-3 required" for="mail_messageMail">Message :</label>
+                        <textarea id="mail_messageMail" name="mail[messageMail]" required="required" class="form-control h-100 mb-5"></textarea>
+                        
+                        </div>
+                    
+                    </div>
+            
+                </div>
+                <input type="hidden" id="mail__token" name="mail[_token]" value="wp1HhOWzQVd9RW9SVRComvchELXMVqToOCs0wFiaolo"></form>
+                
+            </form>
+
+
+
+
+        
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
